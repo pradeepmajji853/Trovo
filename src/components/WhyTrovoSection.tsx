@@ -6,26 +6,26 @@ export const WhyTrovoSection = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   const stats = [
-    { number: "4", label: "Key Features" },
-    { number: "1", label: "Unified Platform" },
-    { number: "24/7", label: "Support Available" }
+    { number: "₹15K+", label: "Average Annual Savings" },
+    { number: "1%", label: "Guaranteed UPI Cashback" },
+    { number: "₹2000", label: "Max Tap-to-Pay Limit" }
   ]
 
   const benefits = [
     {
       icon: "💳",
-      title: "Maximize Rewards",
-      description: "Turn unused credit card points into real cash and earn on every transaction"
+      title: "Credit Card Maximization",
+      description: "Convert unused points to instant cash and maximize every bill payment"
     },
     {
-      icon: "🔒",
-      title: "Secure & Safe",
-      description: "Bank-level security with safe card sharing and protected transactions"
+      icon: "💰",
+      title: "UPI Rewards Revolution",
+      description: "First guaranteed 1% cashback on every UPI payment in India"
     },
     {
-      icon: "⚡",
-      title: "Simple & Fast",
-      description: "Intuitive interface with instant processing and seamless user experience"
+      icon: "👥",
+      title: "Safe Card Sharing",
+      description: "Share credit cards with friends safely with auto-debit from their accounts"
     }
   ]
 

@@ -8,18 +8,18 @@ const ProblemSection: React.FC = () => {
   const problems = [
     {
       icon: "💳",
-      title: "Unused Credit Card Points",
-      description: "Credit card points expire or remain unused due to complex redemption processes and limited options."
+      title: "Wasted Credit Card Points",
+      description: "Credit card points are confusing and often expire unused. Indians lose ₹1,200+ yearly on unredeemed rewards."
     },
     {
       icon: "📱",
-      title: "No UPI Rewards",
-      description: "UPI payments are convenient but offer zero cashback, missing out on potential rewards from daily transactions."
+      title: "UPI Without Rewards",
+      description: "UPI payments offer zero cashback while card payments do. Missing out on ₹1,500+ annual rewards on daily spending."
     },
     {
       icon: "👥",
-      title: "Risky Card Sharing",
-      description: "Sharing credit cards with friends for better rewards is unsafe and tracking shared expenses is difficult."
+      title: "Unsafe Card Sharing",
+      description: "Friends ask to use your credit card for better rewards but sharing cards is risky and tracking payments is a nightmare."
     }
   ]
 
@@ -45,7 +45,7 @@ const ProblemSection: React.FC = () => {
   }
 
   return (
-    <section className="section-padding bg-gradient-to-br from-white to-green-50/30" ref={ref}>
+    <section className="section-padding bg-gray-50" ref={ref}>
       <div className="container-custom">
         <motion.div
           className="text-center mb-16"
@@ -54,10 +54,10 @@ const ProblemSection: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Common Financial Challenges
+            The Problems We're Solving
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Traditional financial tools leave money on the table and create unnecessary friction in daily transactions
+            Indians are losing thousands of rupees annually due to fragmented financial tools and missed reward opportunities
           </p>
         </motion.div>
 
@@ -70,7 +70,7 @@ const ProblemSection: React.FC = () => {
           {problems.map((problem, index) => (
             <motion.div
               key={index}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-green-100"
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
               variants={itemVariants}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >

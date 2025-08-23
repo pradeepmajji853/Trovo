@@ -12,7 +12,7 @@ const HeroSection: React.FC = () => {
     return () => window.removeEventListener('mousemove', updateMousePosition)
   }, [])
 
-  const words = ["Transform", "your", "financial", "experience"]
+  const words = ["Maximize", "your", "financial", "rewards"]
 
   const wordVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -26,11 +26,11 @@ const HeroSection: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-white via-green-50/30 to-emerald-50/50 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-white to-gray-50 overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
-          className="absolute -top-40 -right-40 w-80 h-80 bg-green-100 opacity-30 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-trovo-green opacity-10 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.2, 1],
             rotate: [0, 180, 360]
@@ -42,7 +42,7 @@ const HeroSection: React.FC = () => {
           }}
         />
         <motion.div 
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-100 opacity-20 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-trovo-green-light opacity-5 rounded-full blur-3xl"
           animate={{ 
             scale: [1.2, 1, 1.2],
             rotate: [360, 180, 0]
@@ -52,6 +52,25 @@ const HeroSection: React.FC = () => {
             repeat: Infinity,
             ease: "linear"
           }}
+        />
+
+        {/* Floating elements that follow mouse */}
+        <motion.div
+          className="absolute w-4 h-4 bg-trovo-green rounded-full opacity-30"
+          animate={{
+            x: mousePosition.x * 0.01,
+            y: mousePosition.y * 0.01,
+          }}
+          transition={{ type: "spring", stiffness: 50 }}
+        />
+        <motion.div
+          className="absolute w-6 h-6 bg-trovo-green-light rounded-full opacity-20"
+          style={{ top: '20%', right: '20%' }}
+          animate={{
+            x: mousePosition.x * -0.02,
+            y: mousePosition.y * 0.015,
+          }}
+          transition={{ type: "spring", stiffness: 30 }}
         />
       </div>
 
