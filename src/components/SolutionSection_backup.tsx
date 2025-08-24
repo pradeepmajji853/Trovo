@@ -427,6 +427,11 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                     </motion.div>
                   ))}
                 </div>
+                        {benefit}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
 
                 {/* Mobile-Optimized CTA Button */}
                 <motion.button

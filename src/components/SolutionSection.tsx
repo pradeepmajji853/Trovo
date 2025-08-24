@@ -407,9 +407,9 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                 </motion.button>
               </motion.div>
 
-              {/* Simplified Right Content - Solution-Specific Mockup */}
+              {/* Simplified Right Content - Solution-Specific Mockup - Hidden on Mobile */}
               <motion.div
-                className="flex justify-center lg:justify-end"
+                className="hidden lg:flex justify-center lg:justify-end"
                 initial={{ opacity: 0, x: 30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.3 }}
@@ -460,5 +460,4 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   )
 }
 
-export { SolutionSection }
 export default SolutionSection
