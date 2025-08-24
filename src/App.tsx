@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import AnnouncementBanner from './components/AnnouncementBanner'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import ScrollProgressBar from './components/ScrollProgressBar'
 import CookieConsent from './components/CookieConsent'
-import FloatingWaitlistButton from './components/FloatingWaitlistButton'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import BlogPage from './pages/BlogPage'
@@ -14,7 +13,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-white">
-        <AnnouncementBanner />
+        <ScrollProgressBar />
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -25,7 +24,6 @@ function App() {
         <Footer />
         <ScrollToTop />
         <CookieConsent />
-        <FloatingWaitlistButton />
       </div>
     </Router>
   )

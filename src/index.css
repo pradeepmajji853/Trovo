@@ -12,7 +12,9 @@
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background: linear-gradient(-45deg, #ffffff, #f0fdf4, #dcfce7, #bbf7d0);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
     color: #1a1a1a;
     overflow-x: hidden; /* Prevent horizontal scroll */
   }
@@ -42,12 +44,39 @@
     box-shadow: 0 0 20px rgba(29, 185, 84, 0.4);
   }
   
+  .btn-secondary {
+    @apply border-2 border-trovo-green text-trovo-green hover:bg-trovo-green hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
+  }
+  
   .section-padding {
     @apply py-16 md:py-24;
   }
   
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-trovo-green to-trovo-green-light bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-white {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl;
+  }
+  
+  .floating-element {
+    @apply animate-float;
+  }
+  
+  .floating-element-delayed {
+    @apply animate-float-delayed;
   }
 
   /* Custom scrollbar */

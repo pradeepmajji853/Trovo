@@ -58,46 +58,56 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className="relative px-4 py-2 text-gray-700 hover:text-trovo-green transition-colors duration-300 font-medium"
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.path}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: 0.1 + index * 0.1,
+                  ease: "easeOut"
+                }}
               >
-                <span className="relative z-10">{item.name}</span>
-                {location.pathname === item.path && (
+                <Link
+                  to={item.path}
+                  className="relative px-4 py-2 text-gray-700 hover:text-trovo-green transition-colors duration-300 font-medium group/nav"
+                >
+                  <span className="relative z-10">{item.name}</span>
+                  
+                  {/* Hover effect */}
                   <motion.div
-                    className="absolute inset-0 bg-trovo-green/10 rounded-full"
-                    layoutId="activeTab"
-                    initial={false}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="absolute inset-0 bg-trovo-green/5 rounded-full opacity-0 group-hover/nav:opacity-100"
+                    transition={{ duration: 0.2 }}
                   />
-                )}
-                <motion.div
-                  className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-trovo-green"
-                  whileHover={{ width: "80%", x: "-50%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </Link>
+                  
+                  {/* Active indicator */}
+                  {location.pathname === item.path && (
+                    <motion.div
+                      className="absolute inset-0 bg-trovo-green/10 rounded-full"
+                      layoutId="activeTab"
+                      initial={false}
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 500, 
+                        damping: 30 
+                      }}
+                    />
+                  )}
+                  
+                  {/* Bottom line indicator */}
+                  <motion.div
+                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-trovo-green"
+                    initial={{ width: 0 }}
+                    animate={{ 
+                      width: location.pathname === item.path ? "60%" : 0 
+                    }}
+                    whileHover={{ width: "60%" }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Link>
+              </motion.div>
             ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <motion.button
-              className="btn-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Join Waitlist
-              <motion.span
-                className="inline-block ml-2"
-                animate={{ x: [0, 3, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                →
-              </motion.span>
-            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -155,16 +165,6 @@ const Navbar = () => {
                     </Link>
                   </motion.div>
                 ))}
-                <motion.div
-                  className="px-4 pt-4"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navItems.length * 0.1 }}
-                >
-                  <button className="btn-primary w-full justify-center">
-                    Join Waitlist
-                  </button>
-                </motion.div>
               </div>
             </motion.div>
           )}

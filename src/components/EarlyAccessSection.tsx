@@ -39,22 +39,17 @@ const EarlyAccessSection: React.FC = () => {
   }
 
   return (
-    <section className="section-padding bg-gradient-to-br from-trovo-green to-trovo-green-dark text-white relative overflow-hidden" ref={ref} id="early-access">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-white opacity-10 rounded-full"
-          animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute top-40 -left-40 w-96 h-96 bg-white opacity-5 rounded-full"
-          animate={{ scale: [1.2, 1, 1.2], rotate: [360, 180, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        />
+    <section className="relative py-20 overflow-hidden" ref={ref} id="early-access">
+      {/* Professional Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-trovo-green via-trovo-green-200 to-white">
+        <div className="absolute inset-0 bg-gradient-to-tl from-trovo-green/10 via-transparent to-white/30"></div>
       </div>
+      
+      {/* Subtle Background Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-white/20 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-white/15 rounded-full blur-3xl"></div>
 
-      <div className="container-custom relative z-10">
+      <div className="relative max-w-7xl mx-auto px-6 z-10">
         <motion.div
           className="text-center max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
@@ -62,32 +57,48 @@ const EarlyAccessSection: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Join the Waitlist for{' '}
-            <span className="relative">
-              Trovo
+            <motion.span 
+              className="relative inline-block"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span className="text-trovo-green relative z-10">Trovo</span>
               <motion.div
-                className="absolute -bottom-2 left-0 w-full h-1 bg-white"
+                className="absolute -bottom-2 left-0 w-full h-1 bg-trovo-green rounded-full"
                 initial={{ scaleX: 0 }}
                 animate={isInView ? { scaleX: 1 } : {}}
                 transition={{ duration: 0.8, delay: 1 }}
               />
-            </span>
+            </motion.span>
           </motion.h2>
 
           <motion.p
-            className="text-xl md:text-2xl mb-12 opacity-90"
+            className="text-xl md:text-2xl mb-12 text-gray-800"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             Be the first to maximize your credit card rewards, earn 1% UPI cashback, and experience tap-to-pay up to ₹2000. 
             <br className="hidden md:block" />
-            <strong>Launching soon in India!</strong>
+            <motion.strong 
+              className="text-gray-900"
+              animate={{ 
+                textShadow: [
+                  "0 0 5px rgba(29, 185, 84, 0.3)", 
+                  "0 0 20px rgba(29, 185, 84, 0.6)", 
+                  "0 0 5px rgba(29, 185, 84, 0.3)"
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              Launching soon in India!
+            </motion.strong>
           </motion.p>
 
           {!isSubmitted ? (
@@ -98,7 +109,7 @@ const EarlyAccessSection: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
-                <input
+                <motion.input
                   type="email"
                   placeholder="Enter your email"
                   value={email}
@@ -106,37 +117,64 @@ const EarlyAccessSection: React.FC = () => {
                     setEmail(e.target.value)
                     setError('')
                   }}
-                  className={`flex-1 px-6 py-4 rounded-full text-gray-900 font-medium focus:outline-none focus:ring-4 transition-all duration-300 ${
+                  className={`flex-1 px-6 py-4 rounded-full text-gray-900 font-medium focus:outline-none focus:ring-4 transition-all duration-300 backdrop-blur-sm border ${
                     error 
-                      ? 'ring-2 ring-red-400 focus:ring-red-400' 
-                      : 'focus:ring-white focus:ring-opacity-30'
+                      ? 'ring-2 ring-red-400 focus:ring-red-400 border-red-400 bg-white/90' 
+                      : 'focus:ring-white focus:ring-opacity-50 border-white/30 bg-white/80 hover:bg-white/90'
                   }`}
                   disabled={isLoading}
+                  whileFocus={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
                 />
-                <button
+                <motion.button
                   type="submit"
                   disabled={isLoading}
-                  className={`bg-white text-trovo-green font-semibold px-8 py-4 rounded-full transition-all duration-300 transform ${
+                  className={`bg-gray-900 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform shadow-lg hover:shadow-xl ${
                     isLoading 
                       ? 'opacity-70 cursor-not-allowed' 
-                      : 'hover:bg-gray-100 hover:scale-105'
+                      : 'hover:bg-gray-800 hover:scale-105 hover:shadow-2xl'
                   }`}
+                  whileHover={!isLoading ? { 
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
+                  } : {}}
+                  whileTap={!isLoading ? { scale: 0.98 } : {}}
                 >
                   {isLoading ? (
                     <div className="flex items-center space-x-2">
-                      <div className="w-4 h-4 border-2 border-trovo-green border-t-transparent rounded-full animate-spin"></div>
+                      <motion.div 
+                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      />
                       <span>Joining...</span>
                     </div>
                   ) : (
-                    'Join Waitlist'
+                    <motion.span
+                      animate={{ 
+                        textShadow: [
+                          "0 0 0px rgba(255, 255, 255, 0)",
+                          "0 0 10px rgba(255, 255, 255, 0.3)",
+                          "0 0 0px rgba(255, 255, 255, 0)"
+                        ]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      Join Waitlist
+                    </motion.span>
                   )}
-                </button>
+                </motion.button>
               </form>
               
               {error && (
-                <p className="text-red-200 text-sm mt-2 text-center">
+                <motion.p 
+                  className="text-red-700 text-sm mt-2 text-center bg-red-100/80 backdrop-blur-sm px-4 py-2 rounded-full border border-red-300"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
                   {error}
-                </p>
+                </motion.p>
               )}
             </motion.div>
           ) : (
@@ -146,35 +184,73 @@ const EarlyAccessSection: React.FC = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="bg-white bg-opacity-20 backdrop-blur-sm p-8 rounded-3xl border border-white border-opacity-30">
-                <div className="text-6xl mb-4">🎉</div>
-                <h3 className="text-2xl font-bold mb-2">You're In!</h3>
-                <p className="text-lg opacity-90 mb-4">
+              <motion.div 
+                className="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border border-gray-200 shadow-xl"
+                animate={{ 
+                  boxShadow: [
+                    "0 10px 30px rgba(0,0,0,0.1)",
+                    "0 15px 40px rgba(0,0,0,0.15)", 
+                    "0 10px 30px rgba(0,0,0,0.1)"
+                  ]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <motion.div 
+                  className="text-6xl mb-4"
+                  animate={{ 
+                    rotate: [0, 10, -10, 0],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  🎉
+                </motion.div>
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">You're In!</h3>
+                <p className="text-lg text-gray-700 mb-4">
                   Welcome to the treasure hunt! We'll notify you when Trovo launches.
                 </p>
-                <div className="flex items-center justify-center space-x-2 text-sm opacity-75">
-                  <span>🔐</span>
+                <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                  <motion.span
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  >
+                    🔐
+                  </motion.span>
                   <span>Your spot is secured</span>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           )}
 
           {/* Trust indicators */}
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 text-sm opacity-75">
-            <div className="flex items-center space-x-2">
+          <motion.div 
+            className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 text-sm text-gray-700"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <motion.div 
+              className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/80 transition-all duration-300 border border-gray-200"
+              whileHover={{ scale: 1.05, y: -2 }}
+            >
               <span>🔒</span>
               <span>Bank-grade security</span>
-            </div>
-            <div className="flex items-center space-x-2">
+            </motion.div>
+            <motion.div 
+              className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/80 transition-all duration-300 border border-gray-200"
+              whileHover={{ scale: 1.05, y: -2 }}
+            >
               <span>📱</span>
               <span>Mobile-first design</span>
-            </div>
-            <div className="flex items-center space-x-2">
+            </motion.div>
+            <motion.div 
+              className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/80 transition-all duration-300 border border-gray-200"
+              whileHover={{ scale: 1.05, y: -2 }}
+            >
               <span>🇮🇳</span>
               <span>Made for India</span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

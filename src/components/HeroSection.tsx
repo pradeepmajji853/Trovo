@@ -1,18 +1,8 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
 
 const HeroSection: React.FC = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
-  useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener('mousemove', updateMousePosition)
-    return () => window.removeEventListener('mousemove', updateMousePosition)
-  }, [])
-
-  const words = ["Maximize", "your", "financial", "rewards"]
+  const words = ["Do", "you", "want", "your", "treasure", "back?"]
 
   const wordVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -30,47 +20,53 @@ const HeroSection: React.FC = () => {
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
-          className="absolute -top-40 -right-40 w-80 h-80 bg-trovo-green opacity-10 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-trovo-green opacity-5 rounded-full blur-3xl"
           animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360]
+            scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 20,
+            duration: 15,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
           }}
         />
         <motion.div 
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-trovo-green-light opacity-5 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-trovo-green-light opacity-3 rounded-full blur-3xl"
           animate={{ 
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0]
+            scale: [1.1, 1, 1.1],
           }}
           transition={{
-            duration: 25,
+            duration: 18,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
           }}
         />
 
-        {/* Floating elements that follow mouse */}
+        {/* Subtle floating particles */}
         <motion.div
-          className="absolute w-4 h-4 bg-trovo-green rounded-full opacity-30"
+          className="absolute top-1/4 right-1/3 w-2 h-2 bg-trovo-green rounded-full opacity-20"
           animate={{
-            x: mousePosition.x * 0.01,
-            y: mousePosition.y * 0.01,
+            y: [0, -20, 0],
+            opacity: [0.2, 0.5, 0.2]
           }}
-          transition={{ type: "spring", stiffness: 50 }}
+          transition={{ 
+            duration: 8, 
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         />
         <motion.div
-          className="absolute w-6 h-6 bg-trovo-green-light rounded-full opacity-20"
-          style={{ top: '20%', right: '20%' }}
+          className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-trovo-green-light rounded-full opacity-15"
           animate={{
-            x: mousePosition.x * -0.02,
-            y: mousePosition.y * 0.015,
+            y: [0, 15, 0],
+            opacity: [0.15, 0.4, 0.15]
           }}
-          transition={{ type: "spring", stiffness: 30 }}
+          transition={{ 
+            duration: 10, 
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
         />
       </div>
 
@@ -114,7 +110,7 @@ const HeroSection: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                With Trovo ✨
+                Reclaim your financial power ✨
               </motion.div>
             </div>
 
@@ -124,8 +120,8 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
-              Get cash from credit card points, 1% guaranteed UPI cashback, tap-to-pay up to ₹2000, 
-              and safely share cards with friends. Your complete fintech solution.
+              Unlock rewards from your credit cards, enjoy guaranteed UPI cashback, experience seamless 
+              tap-to-pay convenience, and safely share financial resources with trusted friends.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -246,8 +242,8 @@ const HeroSection: React.FC = () => {
                         transition={{ duration: 3, repeat: Infinity }}
                       >
                         <div className="text-sm opacity-80 mb-2">Credit Card Points</div>
-                        <div className="text-3xl font-bold mb-1">34,280</div>
-                        <div className="text-sm opacity-80">≈ ₹3,428 cash value</div>
+                        <div className="text-3xl font-bold mb-1">Available</div>
+                        <div className="text-sm opacity-80">Ready to convert</div>
                       </motion.div>
 
                       {/* UPI Cashback Card */}
@@ -258,8 +254,8 @@ const HeroSection: React.FC = () => {
                       >
                         <div className="flex justify-between items-center">
                           <div>
-                            <div className="text-sm opacity-80">UPI Cashback (1%)</div>
-                            <div className="text-xl font-bold">₹1,245</div>
+                            <div className="text-sm opacity-80">UPI Cashback</div>
+                            <div className="text-xl font-bold">Earning</div>
                           </div>
                           <div className="text-2xl">💰</div>
                         </div>
@@ -301,7 +297,7 @@ const HeroSection: React.FC = () => {
                               <div className="text-xs opacity-70">3 hours ago</div>
                             </div>
                           </div>
-                          <div className="text-sm font-bold">+₹285</div>
+                          <div className="text-sm font-bold">+Earned</div>
                         </motion.div>
                         <motion.div
                           className="flex items-center justify-between py-2"
@@ -318,7 +314,7 @@ const HeroSection: React.FC = () => {
                               <div className="text-xs opacity-70">5 hours ago</div>
                             </div>
                           </div>
-                          <div className="text-sm font-bold">+₹12</div>
+                          <div className="text-sm font-bold">+Reward</div>
                         </motion.div>
                       </div>
                     </div>

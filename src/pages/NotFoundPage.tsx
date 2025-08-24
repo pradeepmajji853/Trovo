@@ -5,7 +5,7 @@ import PageTransition from '../components/PageTransition'
 const NotFoundPage = () => {
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gradient-to-br from-trovo-green/5 to-white flex items-center justify-center pt-20">
+      <div className="min-h-screen bg-gradient-to-br from-trovo-green/5 to-white flex items-center justify-center pt-16 md:pt-20">
       <div className="container-custom">
         <motion.div
           className="text-center max-w-2xl mx-auto"

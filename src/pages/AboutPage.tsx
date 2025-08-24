@@ -53,7 +53,7 @@ const AboutPage = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-white pt-20">
+      <div className="min-h-screen bg-white pt-16 md:pt-20">
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-trovo-green/5 to-white">
         <div className="container-custom">
