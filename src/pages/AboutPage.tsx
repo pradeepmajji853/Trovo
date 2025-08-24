@@ -7,27 +7,6 @@ const AboutPage = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
-  const teamMembers = [
-    {
-      name: "Pradeep Kumar",
-      role: "Founder & CEO",
-      description: "Passionate about revolutionizing fintech in India",
-      image: "👨‍💼"
-    },
-    {
-      name: "Sarah Johnson",
-      role: "CTO",
-      description: "Expert in mobile payments and blockchain technology",
-      image: "👩‍💻"
-    },
-    {
-      name: "Raj Patel",
-      role: "Head of Product",
-      description: "15+ years experience in credit card industry",
-      image: "👨‍🎯"
-    }
-  ]
-
   const values = [
     {
       icon: "🎯",
@@ -173,55 +152,6 @@ const AboutPage = () => {
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
                   {value.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Meet Our Team
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The passionate individuals behind Trovo's mission
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                className="text-center group"
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.2 }}
-                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-              >
-                <motion.div
-                  className="w-24 h-24 bg-gradient-to-br from-trovo-green to-trovo-green-dark rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow duration-300"
-                  animate={{ rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
-                >
-                  <span className="text-3xl">{member.image}</span>
-                </motion.div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-trovo-green font-medium mb-3">
-                  {member.role}
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  {member.description}
                 </p>
               </motion.div>
             ))}

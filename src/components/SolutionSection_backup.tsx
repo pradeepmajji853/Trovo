@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import RewardsMockup from './mockups/RewardsMockup'
 import CashbackMockup from './mockups/CashbackMockup'
 import TapPayMockup from './mockups/TapPayMockup'
@@ -8,6 +8,23 @@ import SharedCreditMockup from './mockups/SharedCreditMockup'
 const SolutionSection: React.FC = () => {
   const containerRef = useRef(null)
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
+  const [windowHeight, setWindowHeight] = useState(0)
+
+  // Handle dynamic viewport height for mobile
+  useEffect(() => {
+    const updateHeight = () => {
+      setWindowHeight(window.innerHeight)
+    }
+    
+    updateHeight()
+    window.addEventListener('resize', updateHeight)
+    window.addEventListener('orientationchange', updateHeight)
+    
+    return () => {
+      window.removeEventListener('resize', updateHeight)
+      window.removeEventListener('orientationchange', updateHeight)
+    }
+  }, [])
 
   const solutions = [
     {
@@ -126,16 +143,17 @@ const SolutionSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Redesigned Cards for Better Readability */}
+      {/* Mobile-Optimized Cards for Better Readability */}
       <div className="relative w-full" style={{ scrollSnapType: 'y mandatory' }}>
         {solutions.map((solution, index) => (
-          <div key={solution.id} style={{ scrollSnapAlign: 'start' }}>
+          <div key={solution.id} style={{ scrollSnapAlign: 'start' }} className="w-full">
             <SolutionCard
               solution={solution}
               index={index}
               isHovered={hoveredCard === solution.id}
               onHover={() => setHoveredCard(solution.id)}
               onLeave={() => setHoveredCard(null)}
+              windowHeight={windowHeight}
             />
           </div>
         ))}
@@ -161,6 +179,7 @@ interface SolutionCardProps {
   isHovered: boolean
   onHover: () => void
   onLeave: () => void
+  windowHeight?: number
 }
 
 const SolutionCard: React.FC<SolutionCardProps> = ({ 
@@ -168,26 +187,36 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   index,
   isHovered,
   onHover,
-  onLeave
+  onLeave,
+  windowHeight = 0
 }) => {
   const cardRef = useRef(null)
   const isInView = useInView(cardRef, { once: false, amount: 0.2 })
 
+  // Calculate dynamic height for mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640
+  const cardHeight = isMobile && windowHeight > 0 
+    ? `${Math.max(windowHeight - 20, 600)}px` // Ensure minimum height of 600px
+    : 'calc(100vh - 32px)'
+
   return (
-    <div className="relative w-full h-screen flex items-center overflow-hidden" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+    <div className="relative w-full min-h-screen flex items-center overflow-hidden py-1 sm:py-2 md:py-4 lg:py-6">
       <motion.div
         ref={cardRef}
-        className="w-full h-full p-2 md:p-4 lg:p-6"
+        className="w-full h-full p-1 sm:p-2 md:p-4 lg:p-6"
         onHoverStart={onHover}
         onHoverEnd={onLeave}
       >
         <motion.div
-          className={`relative overflow-hidden bg-gradient-to-br ${solution.gradient} text-white w-full h-full flex items-center rounded-2xl lg:rounded-3xl shadow-2xl`}
+          className={`relative overflow-auto bg-gradient-to-br ${solution.gradient} text-white w-full flex items-center rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-2xl`}
+          style={{ 
+            minHeight: cardHeight,
+            height: cardHeight
+          }}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: index * 0.1 }}
           whileHover={{ scale: 1.001 }}
-          style={{ maxHeight: 'calc(100vh - 40px)', minHeight: 'calc(100vh - 40px)' }}
         >
           {/* Enhanced Professional Background with Dynamic Patterns */}
           <div className="absolute inset-0 overflow-hidden">
@@ -273,16 +302,33 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
             />
           </div>
 
-          <div className="relative z-10 w-full max-w-8xl mx-auto px-4 lg:px-8 xl:px-12 h-full">
-            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-12 items-center h-full py-6 lg:py-8">
-              {/* Enhanced Left Content - More Readable Layout */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 xl:px-12 h-full overflow-auto">
+            <div className="flex flex-col lg:grid lg:grid-cols-2 gap-2 sm:gap-4 lg:gap-8 xl:gap-12 items-center justify-start lg:justify-center h-full min-h-full py-2 sm:py-3 md:py-4 lg:py-6">
+              
+              {/* Mobile-Optimized Right Content - Solution-Specific Mockup */}
               <motion.div
-                className="text-center lg:text-left space-y-4 lg:space-y-6"
+                className="flex justify-center lg:justify-end order-1 lg:order-2 w-full flex-shrink-0"
+                initial={{ opacity: 0, x: 30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
+                  {/* Render appropriate mockup based on solution ID */}
+                  {solution.id === 1 && <RewardsMockup isInView={isInView} isHovered={isHovered} />}
+                  {solution.id === 2 && <CashbackMockup isInView={isInView} isHovered={isHovered} />}
+                  {solution.id === 3 && <TapPayMockup isInView={isInView} isHovered={isHovered} />}
+                  {solution.id === 4 && <SharedCreditMockup isInView={isInView} isHovered={isHovered} />}
+                </div>
+              </motion.div>
+
+              {/* Enhanced Left Content - Mobile Optimized */}
+              <motion.div
+                className="text-center lg:text-left space-y-2 sm:space-y-3 lg:space-y-4 order-2 lg:order-1 w-full"
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                {/* Clear Icon Design */}
+                {/* Mobile-Optimized Icon Design */}
                 <motion.div
                   className="relative inline-block"
                   animate={{ 
@@ -291,11 +337,11 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   }}
                   transition={{ duration: isHovered ? 4 : 6, repeat: Infinity }}
                 >
-                  <div className="w-20 h-20 lg:w-24 lg:h-24 bg-trovo-green/10 backdrop-blur-sm rounded-3xl flex items-center justify-center text-4xl lg:text-5xl border border-trovo-green/20 shadow-xl">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 bg-trovo-green/10 backdrop-blur-sm rounded-xl sm:rounded-2xl lg:rounded-3xl flex items-center justify-center text-xl sm:text-2xl lg:text-3xl xl:text-4xl border border-trovo-green/20 shadow-xl">
                     {solution.icon}
                   </div>
                   <motion.div 
-                    className="absolute -top-2 -right-2 w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center text-sm lg:text-base font-bold text-white shadow-lg border-2 border-white/40"
+                    className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 xl:w-10 xl:h-10 rounded-full flex items-center justify-center text-xs sm:text-xs lg:text-sm xl:text-base font-bold text-white shadow-lg border-2 border-white/40"
                     style={{ backgroundColor: solution.accentColor }}
                     animate={{
                       scale: isHovered ? [1, 1.1, 1] : [1, 1.05, 1]
@@ -306,10 +352,10 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   </motion.div>
                 </motion.div>
 
-                {/* Clear Typography Hierarchy */}
-                <div className="space-y-3 lg:space-y-4">
+                {/* Mobile-Optimized Typography Hierarchy */}
+                <div className="space-y-1 sm:space-y-2 lg:space-y-3">
                   <motion.div
-                    className="text-lg lg:text-xl xl:text-2xl font-medium text-gray-700"
+                    className="text-xs sm:text-sm lg:text-base xl:text-lg font-medium text-gray-700"
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.3 }}
@@ -318,7 +364,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   </motion.div>
                   
                   <motion.h3 
-                    className="text-3xl lg:text-4xl xl:text-5xl font-black leading-tight text-gray-900"
+                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-black leading-tight text-gray-900"
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.4 }}
@@ -328,7 +374,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                 </div>
                 
                 <motion.p 
-                  className="text-base lg:text-lg xl:text-xl leading-relaxed font-light text-gray-600 max-w-2xl"
+                  className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-light text-gray-600 max-w-2xl line-clamp-3 sm:line-clamp-none"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.5 }}
@@ -336,16 +382,16 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   {solution.description}
                 </motion.p>
 
-                {/* Clear Stats Badge */}
+                {/* Mobile-Optimized Stats Badge */}
                 <motion.div
-                  className="inline-flex items-center bg-trovo-green/10 backdrop-blur-md px-6 py-3 lg:px-8 lg:py-4 rounded-2xl border border-trovo-green/20 shadow-lg"
+                  className="inline-flex items-center bg-trovo-green/10 backdrop-blur-md px-2 py-1 sm:px-3 sm:py-2 lg:px-4 lg:py-2 xl:px-6 xl:py-3 rounded-lg sm:rounded-xl border border-trovo-green/20 shadow-lg"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.6, delay: 0.6 }}
                   whileHover={{ scale: 1.05, y: -2 }}
                 >
                   <motion.div
-                    className="w-3 h-3 rounded-full mr-3 shadow-sm"
+                    className="w-1.5 h-1.5 sm:w-2 sm:h-2 lg:w-3 lg:h-3 rounded-full mr-1.5 sm:mr-2 lg:mr-3 shadow-sm"
                     style={{ backgroundColor: solution.accentColor }}
                     animate={{
                       scale: [1, 1.2, 1],
@@ -353,38 +399,38 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                     }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
-                  <span className="text-lg lg:text-xl xl:text-2xl font-bold text-gray-900">{solution.stats}</span>
+                  <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-bold text-gray-900">{solution.stats}</span>
                 </motion.div>
 
-                {/* Clear Benefits List */}
-                <div className="space-y-3 lg:space-y-4">
-                  {solution.benefits.map((benefit: string, idx: number) => (
+                {/* Mobile-Optimized Benefits List - Show fewer on mobile */}
+                <div className="space-y-1 sm:space-y-2 lg:space-y-3">
+                  {solution.benefits.slice(0, isMobile ? 2 : 3).map((benefit: string, idx: number) => (
                     <motion.div
                       key={idx}
-                      className="flex items-center space-x-3 group/benefit"
+                      className="flex items-center space-x-2 sm:space-x-3 group/benefit"
                       initial={{ opacity: 0, x: -20 }}
                       animate={isInView ? { opacity: 1, x: 0 } : {}}
                       transition={{ duration: 0.6, delay: 0.7 + idx * 0.1 }}
                       whileHover={{ x: 5 }}
                     >
                       <motion.div 
-                        className="w-8 h-8 lg:w-10 lg:h-10 rounded-xl flex items-center justify-center shadow-lg border-2 border-trovo-green/20 flex-shrink-0"
+                        className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 rounded-md sm:rounded-lg flex items-center justify-center shadow-lg border-2 border-trovo-green/20 flex-shrink-0"
                         style={{ backgroundColor: solution.accentColor }}
                         whileHover={{ rotate: 180, scale: 1.1 }}
                         transition={{ duration: 0.4 }}
                       >
-                        <span className="text-white text-sm lg:text-base font-bold">✓</span>
+                        <span className="text-white text-xs sm:text-xs lg:text-sm font-bold">✓</span>
                       </motion.div>
-                      <span className="text-sm lg:text-base xl:text-lg font-medium leading-relaxed text-gray-700">
+                      <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-medium leading-relaxed text-gray-700">
                         {benefit}
                       </span>
                     </motion.div>
                   ))}
                 </div>
 
-                {/* Clear CTA Button */}
+                {/* Mobile-Optimized CTA Button */}
                 <motion.button
-                  className="relative bg-trovo-green text-white font-bold px-8 py-4 lg:px-12 lg:py-5 rounded-2xl hover:bg-trovo-green-dark transition-all duration-300 text-lg lg:text-xl shadow-xl border-2 border-trovo-green/20 group/cta"
+                  className="relative bg-trovo-green text-white font-bold px-4 py-3 sm:px-6 sm:py-3 lg:px-8 lg:py-4 xl:px-12 xl:py-5 rounded-xl sm:rounded-2xl hover:bg-trovo-green-dark transition-all duration-300 text-sm sm:text-base lg:text-lg xl:text-xl shadow-xl border-2 border-trovo-green/20 group/cta"
                   whileHover={{ 
                     scale: 1.05, 
                     y: -3,
@@ -395,7 +441,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 1 }}
                 >
-                  <span className="flex items-center justify-center space-x-3">
+                  <span className="flex items-center justify-center space-x-2 sm:space-x-3">
                     <span>Get Started</span>
                     <motion.span
                       animate={{ x: [0, 3, 0] }}
@@ -407,14 +453,14 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                 </motion.button>
               </motion.div>
 
-              {/* Simplified Right Content - Solution-Specific Mockup */}
+              {/* Mobile-Optimized Right Content - Solution-Specific Mockup */}
               <motion.div
-                className="flex justify-center lg:justify-end"
+                className="flex justify-center lg:justify-end mt-2 lg:mt-0 order-1 lg:order-2"
                 initial={{ opacity: 0, x: 30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                <div className="relative w-full max-w-sm lg:max-w-md">
+                <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
                   {/* Render appropriate mockup based on solution ID */}
                   {solution.id === 1 && <RewardsMockup isInView={isInView} isHovered={isHovered} />}
                   {solution.id === 2 && <CashbackMockup isInView={isInView} isHovered={isHovered} />}
@@ -460,5 +506,4 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   )
 }
 
-export { SolutionSection }
 export default SolutionSection
