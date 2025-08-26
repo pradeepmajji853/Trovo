@@ -7,47 +7,47 @@ const WhyTrovoSection = () => {
 
   const stats = [
     {
-      number: "Coming Soon",
-      label: "Innovative Solutions",
-      description: "Revolutionary fintech features"
-    },
-    {
       number: "Smart",
-      label: "Financial Management",
-      description: "Optimize your spending"
+      label: "Optimization",
+      description: "Intelligent reward maximization"
     },
     {
-      number: "Secure",
-      label: "Bank-Grade Security",
-      description: "Advanced protection system"
+      number: "5 Mins",
+      label: "Setup Time",
+      description: "Get started instantly"
     },
     {
-      number: "Simple",
-      label: "User Experience",
-      description: "Intuitive and easy to use"
+      number: "Zero",
+      label: "Hidden Fees",
+      description: "Complete transparency"
+    },
+    {
+      number: "24/7",
+      label: "Support",
+      description: "Always here to help"
     }
   ]
 
   const benefits = [
     {
-      icon: "🎯",
-      title: "Maximize Every Rupee",
-      description: "Convert unused points to cash and earn rewards on all UPI payments"
+      icon: "💰",
+      title: "Stop Losing Money",
+      description: "Your credit card points are expiring. Your UPI payments earn nothing. We fix both problems."
     },
     {
-      icon: "🔐",
-      title: "Bank-Grade Security",
-      description: "Advanced encryption and secure card sharing with auto-debit protection"
+      icon: "🔄",
+      title: "Convert Everything to Cash",
+      description: "Turn all your credit card points into real money. No more hunting for redemption options."
     },
     {
-      icon: "⚡",
-      title: "Instant Everything",
-      description: "Tap-to-pay up to ₹2000 without PIN and instant reward redemption"
+      icon: "📱",
+      title: "Earn on Every UPI Payment",
+      description: "Get cashback on groceries, bills, restaurants - every single UPI transaction pays you back."
     },
     {
-      icon: "🇮🇳",
-      title: "Built for India",
-      description: "Designed specifically for Indian payment habits and banking systems"
+      icon: "🚀",
+      title: "One App for Everything",
+      description: "Manage all your cards, track spending, earn rewards, and save money from a single place."
     }
   ]
 
@@ -77,7 +77,7 @@ const WhyTrovoSection = () => {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Why Choose Trovo?
+            The Numbers Don't Lie
           </motion.h2>
           <motion.p 
             className="text-xl text-gray-600 max-w-3xl mx-auto"
@@ -85,7 +85,7 @@ const WhyTrovoSection = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            India's first comprehensive fintech platform designed to maximize your financial potential
+            Real results, real savings, real peace of mind. Here's what happens when you stop leaving money on the table
           </motion.p>
         </motion.div>
 
@@ -151,37 +151,6 @@ const WhyTrovoSection = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Trust Indicators */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1.8 }}
-        >
-          <div className="inline-flex items-center justify-center space-x-6 bg-white/60 backdrop-blur-sm px-8 py-4 rounded-full border border-trovo-green/20">
-            <div 
-              className="flex items-center space-x-2 text-gray-600"
-            >
-              <span className="text-xl">🏆</span>
-              <span className="text-sm font-medium">Award Winning</span>
-            </div>
-            <div className="w-px h-6 bg-gray-300"></div>
-            <div 
-              className="flex items-center space-x-2 text-gray-600"
-            >
-              <span className="text-xl">🛡️</span>
-              <span className="text-sm font-medium">RBI Compliant</span>
-            </div>
-            <div className="w-px h-6 bg-gray-300"></div>
-            <div 
-              className="flex items-center space-x-2 text-gray-600"
-            >
-              <span className="text-xl">⚡</span>
-              <span className="text-sm font-medium">Lightning Fast</span>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

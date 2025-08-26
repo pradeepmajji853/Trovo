@@ -1,7 +1,25 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
+import { useEffect } from 'react'
 import TrovoPhoneMockup from './mockups/TrovoPhoneMockup'
 
 const HeroSection: React.FC = () => {
+  const { scrollYProgress } = useScroll()
+  
+  // Force scroll to top on component mount and page reload
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  
+  // Optimized scroll transforms - Complete blur effect
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+  const contentScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.5])
+  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
+  const blurAmount = useTransform(scrollYProgress, [0, 0.3], [0, 50])
+  const contentFilter = useMotionTemplate`blur(${blurAmount}px)`
+  
+  // Simplified coin movement (only 2 coins for performance)
+  const coin1Y = useTransform(scrollYProgress, [0, 0.3], [0, -200])
+  const coin2Y = useTransform(scrollYProgress, [0, 0.3], [0, 200])
 
   const words = ["Do", "you", "want", "your", "treasure", "back?"]
 
@@ -17,66 +35,48 @@ const HeroSection: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-white to-gray-50 overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
-          className="absolute -top-40 -right-40 w-80 h-80 bg-trovo-green opacity-5 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-trovo-green-light opacity-3 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1.1, 1, 1.1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+    <section className="relative h-screen bg-gradient-to-br from-white to-gray-50 overflow-hidden sticky top-0">
+      {/* Simplified background elements - Removed infinite animations for performance */}
+      <motion.div 
+        className="absolute inset-0 overflow-hidden"
+        style={{ opacity: backgroundOpacity }}
+      >
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-trovo-green opacity-5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-trovo-green-light opacity-3 rounded-full blur-3xl" />
 
-        {/* Subtle floating particles */}
+        {/* Simplified Golden Coins - Only 2 for performance */}
         <motion.div
-          className="absolute top-1/4 right-1/3 w-2 h-2 bg-trovo-green rounded-full opacity-20"
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.2, 0.5, 0.2]
-          }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+          className="absolute top-1/4 left-1/6 z-0 blur-md"
+          style={{ y: coin1Y, opacity: contentOpacity }}
+        >
+          <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-600 rounded-full shadow-2xl border-4 border-yellow-500 flex items-center justify-center">
+            <span className="text-yellow-800 font-bold text-3xl md:text-4xl">₹</span>
+          </div>
+        </motion.div>
+        
         <motion.div
-          className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-trovo-green-light rounded-full opacity-15"
-          animate={{
-            y: [0, 15, 0],
-            opacity: [0.15, 0.4, 0.15]
-          }}
-          transition={{ 
-            duration: 10, 
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
-      </div>
+          className="absolute bottom-1/3 right-1/4 z-0 blur-sm"
+          style={{ y: coin2Y, opacity: contentOpacity }}
+        >
+          <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-600 rounded-full shadow-2xl border-3 border-yellow-500 flex items-center justify-center">
+            <span className="text-yellow-800 font-bold text-xl md:text-2xl">₹</span>
+          </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="container-custom relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-screen py-20">
+      <motion.div 
+        className="container-custom relative z-10"
+        style={{
+          scale: contentScale,
+          opacity: contentOpacity,
+          filter: contentFilter
+        }}
+      >
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-screen pt-32 pb-20">
           {/* Left Content */}
           <motion.div
             className="text-center lg:text-left"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
@@ -167,7 +167,7 @@ const HeroSection: React.FC = () => {
                 <div className="text-sm md:text-base text-gray-600">Users Surveyed</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-trovo-green">&lt;3s</div>
+                <div className="text-2xl md:text-3xl font-bold text-trovo-green">4 Clicks</div>
                 <div className="text-sm md:text-base text-gray-600">Redemption Time</div>
               </div>
               <div className="text-center">
@@ -180,46 +180,16 @@ const HeroSection: React.FC = () => {
           {/* Right Content - Phone Mockup */}
           <motion.div
             className="flex justify-center lg:justify-end"
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="relative">
               <TrovoPhoneMockup />
-
-              {/* Floating elements around phone */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-8 h-8 bg-trovo-green rounded-full flex items-center justify-center text-white text-sm"
-                animate={{ 
-                  rotate: 360,
-                  scale: [1, 1.2, 1]
-                }}
-                transition={{ 
-                  rotate: { duration: 10, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 2, repeat: Infinity }
-                }}
-              >
-                ✨
-              </motion.div>
-              
-              <motion.div
-                className="absolute -bottom-6 -left-6 w-12 h-12 bg-trovo-green-light rounded-full flex items-center justify-center text-white"
-                animate={{ 
-                  y: [0, -10, 0],
-                  rotate: [0, 180, 360]
-                }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-              >
-                💎
-              </motion.div>
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

@@ -67,30 +67,18 @@ const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({
 
   return (
     <div className={`relative bg-gradient-to-br ${gradient} rounded-3xl p-8 text-white overflow-hidden`}>
-      {/* Background Elements */}
+      {/* Background Elements - Simplified for performance */}
       <div className="absolute inset-0 opacity-10">
-        <motion.div
-          className="absolute -top-10 -right-10 w-40 h-40 border border-white rounded-full"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute -bottom-10 -left-10 w-32 h-32 border border-white rounded-full"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        />
+        <div className="absolute -top-10 -right-10 w-40 h-40 border border-white rounded-full" />
+        <div className="absolute -bottom-10 -left-10 w-32 h-32 border border-white rounded-full" />
       </div>
 
       <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
         {/* Left Content */}
         <div>
-          <motion.div
-            className="text-5xl mb-4"
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          >
+          <div className="text-5xl mb-4">
             {mockupIcons[mockupType]}
-          </motion.div>
+          </div>
           
           <h3 className="text-3xl font-bold mb-4">{title}</h3>
           <p className="text-lg opacity-90 mb-6">{description}</p>
@@ -113,12 +101,10 @@ const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({
           </div>
         </div>
 
-        {/* Right Mockup */}
+        {/* Right Mockup - Simplified for performance */}
         <div className="relative">
-          <motion.div
+          <div
             className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
@@ -126,15 +112,13 @@ const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({
               <div className="text-2xl">{mockupIcons[mockupType]}</div>
             </div>
 
-            {/* Main Stat */}
+            {/* Main Stat - Simplified for performance */}
             <div className="text-center mb-6">
-              <motion.div
+              <div
                 className="text-4xl font-bold mb-2"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
               >
                 {currentMockup.mainStat}
-              </motion.div>
+              </div>
               <div className="text-white/80">{currentMockup.subStat}</div>
             </div>
 
@@ -153,17 +137,15 @@ const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Floating Accent */}
-          <motion.div
+          {/* Floating Accent - Simplified for performance */}
+          <div
             className="absolute -top-3 -right-3 w-12 h-12 rounded-xl flex items-center justify-center border border-white/20"
             style={{ backgroundColor: accentColor }}
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 6, repeat: Infinity }}
           >
             ✨
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

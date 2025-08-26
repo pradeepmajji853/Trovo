@@ -4,15 +4,9 @@ const TrovoPhoneMockup: React.FC = () => {
   return (
     <motion.div
       className="relative w-56 sm:w-64 md:w-72 lg:w-80 h-[420px] sm:h-[480px] md:h-[540px] lg:h-[600px] bg-gradient-to-b from-gray-900 to-gray-800 rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] p-1.5 sm:p-2 md:p-3 shadow-2xl mx-auto"
-      animate={{ 
-        rotateY: [0, 2, 0, -2, 0],
-        scale: [1, 1.005, 1]
-      }}
-      transition={{ 
-        duration: 10, 
-        repeat: Infinity, 
-        ease: "easeInOut" 
-      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.5 }}
     >
       {/* Screen */}
       <div className="w-full h-full bg-white rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] overflow-hidden relative">
@@ -28,127 +22,139 @@ const TrovoPhoneMockup: React.FC = () => {
           </div>
         </div>
 
-        {/* App Content */}
-        <div className="h-full bg-gradient-to-br from-white via-gray-50 to-trovo-green/5 relative overflow-hidden">
+        {/* App Content - Credit Card Payment Interface */}
+        <div className="h-full bg-gradient-to-br from-gray-50 via-white to-trovo-green/5 relative overflow-hidden">
           {/* Header */}
           <div className="p-2 sm:p-3 md:p-4 lg:p-6 pb-1 sm:pb-2 md:pb-3 lg:pb-4">
             <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4 lg:mb-6">
-              <div>
-                <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-gray-900 flex items-center">
-                  <span className="mr-1 text-xs sm:text-sm">👋</span> Good morning!
+              <div className="flex items-center">
+                <button className="mr-3 p-1 text-gray-600">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-gray-900">
+                  Payment
                 </h3>
-                <p className="text-xs sm:text-xs md:text-sm text-gray-600 hidden sm:block">Ready to unlock your treasure?</p>
               </div>
-              <div className="w-6 sm:w-8 md:w-10 h-6 sm:h-8 md:h-10 bg-trovo-green rounded-full flex items-center justify-center">
-                <span className="text-white text-xs sm:text-xs md:text-sm font-bold">T</span>
-              </div>
-            </div>
-            
-            {/* Balance Card - More compact on mobile */}
-            <motion.div 
-              className="bg-gradient-to-r from-trovo-green to-emerald-600 rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-5 text-white shadow-lg mb-2 sm:mb-3 md:mb-4 lg:mb-6"
-              animate={{ 
-                scale: [1, 1.005, 1],
-              }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div className="flex justify-between items-start mb-1 sm:mb-2 md:mb-3">
-                <div>
-                  <p className="text-xs opacity-90">Total Rewards</p>
-                  <motion.p 
-                    className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold"
-                    animate={{ scale: [1, 1.01, 1] }}
-                    transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                  >
-                    ₹12,450
-                  </motion.p>
+              <div className="flex items-center space-x-2">
+                <div className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-gray-600">
+                  <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
                 </div>
-                <div className="text-sm sm:text-lg md:text-xl lg:text-2xl">💎</div>
               </div>
-              <div className="flex items-center text-xs opacity-90">
-                <span className="mr-1 sm:mr-2">≈ 12,450 Points</span>
-                <motion.span 
-                  className="text-green-200 text-xs"
-                  animate={{ opacity: [0.7, 1, 0.7] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  +15%
-                </motion.span>
-              </div>
-            </motion.div>
-          </div>
-          
-          {/* Quick Actions - Simplified for mobile */}
-          <div className="px-2 sm:px-3 md:px-4 lg:px-6 pb-1 sm:pb-2 md:pb-3 lg:pb-4">
-            <h4 className="text-xs font-semibold text-gray-700 mb-1 sm:mb-2 md:mb-3">Quick Actions</h4>
-            <div className="grid grid-cols-2 gap-1.5 sm:gap-2 md:gap-3">
-              <motion.div 
-                className="bg-white rounded-md sm:rounded-lg md:rounded-xl p-1.5 sm:p-2 md:p-3 shadow-sm border border-gray-100"
-                whileHover={{ scale: 1.02 }}
-                animate={{ y: [0, -0.5, 0] }}
-                transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
-              >
-                <div className="text-sm sm:text-lg md:text-xl lg:text-2xl mb-0.5 sm:mb-1 md:mb-2">⚡</div>
-                <p className="text-xs font-medium text-gray-700">Redeem</p>
-              </motion.div>
-              <motion.div 
-                className="bg-white rounded-md sm:rounded-lg md:rounded-xl p-1.5 sm:p-2 md:p-3 shadow-sm border border-gray-100"
-                whileHover={{ scale: 1.02 }}
-                animate={{ y: [0, -0.5, 0] }}
-                transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-              >
-                <div className="text-sm sm:text-lg md:text-xl lg:text-2xl mb-0.5 sm:mb-1 md:mb-2">📱</div>
-                <p className="text-xs font-medium text-gray-700">Pay & Earn</p>
-              </motion.div>
-            </div>
-          </div>
-          
-          {/* Recent Activity - More condensed for mobile */}
-          <div className="px-2 sm:px-3 md:px-4 lg:px-6">
-            <h4 className="text-xs font-semibold text-gray-700 mb-1 sm:mb-2 md:mb-3">Recent Activity</h4>
-            <div className="space-y-1 sm:space-y-2 md:space-y-3">
-              {[
-                { icon: "🛒", title: "Amazon", points: "+125", time: "2m" },
-                ...(window.innerWidth >= 640 ? [{ icon: "☕", title: "Starbucks", points: "+45", time: "1h" }] : [])
-              ].map((activity, index) => (
-                <motion.div 
-                  key={index}
-                  className="flex items-center justify-between bg-white rounded-md sm:rounded-lg p-1.5 sm:p-2 md:p-3 shadow-sm"
-                  initial={{ opacity: 0, x: -5 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 2 + index * 0.2 }}
-                >
-                  <div className="flex items-center">
-                    <div className="text-xs sm:text-sm md:text-base lg:text-lg mr-1.5 sm:mr-2 md:mr-3">{activity.icon}</div>
-                    <div>
-                      <p className="text-xs font-medium text-gray-900">{activity.title}</p>
-                      <p className="text-xs text-gray-500">{activity.time}</p>
-                    </div>
-                  </div>
-                  <span className="text-xs font-bold text-trovo-green">{activity.points}</span>
-                </motion.div>
-              ))}
             </div>
           </div>
 
-          {/* Floating Elements - Reduced for mobile performance */}
-          <motion.div
-            className="absolute top-12 sm:top-16 right-4 sm:right-8 w-1.5 sm:w-2 h-1.5 sm:h-2 bg-trovo-green rounded-full opacity-60"
-            animate={{ 
-              y: [0, -10, 0],
-              opacity: [0.3, 0.8, 0.3]
-            }}
-            transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-          />
-          <motion.div
-            className="absolute bottom-16 sm:bottom-20 left-4 sm:left-8 w-1 h-1 bg-yellow-400 rounded-full"
-            animate={{ 
-              scale: [0, 1, 0],
-              x: [0, 5, 10],
-              y: [0, -5, -10]
-            }}
-            transition={{ duration: 5, repeat: Infinity, delay: 2 }}
-          />
+          {/* Payment Amount */}
+          <div className="px-2 sm:px-3 md:px-4 lg:px-6 mb-3 sm:mb-4 md:mb-6">
+            <div className="text-center">
+              <p className="text-xs text-gray-500 mb-1">Amount to pay</p>
+              <motion.p 
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                ₹2,450.00
+              </motion.p>
+              <div className="flex items-center justify-center mt-1 text-xs text-trovo-green">
+                <span className="mr-1">💎</span>
+                <span>+245 points will be earned</span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Credit Card - Simplified without continuous animations */}
+          <div className="px-2 sm:px-3 md:px-4 lg:px-6 mb-3 sm:mb-4 md:mb-6">
+            <motion.div 
+              className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5 text-white shadow-xl relative overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              {/* Card Background Pattern */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-trovo-green/10 rounded-full transform translate-x-8 -translate-y-8"></div>
+              <div className="absolute bottom-0 left-0 w-16 h-16 bg-yellow-400/10 rounded-full transform -translate-x-6 translate-y-6"></div>
+              
+              <div className="relative z-10">
+                <div className="flex justify-between items-start mb-3 sm:mb-4">
+                  <div className="text-xs text-gray-300">TROVO CARD</div>
+                  <div className="flex space-x-1">
+                    <div className="w-5 h-3 bg-red-500 rounded-sm opacity-90"></div>
+                    <div className="w-5 h-3 bg-yellow-400 rounded-sm opacity-90"></div>
+                  </div>
+                </div>
+                <div className="mb-2 sm:mb-3">
+                  <p className="text-xs sm:text-sm font-mono tracking-wider">
+                    •••• •••• •••• 1234
+                  </p>
+                </div>
+                <div className="flex justify-between items-end">
+                  <div>
+                    <p className="text-xs text-gray-300 mb-0.5">Card Holder</p>
+                    <p className="text-xs font-medium">PRADEEP KUMAR</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-300 mb-0.5">Expires</p>
+                    <p className="text-xs font-medium">12/28</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Payment Form */}
+          <div className="px-2 sm:px-3 md:px-4 lg:px-6 space-y-2 sm:space-y-3">
+            {/* CVV Input */}
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">CVV</label>
+              <div className="relative">
+                <input 
+                  type="password" 
+                  placeholder="•••"
+                  className="w-full px-3 py-2 text-xs border border-gray-200 rounded-lg focus:ring-2 focus:ring-trovo-green focus:border-transparent"
+                  maxLength={3}
+                />
+                <div className="absolute right-3 top-2 text-gray-400">
+                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1M12 7C13.1 7 14 7.9 14 9C14 10.1 13.1 11 12 11C10.9 11 10 10.1 10 9C10 7.9 10.9 7 12 7Z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Save Card Toggle - Simplified without continuous animations */}
+            <div className="flex items-center justify-between py-1">
+              <span className="text-xs text-gray-600">Save card for future payments</span>
+              <div className="w-8 h-4 bg-trovo-green rounded-full relative cursor-pointer">
+                <div className="w-3 h-3 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm" />
+              </div>
+            </div>
+          </div>
+
+          {/* Payment Button - Simplified */}
+          <div className="absolute bottom-4 left-2 right-2 sm:left-3 sm:right-3 md:left-4 md:right-4 lg:left-6 lg:right-6">
+            <motion.button 
+              className="w-full bg-gradient-to-r from-trovo-green to-emerald-600 text-white py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+            >
+              <div className="flex items-center justify-center">
+                <span>Pay ₹2,450.00</span>
+                <span className="ml-2">💳</span>
+              </div>
+            </motion.button>
+          </div>
+
+          {/* Simplified floating elements - Static for performance */}
+          <div className="absolute top-16 right-4 w-1 h-1 bg-trovo-green rounded-full opacity-60" />
+          <div className="absolute bottom-20 left-4 w-0.5 h-0.5 bg-yellow-400 rounded-full opacity-60" />
         </div>
       </div>
 

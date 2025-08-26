@@ -36,7 +36,7 @@ const AnnouncementBanner: React.FC = () => {
           <div className="hidden md:block w-px h-4 bg-white/30"></div>
           
           <div className="text-sm">
-            <span className="font-medium">First 5,000 users get lifetime premium features free!</span>
+            <span className="font-medium">Early adopters get exclusive lifetime benefits!</span>
             <span className="ml-2 opacity-80">Only 2,153 spots left</span>
           </div>
         </div>

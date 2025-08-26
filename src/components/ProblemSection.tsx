@@ -10,14 +10,14 @@ const ProblemSection: React.FC = () => {
     {
       icon: "💳",
       title: "Wasted Credit Card Points",
-      description: "Credit card points are confusing and often expire unused. Indians lose ₹1,200+ yearly on unredeemed rewards.",
-      impact: "₹1,200+ lost annually"
+      description: "Credit card points are confusing and often expire unused. Indians lose substantial amounts in rewards annually due to complex redemption processes.",
+      impact: "Massive value lost annually"
     },
     {
       icon: "📱",
       title: "UPI Without Rewards", 
-      description: "UPI payments offer zero cashback while card payments do. Missing out on ₹1,500+ annual rewards on daily spending.",
-      impact: "₹1,500+ missed rewards"
+      description: "UPI payments rarely include rewards unless using a credit card on UPI. Users miss out on significant cashback or points on their regular spending.",
+      impact: "Substantial missed rewards"
     },
     {
       icon: "👥",
@@ -50,7 +50,7 @@ const ProblemSection: React.FC = () => {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            The Problems We're Solving
+            Your Money Is Bleeding
           </motion.h2>
           <motion.p 
             className="text-xl text-gray-600 max-w-3xl mx-auto"
@@ -58,7 +58,7 @@ const ProblemSection: React.FC = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Indians are losing thousands of rupees annually due to fragmented financial tools and missed reward opportunities
+            Every day, millions of Indians lose thousands of rupees to expired rewards, missed cashback, and unsafe financial decisions
           </motion.p>
         </motion.div>
 

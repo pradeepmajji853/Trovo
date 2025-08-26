@@ -2,44 +2,30 @@ import { motion } from 'framer-motion'
 
 interface TapPayMockupProps {
   isInView: boolean
-  isHovered: boolean
+  isHovered?: boolean  // Made optional since we're not using infinite animations
 }
 
-const TapPayMockup: React.FC<TapPayMockupProps> = ({ isInView, isHovered }) => {
+const TapPayMockup: React.FC<TapPayMockupProps> = ({ isInView }) => {
   return (
     <motion.div
       className="relative w-full max-w-sm lg:max-w-md h-[350px] lg:h-[450px] bg-white/95 backdrop-blur-xl rounded-3xl p-4 lg:p-6 border border-trovo-green/20 shadow-xl"
-      animate={{ 
-        y: isHovered ? [0, -8, 0] : [0, -4, 0]
-      }}
-      transition={{ 
-        duration: 6, 
-        repeat: Infinity, 
-        ease: "easeInOut" 
-      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: 0.3 }}
+      whileHover={{ y: -8, scale: 1.02 }}
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <motion.div 
+        <div 
           className="text-2xl lg:text-3xl font-black text-gray-900"
-          animate={{ opacity: [1, 0.9, 1] }}
-          transition={{ duration: 4, repeat: Infinity }}
         >
           Trovo
-        </motion.div>
-        <motion.div 
+        </div>
+        <div 
           className="text-3xl lg:text-4xl"
-          animate={{ 
-            rotate: [0, 360],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ 
-            rotate: { duration: 8, repeat: Infinity, ease: "linear" },
-            scale: { duration: 3, repeat: Infinity }
-          }}
         >
           📱
-        </motion.div>
+        </div>
       </div>
       
       {/* Tap to Pay Feature */}
@@ -52,14 +38,7 @@ const TapPayMockup: React.FC<TapPayMockupProps> = ({ isInView, isHovered }) => {
       >
         <div className="flex items-center justify-between mb-3">
           <h4 className="text-lg font-bold">Tap to Pay</h4>
-          <motion.div
-            className="w-3 h-3 bg-white rounded-full"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [1, 0.7, 1]
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
+          <div className="w-3 h-3 bg-white rounded-full" />
         </div>
         <div className="text-2xl font-bold mb-2">Quick tap payments</div>
         <p className="text-sm opacity-90">No PIN up to ₹2000 per transaction</p>
@@ -68,28 +47,17 @@ const TapPayMockup: React.FC<TapPayMockupProps> = ({ isInView, isHovered }) => {
       {/* Payment Demo */}
       <div className="bg-gray-50 rounded-xl p-4 mb-4">
         <div className="text-center">
-          <motion.div 
+          <div 
             className="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mx-auto mb-4 flex items-center justify-center"
-            animate={{ 
-              scale: [1, 1.1, 1],
-              boxShadow: [
-                "0 0 0 0 rgba(59, 130, 246, 0.4)",
-                "0 0 0 20px rgba(59, 130, 246, 0)",
-                "0 0 0 0 rgba(59, 130, 246, 0)"
-              ]
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
           >
             <span className="text-white text-2xl">📱</span>
-          </motion.div>
+          </div>
           <p className="text-sm font-medium text-gray-700 mb-2">Ready to Pay</p>
-          <motion.p 
+          <p 
             className="text-2xl font-bold text-gray-900 mb-1"
-            animate={{ opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 2, repeat: Infinity }}
           >
             ₹1,250
-          </motion.p>
+          </p>
           <p className="text-xs text-gray-500">Just tap your phone to pay</p>
         </div>
       </div>
@@ -137,11 +105,8 @@ const TapPayMockup: React.FC<TapPayMockupProps> = ({ isInView, isHovered }) => {
           <div className="text-sm">⚡</div>
         </div>
         <div className="mt-2 bg-orange-200 rounded-full h-1.5">
-          <motion.div 
-            className="bg-orange-500 h-1.5 rounded-full"
-            initial={{ width: "0%" }}
-            animate={isInView ? { width: "11.5%" } : {}}
-            transition={{ duration: 1.5, delay: 2 }}
+          <div 
+            className="bg-orange-500 h-1.5 rounded-full w-[11.5%]"
           />
         </div>
       </motion.div>

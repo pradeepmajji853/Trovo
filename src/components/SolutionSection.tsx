@@ -31,7 +31,7 @@ const SolutionSection: React.FC = () => {
       benefits: ["Guaranteed cashback on UPI", "Zero spending limits", "Consistent monthly returns"],
       gradient: "from-trovo-green-50 via-white to-trovo-green-50",
       accentColor: "#1DB954",
-      stats: "Guaranteed cashback",
+      stats: "4 Clicks",
       bgPattern: "cashback"
     },
     {
@@ -72,23 +72,18 @@ const SolutionSection: React.FC = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <span className="bg-trovo-green/10 text-trovo-green px-6 py-3 rounded-full text-lg font-semibold border border-trovo-green/20">
-              Four Revolutionary Solutions
+            <span className="bg-trovo-green/10 text-trovo-green px-6 py-3 rounded-full text-lg font-semibold border border-trovo-green/20">              We Built The Fix
             </span>
           </motion.div>
           
           <motion.h2
-            className="text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-8 leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            The Trovo
-            <br />
-            <span className="bg-gradient-to-r from-trovo-green to-emerald-600 bg-clip-text text-transparent">
-              Solution
-            </span>
+            Meet Your New Money Machine
           </motion.h2>
           
           <motion.p
@@ -194,33 +189,9 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
             {/* Sophisticated Mesh Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-black/5 to-black/25"></div>
             
-            {/* Advanced Animated Background Elements */}
-            <motion.div 
-              className="absolute -top-1/2 -right-1/2 w-full h-full bg-white/8 rounded-full blur-3xl"
-              animate={{ 
-                scale: isHovered ? [1, 1.2, 1] : [1, 1.1, 1],
-                rotate: [0, 180, 360],
-                opacity: isHovered ? [0.8, 1, 0.8] : [0.6, 0.8, 0.6]
-              }}
-              transition={{ 
-                duration: isHovered ? 25 : 40, 
-                repeat: Infinity, 
-                ease: "linear" 
-              }}
-            />
-            <motion.div 
-              className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-white/6 rounded-full blur-3xl"
-              animate={{ 
-                scale: isHovered ? [1.2, 1, 1.2] : [1.1, 1, 1.1],
-                rotate: [360, 180, 0],
-                opacity: isHovered ? [0.9, 1, 0.9] : [0.5, 0.7, 0.5]
-              }}
-              transition={{ 
-                duration: isHovered ? 35 : 50, 
-                repeat: Infinity, 
-                ease: "linear" 
-              }}
-            />
+            {/* Simplified Background Elements - Static for performance */}
+            <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-white/8 rounded-full blur-3xl opacity-60" />
+            <div className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-white/6 rounded-full blur-3xl opacity-50" />
             
             {/* Dynamic Pattern Based on Solution Type */}
             <div className="absolute inset-0" style={{ opacity: isHovered ? 0.08 : 0.05 }}>
@@ -250,26 +221,14 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
               )}
             </div>
 
-            {/* Enhanced Glow Effects */}
-            <motion.div
-              className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl"
+            {/* Simplified Glow Effects - Static for performance */}
+            <div
+              className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20"
               style={{ background: `${solution.accentColor}20` }}
-              animate={{
-                scale: isHovered ? [1, 1.3, 1] : [1, 1.1, 1],
-                x: isHovered ? [-20, 20, -20] : [-10, 10, -10],
-                y: isHovered ? [-15, 15, -15] : [-5, 5, -5]
-              }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             />
-            <motion.div
-              className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full blur-3xl"
+            <div
+              className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full blur-3xl opacity-15"
               style={{ background: `${solution.accentColor}15` }}
-              animate={{
-                scale: isHovered ? [1.2, 0.8, 1.2] : [1, 0.9, 1],
-                x: isHovered ? [15, -15, 15] : [5, -5, 5],
-                y: isHovered ? [20, -20, 20] : [10, -10, 10]
-              }}
-              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>
 
@@ -282,14 +241,14 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                {/* Clear Icon Design */}
+                {/* Simplified Icon Design - No infinite animations */}
                 <motion.div
                   className="relative inline-block"
-                  animate={{ 
-                    rotate: isHovered ? [0, 3, -3, 0] : [0, 1, -1, 0],
-                    scale: isHovered ? [1, 1.03, 1] : [1, 1.01, 1]
+                  whileHover={{ 
+                    rotate: 3,
+                    scale: 1.03
                   }}
-                  transition={{ duration: isHovered ? 4 : 6, repeat: Infinity }}
+                  transition={{ duration: 0.3 }}
                 >
                   <div className="w-20 h-20 lg:w-24 lg:h-24 bg-trovo-green/10 backdrop-blur-sm rounded-3xl flex items-center justify-center text-4xl lg:text-5xl border border-trovo-green/20 shadow-xl">
                     {solution.icon}
@@ -297,10 +256,8 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   <motion.div 
                     className="absolute -top-2 -right-2 w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center text-sm lg:text-base font-bold text-white shadow-lg border-2 border-white/40"
                     style={{ backgroundColor: solution.accentColor }}
-                    animate={{
-                      scale: isHovered ? [1, 1.1, 1] : [1, 1.05, 1]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.2 }}
                   >
                     {solution.id}
                   </motion.div>
@@ -336,7 +293,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   {solution.description}
                 </motion.p>
 
-                {/* Clear Stats Badge */}
+                {/* Simplified Stats Badge - No infinite animations */}
                 <motion.div
                   className="inline-flex items-center bg-trovo-green/10 backdrop-blur-md px-6 py-3 lg:px-8 lg:py-4 rounded-2xl border border-trovo-green/20 shadow-lg"
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -344,14 +301,9 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   transition={{ duration: 0.6, delay: 0.6 }}
                   whileHover={{ scale: 1.05, y: -2 }}
                 >
-                  <motion.div
+                  <div
                     className="w-3 h-3 rounded-full mr-3 shadow-sm"
                     style={{ backgroundColor: solution.accentColor }}
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [1, 0.8, 1]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }}
                   />
                   <span className="text-lg lg:text-xl xl:text-2xl font-bold text-gray-900">{solution.stats}</span>
                 </motion.div>
@@ -382,7 +334,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   ))}
                 </div>
 
-                {/* Clear CTA Button */}
+                {/* Simplified CTA Button - No infinite animations */}
                 <motion.button
                   className="relative bg-trovo-green text-white font-bold px-8 py-4 lg:px-12 lg:py-5 rounded-2xl hover:bg-trovo-green-dark transition-all duration-300 text-lg lg:text-xl shadow-xl border-2 border-trovo-green/20 group/cta"
                   whileHover={{ 
@@ -397,12 +349,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                 >
                   <span className="flex items-center justify-center space-x-3">
                     <span>Get Started</span>
-                    <motion.span
-                      animate={{ x: [0, 3, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      →
-                    </motion.span>
+                    <span>→</span>
                   </span>
                 </motion.button>
               </motion.div>
@@ -421,35 +368,19 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   {solution.id === 3 && <TapPayMockup isInView={isInView} isHovered={isHovered} />}
                   {solution.id === 4 && <SharedCreditMockup isInView={isInView} isHovered={isHovered} />}
 
-                  {/* Professional Accent Elements */}
-                  <motion.div
+                  {/* Simplified Accent Elements - No infinite animations */}
+                  <div
                     className="absolute -top-3 -right-3 w-12 h-12 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center text-lg lg:text-xl shadow-lg border border-white/20"
                     style={{ backgroundColor: solution.accentColor }}
-                    animate={{ 
-                      scale: [1, 1.02, 1]
-                    }}
-                    transition={{ 
-                      duration: 8, 
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
                   >
                     ✨
-                  </motion.div>
+                  </div>
                   
-                  <motion.div
+                  <div
                     className="absolute -bottom-4 -left-4 w-16 h-16 lg:w-20 lg:h-20 bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center text-lg lg:text-xl border border-white/20 shadow-lg"
-                    animate={{ 
-                      y: [0, -3, 0],
-                    }}
-                    transition={{ 
-                      duration: 10, 
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
                   >
                     💎
-                  </motion.div>
+                  </div>
                 </div>
               </motion.div>
             </div>

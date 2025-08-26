@@ -60,7 +60,7 @@ const TestimonialsSection = () => {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            What People Are Saying
+            People Get It
           </motion.h2>
           <motion.p 
             className="text-xl text-gray-600 max-w-3xl mx-auto"
@@ -68,7 +68,7 @@ const TestimonialsSection = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Real feedback from Indians who are excited about Trovo's launch and the problems we're solving
+            Indians everywhere are tired of losing money. Here's what they told us about their current financial struggles
           </motion.p>
         </motion.div>
 

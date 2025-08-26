@@ -2,44 +2,30 @@ import { motion } from 'framer-motion'
 
 interface RewardsMockupProps {
   isInView: boolean
-  isHovered: boolean
+  isHovered?: boolean  // Made optional since we're not using infinite animations
 }
 
-const RewardsMockup: React.FC<RewardsMockupProps> = ({ isInView, isHovered }) => {
+const RewardsMockup: React.FC<RewardsMockupProps> = ({ isInView }) => {
   return (
     <motion.div
       className="relative w-full max-w-sm lg:max-w-md h-[350px] lg:h-[450px] bg-white/95 backdrop-blur-xl rounded-3xl p-4 lg:p-6 border border-trovo-green/20 shadow-xl"
-      animate={{ 
-        y: isHovered ? [0, -8, 0] : [0, -4, 0]
-      }}
-      transition={{ 
-        duration: 6, 
-        repeat: Infinity, 
-        ease: "easeInOut" 
-      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: 0.3 }}
+      whileHover={{ y: -8, scale: 1.02 }}
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <motion.div 
+        <div 
           className="text-2xl lg:text-3xl font-black text-gray-900"
-          animate={{ opacity: [1, 0.9, 1] }}
-          transition={{ duration: 4, repeat: Infinity }}
         >
           Trovo
-        </motion.div>
-        <motion.div 
+        </div>
+        <div 
           className="text-3xl lg:text-4xl"
-          animate={{ 
-            rotate: [0, 360],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ 
-            rotate: { duration: 8, repeat: Infinity, ease: "linear" },
-            scale: { duration: 3, repeat: Infinity }
-          }}
         >
           💳
-        </motion.div>
+        </div>
       </div>
       
       {/* Credit Card Rewards Dashboard */}
@@ -52,14 +38,7 @@ const RewardsMockup: React.FC<RewardsMockupProps> = ({ isInView, isHovered }) =>
       >
         <div className="flex items-center justify-between mb-3">
           <h4 className="text-lg font-bold">Credit Card Rewards</h4>
-          <motion.div
-            className="w-3 h-3 bg-white rounded-full"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [1, 0.7, 1]
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
+          <div className="w-3 h-3 bg-white rounded-full" />
         </div>
         <div className="text-2xl font-bold mb-2">Smart rewards system</div>
         <p className="text-sm opacity-90">Transform every payment into earnings</p>

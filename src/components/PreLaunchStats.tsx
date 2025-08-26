@@ -14,14 +14,14 @@ const PreLaunchStats: React.FC = () => {
       color: "text-blue-600"
     },
     {
-      number: "₹4.2",
-      suffix: "Cr+",
-      label: "Unredeemed Points Value",
+      number: "Millions",
+      suffix: "",
+      label: "Unredeemed Points",
       description: "Lost annually by Indian credit card users",
       color: "text-red-600"
     },
     {
-      number: "89%",
+      number: "Most",
       suffix: "",
       label: "User Interest",
       description: "Want guaranteed UPI cashback",

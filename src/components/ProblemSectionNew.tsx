@@ -1,4 +1,14 @@
-import { motion, useInView } from 'framer-motion'
+import {    {
+      icon: "💳",
+      title: "Wasted Credit Card Points",
+      description: "Credit card points are confusing and often expire unused. Indians lose significant value yearly on unredeemed rewards.",
+      impact: "Substantial value lost annually"
+    },
+    {
+      icon: "📱",
+      title: "UPI Without Rewards", 
+      description: "UPI payments offer zero cashback while card payments do. Missing out on significant annual rewards on daily spending.",
+      import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const ProblemSection = () => {
@@ -9,14 +19,14 @@ const ProblemSection = () => {
     {
       icon: "💳",
       title: "Wasted Credit Card Points",
-      description: "Credit card points are confusing and often expire unused. Indians lose ₹1,200+ yearly on unredeemed rewards.",
-      impact: "₹1,200+ lost annually"
+      description: "Credit card points are confusing and often expire unused. Indians lose significant value yearly on unredeemed rewards.",
+      impact: "Substantial value lost annually"
     },
     {
       icon: "📱",
       title: "UPI Without Rewards",
-      description: "UPI payments offer zero cashback while card payments do. Missing out on ₹1,500+ annual rewards on daily spending.",
-      impact: "₹1,500+ missed rewards"
+      description: "UPI payments offer zero cashback while card payments do. Missing out on significant annual rewards on daily spending.",
+      impact: "Substantial missed rewards"
     },
     {
       icon: "👥",

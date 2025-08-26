@@ -6,7 +6,6 @@ const EarlyAccessSection: React.FC = () => {
   const isInView = useInView(ref, { once: true, amount: 0.1 })
   const [email, setEmail] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
 
   const validateEmail = (email: string) => {
@@ -28,14 +27,9 @@ const EarlyAccessSection: React.FC = () => {
       return
     }
 
-    setIsLoading(true)
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitted(true)
-      setIsLoading(false)
-      console.log('Email submitted:', email)
-    }, 1500)
+    // Show success immediately without backend call
+    setIsSubmitted(true)
+    console.log('Email submitted:', email)
   }
 
   return (
@@ -62,13 +56,13 @@ const EarlyAccessSection: React.FC = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Join the Waitlist for{' '}
+            Don't Wait.{' '}
             <motion.span 
               className="relative inline-block"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <span className="text-trovo-green relative z-10">Trovo</span>
+              <span className="text-trovo-green relative z-10">Get Ahead</span>
               <motion.div
                 className="absolute -bottom-2 left-0 w-full h-1 bg-trovo-green rounded-full"
                 initial={{ scaleX: 0 }}
@@ -84,7 +78,7 @@ const EarlyAccessSection: React.FC = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Be the first to maximize your credit card rewards, earn 1% UPI cashback, and experience tap-to-pay up to ₹2000. 
+            While others lose money every month, you'll be earning from day one. First access to India's smartest money moves. 
             <br className="hidden md:block" />
             <motion.strong 
               className="text-gray-900"
@@ -97,7 +91,7 @@ const EarlyAccessSection: React.FC = () => {
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              Launching soon in India!
+              No waiting. Just winning.
             </motion.strong>
           </motion.p>
 
@@ -122,47 +116,30 @@ const EarlyAccessSection: React.FC = () => {
                       ? 'ring-2 ring-red-400 focus:ring-red-400 border-red-400 bg-white/90' 
                       : 'focus:ring-white focus:ring-opacity-50 border-white/30 bg-white/80 hover:bg-white/90'
                   }`}
-                  disabled={isLoading}
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 />
                 <motion.button
                   type="submit"
-                  disabled={isLoading}
-                  className={`bg-gray-900 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform shadow-lg hover:shadow-xl ${
-                    isLoading 
-                      ? 'opacity-70 cursor-not-allowed' 
-                      : 'hover:bg-gray-800 hover:scale-105 hover:shadow-2xl'
-                  }`}
-                  whileHover={!isLoading ? { 
+                  className="bg-gray-900 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform shadow-lg hover:shadow-xl hover:bg-gray-800 hover:scale-105 hover:shadow-2xl"
+                  whileHover={{ 
                     scale: 1.05,
                     boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
-                  } : {}}
-                  whileTap={!isLoading ? { scale: 0.98 } : {}}
+                  }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  {isLoading ? (
-                    <div className="flex items-center space-x-2">
-                      <motion.div 
-                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      />
-                      <span>Joining...</span>
-                    </div>
-                  ) : (
-                    <motion.span
-                      animate={{ 
-                        textShadow: [
-                          "0 0 0px rgba(255, 255, 255, 0)",
-                          "0 0 10px rgba(255, 255, 255, 0.3)",
-                          "0 0 0px rgba(255, 255, 255, 0)"
-                        ]
-                      }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      Join Waitlist
-                    </motion.span>
-                  )}
+                  <motion.span
+                    animate={{ 
+                      textShadow: [
+                        "0 0 0px rgba(255, 255, 255, 0)",
+                        "0 0 10px rgba(255, 255, 255, 0.3)",
+                        "0 0 0px rgba(255, 255, 255, 0)"
+                      ]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    Join Waitlist
+                  </motion.span>
                 </motion.button>
               </form>
               
@@ -186,71 +163,26 @@ const EarlyAccessSection: React.FC = () => {
             >
               <motion.div 
                 className="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border border-gray-200 shadow-xl"
-                animate={{ 
-                  boxShadow: [
-                    "0 10px 30px rgba(0,0,0,0.1)",
-                    "0 15px 40px rgba(0,0,0,0.15)", 
-                    "0 10px 30px rgba(0,0,0,0.1)"
-                  ]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
               >
-                <motion.div 
-                  className="text-6xl mb-4"
-                  animate={{ 
-                    rotate: [0, 10, -10, 0],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  🎉
-                </motion.div>
-                <h3 className="text-2xl font-bold mb-2 text-gray-900">You're In!</h3>
+                <div className="w-16 h-16 bg-trovo-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-trovo-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">Successfully Added!</h3>
                 <p className="text-lg text-gray-700 mb-4">
-                  Welcome to the treasure hunt! We'll notify you when Trovo launches.
+                  You're now on our priority list. We'll notify you as soon as Trovo launches.
                 </p>
                 <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                  <motion.span
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  >
-                    🔐
-                  </motion.span>
-                  <span>Your spot is secured</span>
+                  <div className="w-2 h-2 bg-trovo-green rounded-full"></div>
+                  <span>Your early access is confirmed</span>
                 </div>
               </motion.div>
             </motion.div>
           )}
-
-          {/* Trust indicators */}
-          <motion.div 
-            className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 text-sm text-gray-700"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <motion.div 
-              className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/80 transition-all duration-300 border border-gray-200"
-              whileHover={{ scale: 1.05, y: -2 }}
-            >
-              <span>🔒</span>
-              <span>Bank-grade security</span>
-            </motion.div>
-            <motion.div 
-              className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/80 transition-all duration-300 border border-gray-200"
-              whileHover={{ scale: 1.05, y: -2 }}
-            >
-              <span>📱</span>
-              <span>Mobile-first design</span>
-            </motion.div>
-            <motion.div 
-              className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/80 transition-all duration-300 border border-gray-200"
-              whileHover={{ scale: 1.05, y: -2 }}
-            >
-              <span>🇮🇳</span>
-              <span>Made for India</span>
-            </motion.div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

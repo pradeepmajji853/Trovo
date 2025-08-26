@@ -35,22 +35,25 @@ const Navbar = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <motion.img
-              src="/image.png"
-              alt="Trovo Logo"
-              className="h-8 md:h-10 w-auto"
+          <Link to="/" className="flex items-center group">
+            <motion.div
+              className="relative"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
-              onError={(e) => {
-                // Fallback if logo doesn't load
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-              }}
-            />
+            >
+              <img
+                src="/image2.png"
+                alt="Trovo Logo"
+                className="h-32 md:h-36 w-32 md:w-36 object-contain"
+                
+              />
+            </motion.div>
             <motion.span
-              className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-trovo-green transition-colors duration-300"
+              className="text-2xl md:text-3xl font-bold text-trovo-green-light group-hover:text-trovo-green transition-all duration-300 tracking-tight"
               whileHover={{ scale: 1.02 }}
+              style={{
+                textShadow: '0 0 10px rgba(30, 215, 96, 0.3)'
+              }}
             >
               Trovo
             </motion.span>
