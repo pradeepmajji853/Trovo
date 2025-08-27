@@ -31,7 +31,11 @@ const HeroSection: React.FC = () => {
   }
 
   return (
-    <section className="relative h-screen bg-gradient-to-br from-white to-gray-50 overflow-hidden sticky top-0">
+    <section 
+      className="relative h-screen bg-gradient-to-br from-white to-gray-50 overflow-hidden sticky top-0"
+      role="banner"
+      aria-label="Trovo Fi - Revolutionary Fintech Platform Hero Section"
+    >
       {/* Simplified background elements */}
       <motion.div 
         className="absolute inset-0 overflow-hidden"
@@ -54,7 +58,7 @@ const HeroSection: React.FC = () => {
       >
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-screen pt-32 pb-20">
           {/* Left Content */}
-          <motion.div
+          <motion.header
             className="text-center lg:text-left"
             initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
@@ -75,13 +79,13 @@ const HeroSection: React.FC = () => {
                 }}
               >
                 {words.map((word, index) => (
-                  <motion.span
+                  <motion.h1
                     key={index}
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900"
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 inline-block"
                     variants={wordVariants}
                   >
                     {word}
-                  </motion.span>
+                  </motion.h1>
                 ))}
               </motion.div>
               
@@ -101,8 +105,9 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
-              Unlock rewards from your credit cards, enjoy guaranteed UPI cashback, experience seamless 
-              tap-to-pay convenience, and safely share financial resources with trusted friends.
+              <strong>Trovo Fi</strong> transforms your unused credit card points into instant rewards. 
+              Experience guaranteed UPI cashback, seamless tap-to-pay convenience, and safely share 
+              financial resources with trusted friends. Join <strong>Trovo</strong> - India's revolutionary fintech platform.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -155,7 +160,7 @@ const HeroSection: React.FC = () => {
                 <div className="text-sm md:text-base text-gray-600">Digital First</div>
               </div>
             </motion.div>
-          </motion.div>
+          </motion.header>
 
           {/* Right Content - Phone Mockup */}
           <motion.div

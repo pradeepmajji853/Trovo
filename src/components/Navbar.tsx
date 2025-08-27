@@ -31,11 +31,13 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
+      role="navigation"
+      aria-label="Main navigation for Trovo Fi"
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center justify-start flex-1 md:flex-initial ml-2 md:ml-0">
+          <div className="flex items-center justify-start flex-1 md:flex-initial -ml-2 md:ml-0">
             <Link to="/" className="flex items-center group">
               <motion.div
                 className="relative"
@@ -44,7 +46,7 @@ const Navbar = () => {
               >
                 <img
                   src="/image2.png"
-                  alt="Trovo Logo"
+                  alt="Trovo Fi Logo - Revolutionary Fintech Platform"
                   className="h-8 md:h-9 w-8 md:w-9 object-contain"
                   style={{
                     filter: 'brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(2000%) hue-rotate(80deg) brightness(95%) contrast(105%)'
@@ -57,6 +59,7 @@ const Navbar = () => {
                 style={{
                   textShadow: '0 0 10px rgba(29, 185, 84, 0.3)'
                 }}
+                aria-label="Trovo Fi - India's #1 Fintech App"
               >
                 Trovo
               </motion.span>

@@ -1,6 +1,7 @@
 import { motion, useInView, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import PageTransition from '../components/PageTransition'
+import SEO from '../components/SEO'
 
 const AboutPage = () => {
   const heroRef = useRef(null)
@@ -32,8 +33,35 @@ const AboutPage = () => {
     window.scrollTo(0, 0)
   }, [])
 
+  const aboutStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Trovo",
+      "alternateName": ["Trovo Fi", "Trovo Fintech"],
+      "description": "Trovo Fi is revolutionizing financial management for every Indian by transforming unused credit card points into instant rewards and seamless digital payments.",
+      "foundingDate": "2024",
+      "industry": "Financial Technology",
+      "areaServed": {
+        "@type": "Country", 
+        "name": "India"
+      },
+      "mission": "To democratize financial rewards and make every transaction rewarding for Indian consumers",
+      "vision": "To become India's most trusted fintech platform for credit card optimization and digital payments",
+      "values": ["Innovation", "Trust", "Customer-centricity", "Financial Inclusion"]
+    }
+  }
+
   return (
     <PageTransition>
+      <SEO 
+        title="About Trovo Fi - Revolutionary Fintech Company | Our Story & Mission"
+        description="Learn about Trovo Fi's mission to revolutionize financial management for Indians. Discover how we're transforming credit card points into instant rewards and building the future of fintech in India."
+        keywords="about trovo, trovo fi company, trovo fintech story, trovo mission, trovo vision, indian fintech company, financial technology india, trovo team, credit card fintech, digital payments startup"
+        canonical="https://trovo.app/about"
+        structuredData={aboutStructuredData}
+      />
       <div className="min-h-screen bg-white pt-16 md:pt-20 overflow-x-hidden">
         
         {/* About Trovo Hero Section - About Content */}

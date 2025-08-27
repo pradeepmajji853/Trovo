@@ -1,9 +1,33 @@
 import { motion } from 'framer-motion'
 import PageTransition from '../components/PageTransition'
+import SEO from '../components/SEO'
 
 const BlogPage = () => {
+  const blogStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Trovo Fi Blog",
+    "description": "Latest insights, news, and updates from Trovo Fi about fintech innovations, credit card optimization, and digital payment trends in India.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Trovo",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://trovo.app/image2.png"
+      }
+    },
+    "url": "https://trovo.app/blog"
+  }
+
   return (
     <PageTransition>
+      <SEO 
+        title="Trovo Fi Blog - Fintech Insights & Credit Card Tips | Coming Soon"
+        description="Stay updated with the latest fintech trends, credit card optimization tips, and digital payment insights from Trovo Fi. Expert advice on maximizing your financial rewards in India."
+        keywords="trovo blog, trovo fi blog, fintech blog india, credit card tips, digital payments blog, financial technology news, trovo insights, money management tips, fintech trends india"
+        canonical="https://trovo.app/blog"
+        structuredData={blogStructuredData}
+      />
       <div className="min-h-screen bg-white pt-16 md:pt-20">
         {/* Coming Soon Section */}
         <section className="section-padding bg-gradient-to-br from-trovo-green/5 to-white">

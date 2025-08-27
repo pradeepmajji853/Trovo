@@ -20,7 +20,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-gray-900 text-white" ref={ref}>
+    <footer className="bg-gray-900 text-white" ref={ref} role="contentinfo" itemScope itemType="https://schema.org/Organization">
       <div className="container-custom">
         {/* Main Footer Content */}
         <motion.div 
@@ -43,21 +43,25 @@ const Footer = () => {
             >
               <motion.img
                 src="/image.png"
-                alt="Trovo Logo"
+                alt="Trovo Fi Logo - Revolutionary Fintech Platform"
                 className="h-8 w-auto filter brightness-0 invert"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
+                itemProp="logo"
               />
-              <span className="text-xl font-bold">Trovo</span>
+              <span className="text-xl font-bold" itemProp="name">Trovo</span>
             </motion.div>
             <motion.p 
               className="text-gray-400 leading-relaxed mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
+              itemProp="description"
             >
-              Trovo Fi Private Limited<br />
-              India's comprehensive fintech solution for credit card rewards, UPI cashback, and secure payments.
+              <span itemProp="legalName">Trovo Fi Private Limited</span><br />
+              <span itemProp="areaServed" itemScope itemType="https://schema.org/Country">
+                <span itemProp="name">India</span>'s
+              </span> comprehensive fintech solution for credit card rewards, UPI cashback, and secure payments.
             </motion.p>
             
             <motion.div 
@@ -66,9 +70,14 @@ const Footer = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <p>📧 Support: support@trovo.online</p>
+              <p itemProp="email">📧 Support: support@trovo.online</p>
               <p>📞 Grievance Officer: Available 48h response</p>
-              <p>🇮🇳 Made in India | Data stored in India</p>
+              <p itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                🇮🇳 Made in <span itemProp="addressCountry">India</span> | Data stored in India
+              </p>
+              <meta itemProp="url" content="https://trovo.app" />
+              <meta itemProp="foundingDate" content="2024" />
+              <meta itemProp="industry" content="Financial Technology" />
             </motion.div>
           </motion.div>
 
