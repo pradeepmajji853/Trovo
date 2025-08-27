@@ -12,7 +12,7 @@ const HeroSection: React.FC = () => {
   
   // Optimized scroll transforms - Complete blur effect
   const contentOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
-  const contentScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.5])
+  const contentScale = useTransform(scrollYProgress, [0, 0.4], [1, 2.0])
   const backgroundOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const blurAmount = useTransform(scrollYProgress, [0, 0.3], [0, 50])
   const contentFilter = useMotionTemplate`blur(${blurAmount}px)`
@@ -43,6 +43,9 @@ const HeroSection: React.FC = () => {
 
       <motion.div 
         className="container-custom relative z-10"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
         style={{
           scale: contentScale,
           opacity: contentOpacity,
