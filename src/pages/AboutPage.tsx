@@ -34,11 +34,11 @@ const AboutPage = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-white pt-16 md:pt-20">
+      <div className="min-h-screen bg-white pt-16 md:pt-20 overflow-x-hidden">
         
         {/* About Trovo Hero Section - About Content */}
         <section 
-          className="relative h-screen bg-gradient-to-br from-trovo-green/5 to-white overflow-hidden sticky top-0" 
+          className="relative h-screen w-full bg-gradient-to-br from-trovo-green/5 to-white overflow-hidden sticky top-0" 
           ref={heroRef}
         >
           {/* Background elements - SAME AS HOME PAGE */}
@@ -51,9 +51,9 @@ const AboutPage = () => {
           </motion.div>
 
           <motion.div 
-            className="container mx-auto px-4 max-w-6xl text-center relative z-10 min-h-screen flex items-center justify-center"
+            className="w-full px-4 sm:px-6 lg:px-8 text-center relative z-10"
           >
-            
+            <div className="min-h-screen flex items-center justify-center">
             {/* About Trovo Content - Only this zooms */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -73,14 +73,14 @@ const AboutPage = () => {
                   <span className="text-trovo-green">Trovo</span>
                 </h1>
                 
-                <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
                   Revolutionizing financial management for every Indian
                 </p>
               </div>
               
               {/* Detailed Content */}
               <motion.div
-                className="space-y-8 max-w-5xl mx-auto"
+                className="space-y-8"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -105,13 +105,14 @@ const AboutPage = () => {
                 </div>
               </motion.div>
             </motion.div>
+            </div>
           </motion.div>
         </section>
 
         {/* Our Story Section */}
-        <section className="section-padding bg-gray-50 relative z-20" ref={storyRef}>
-          <div className="container-custom">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <section className="section-padding bg-gray-50 relative z-20 w-full overflow-x-hidden" ref={storyRef}>
+          <div className="w-full px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <motion.div
                 className="flex justify-center order-2 lg:order-1"
                 initial={{ opacity: 0, x: -50 }}
@@ -168,9 +169,9 @@ const AboutPage = () => {
         </section>
 
         {/* Our Mission Section */}
-        <section className="section-padding relative z-20" ref={missionRef}>
-          <div className="container-custom">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <section className="section-padding relative z-20 w-full overflow-x-hidden" ref={missionRef}>
+          <div className="w-full px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={isMissionInView ? { opacity: 1, x: 0 } : {}}
@@ -226,9 +227,9 @@ const AboutPage = () => {
         </section>
 
         {/* Our Vision Section */}
-        <section className="section-padding bg-gray-50 relative z-20" ref={visionRef}>
-          <div className="container-custom">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <section className="section-padding bg-gray-50 relative z-20 w-full overflow-x-hidden" ref={visionRef}>
+          <div className="w-full px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <motion.div
                 className="flex justify-center order-2 lg:order-1"
                 initial={{ opacity: 0, x: -50 }}
