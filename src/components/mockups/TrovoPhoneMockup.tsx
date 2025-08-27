@@ -60,7 +60,7 @@ const TrovoPhoneMockup: React.FC = () => {
                 ₹2,450.00
               </motion.p>
               <div className="flex items-center justify-center mt-1 text-xs text-trovo-green">
-                <span className="mr-1">💎</span>
+                <span className="mr-1">✨</span>
                 <span>+245 points will be earned</span>
               </div>
             </div>

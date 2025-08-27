@@ -379,7 +379,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   <div
                     className="absolute -bottom-4 -left-4 w-16 h-16 lg:w-20 lg:h-20 bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center text-lg lg:text-xl border border-white/20 shadow-lg"
                   >
-                    💎
+                    🎯
                   </div>
                 </div>
               </motion.div>

@@ -39,7 +39,7 @@ const NotFoundPage = () => {
               }}
               transition={{ duration: 4, repeat: Infinity }}
             >
-              💎
+              🌟
             </motion.div>
             <motion.div
               className="absolute -top-5 -right-10 text-3xl"

@@ -45,14 +45,14 @@ const Navbar = () => {
                 <img
                   src="/image2.png"
                   alt="Trovo Logo"
-                  className="h-24 md:h-28 w-24 md:w-28 object-contain"
+                  className="h-8 md:h-9 w-8 md:w-9 object-contain"
                   style={{
                     filter: 'brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(2000%) hue-rotate(80deg) brightness(95%) contrast(105%)'
                   }}
                 />
               </motion.div>
               <motion.span
-                className="text-2xl md:text-3xl font-bold text-trovo-green group-hover:text-trovo-green-light transition-all duration-300 tracking-tight -ml-4"
+                className="text-2xl md:text-3xl font-bold text-trovo-green group-hover:text-trovo-green-light transition-all duration-300 tracking-tight ml-1"
                 whileHover={{ scale: 1.02 }}
                 style={{
                   textShadow: '0 0 10px rgba(29, 185, 84, 0.3)'

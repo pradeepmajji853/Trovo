@@ -15,8 +15,6 @@ const Footer = () => {
   ]
 
   const complianceInfo = [
-    { label: 'PCI DSS Compliant', description: 'Secure payment processing' },
-    { label: 'ISO 27001 Certified', description: 'Information security management' },
     { label: 'RBI Guidelines', description: 'Data localization compliant' },
     { label: 'CIBIL 675+', description: 'Minimum score for credit features' }
   ]
@@ -58,7 +56,7 @@ const Footer = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Trovo Fintech Private Limited<br />
+              Trovo Fi Private Limited<br />
               India's comprehensive fintech solution for credit card rewards, UPI cashback, and secure payments.
             </motion.p>
             
@@ -164,7 +162,7 @@ const Footer = () => {
             transition={{ delay: 1.6 }}
           >
             <div className="mb-4 md:mb-0">
-              <p>© {currentYear} Trovo Fintech Private Limited. All rights reserved.</p>
+              <p>© {currentYear} Trovo Fi Private Limited. All rights reserved.</p>
               <p className="text-xs mt-1">Services subject to eligibility criteria. Age 18+, PAN mandatory.</p>
             </div>
             
