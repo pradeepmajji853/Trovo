@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
-import SEO from '../components/SEO'
+import NativeSEO from '../components/NativeSEO'
 
 const TrovoFiLandingSection = () => {
   return (
     <>
-      <SEO 
+      <NativeSEO 
         title="Trovo Fi - India's #1 Fintech App for Credit Card Points & Digital Payments"
         description="Trovo Fi revolutionizes how Indians manage finances. Convert credit card points to instant cash, earn UPI cashback, and enjoy seamless digital payments. Join 10,000+ satisfied users."
         keywords="trovo fi, trovo fintech, trovo app india, credit card points conversion, UPI cashback, digital payments india, fintech app, instant rewards, money management, financial technology india"

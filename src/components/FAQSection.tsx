@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import SEO from './SEO'
+import NativeSEO from './NativeSEO'
 import { generateFAQStructuredData } from '../utils/seo'
 
 const FAQSection = () => {
@@ -51,7 +51,7 @@ const FAQSection = () => {
 
   return (
     <>
-      <SEO structuredData={structuredData} />
+      <NativeSEO structuredData={structuredData} />
       <section 
         className="section-padding bg-gradient-to-br from-white to-gray-50"
         ref={ref}

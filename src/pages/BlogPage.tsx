@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import PageTransition from '../components/PageTransition'
-import SEO from '../components/SEO'
+import NativeSEO from '../components/NativeSEO'
 
 const BlogPage = () => {
   const blogStructuredData = {
@@ -21,7 +21,7 @@ const BlogPage = () => {
 
   return (
     <PageTransition>
-      <SEO 
+      <NativeSEO 
         title="Trovo Fi Blog - Fintech Insights & Credit Card Tips | Coming Soon"
         description="Stay updated with the latest fintech trends, credit card optimization tips, and digital payment insights from Trovo Fi. Expert advice on maximizing your financial rewards in India."
         keywords="trovo blog, trovo fi blog, fintech blog india, credit card tips, digital payments blog, financial technology news, trovo insights, money management tips, fintech trends india"

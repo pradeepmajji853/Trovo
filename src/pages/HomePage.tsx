@@ -1,5 +1,5 @@
 import PageTransition from '../components/PageTransition'
-import SEO from '../components/SEO'
+import NativeSEO from '../components/NativeSEO'
 import HeroSection from '../components/HeroSection'
 import TrovoFiLandingSection from '../components/TrovoFiLandingSection'
 import ProblemSection from '../components/ProblemSection'
@@ -62,7 +62,7 @@ const HomePage = () => {
 
   return (
     <PageTransition>
-      <SEO 
+      <NativeSEO 
         title="Trovo - Revolutionary Fintech App | Unlock Credit Card Points & Instant Rewards"
         description="Trovo Fi transforms your unused credit card points into instant rewards and seamless UPI payments. Join 10,000+ Indians maximizing their financial potential with Trovo's revolutionary fintech platform."
         keywords="trovo, trovo fi, trovo fintech, trovo app, trovo india, credit card points, instant rewards, UPI payments, fintech app india, digital payments, cashback app, financial technology, money management, credit card rewards, point conversion, mobile payments, trovo financial services"

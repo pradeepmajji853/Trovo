@@ -1,7 +1,7 @@
 import { motion, useInView, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import PageTransition from '../components/PageTransition'
-import SEO from '../components/SEO'
+import NativeSEO from '../components/NativeSEO'
 
 const AboutPage = () => {
   const heroRef = useRef(null)
@@ -55,7 +55,7 @@ const AboutPage = () => {
 
   return (
     <PageTransition>
-      <SEO 
+      <NativeSEO 
         title="About Trovo Fi - Revolutionary Fintech Company | Our Story & Mission"
         description="Learn about Trovo Fi's mission to revolutionize financial management for Indians. Discover how we're transforming credit card points into instant rewards and building the future of fintech in India."
         keywords="about trovo, trovo fi company, trovo fintech story, trovo mission, trovo vision, indian fintech company, financial technology india, trovo team, credit card fintech, digital payments startup"
