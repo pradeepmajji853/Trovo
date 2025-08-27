@@ -54,53 +54,6 @@ const BlogPage = () => {
                     industry insights, and stories that matter to your financial journey.
                   </p>
                 </motion.div>
-
-                {/* Features List */}
-                <motion.div
-                  className="grid md:grid-cols-3 gap-6 mt-12"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                >
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-trovo-green/20">
-                    <div className="text-3xl mb-4">💡</div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Expert Insights</h3>
-                    <p className="text-gray-600 text-sm">In-depth analysis of fintech trends and financial strategies</p>
-                  </div>
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-trovo-green/20">
-                    <div className="text-3xl mb-4">🎯</div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Practical Tips</h3>
-                    <p className="text-gray-600 text-sm">Actionable advice to maximize your financial rewards</p>
-                  </div>
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-trovo-green/20">
-                    <div className="text-3xl mb-4">🔮</div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Future Trends</h3>
-                    <p className="text-gray-600 text-sm">What's next in digital payments and financial technology</p>
-                  </div>
-                </motion.div>
-
-                {/* Call to Action */}
-                <motion.div
-                  className="mt-12"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1 }}
-                >
-                  <p className="text-lg text-gray-600 mb-6">
-                    Get notified when we launch our blog
-                  </p>
-                  <motion.button
-                    className="bg-trovo-green text-white font-semibold px-8 py-4 rounded-full hover:bg-trovo-green-dark transition-all duration-300 shadow-lg"
-                    whileHover={{ 
-                      scale: 1.05, 
-                      y: -3,
-                      boxShadow: "0 20px 40px -12px rgba(29, 185, 84, 0.4)"
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Join Early Access
-                  </motion.button>
-                </motion.div>
               </motion.div>
             </div>
           </div>

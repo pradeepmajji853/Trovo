@@ -7,9 +7,9 @@ const WhyTrovoSection = () => {
 
   const stats = [
     {
-      number: "Smart",
-      label: "Optimization",
-      description: "Intelligent reward maximization"
+      number: "₹15,000+",
+      label: "Saved Annually",
+      description: "Average user savings per year"
     },
     {
       number: "5 Mins",

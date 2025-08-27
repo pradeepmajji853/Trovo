@@ -10,14 +10,14 @@ const ProblemSection: React.FC = () => {
     {
       icon: "💳",
       title: "Wasted Credit Card Points",
-      description: "Credit card points are confusing and often expire unused. Indians lose substantial amounts in rewards annually due to complex redemption processes.",
-      impact: "Massive value lost annually"
+      description: "Credit card points are confusing and often expire unused. Indians lose over ₹8,000 crore worth of rewards annually.",
+      impact: "₹8,000+ crore lost annually"
     },
     {
       icon: "📱",
       title: "UPI Without Rewards", 
-      description: "UPI payments rarely include rewards unless using a credit card on UPI. Users miss out on significant cashback or points on their regular spending.",
-      impact: "Substantial missed rewards"
+      description: "UPI payments rarely include rewards unless using a credit card on UPI. Given average annual spending, users may be missing out on ₹1,500+ in cashback or points per month.",
+      impact: "₹1,500+ missed monthly"
     },
     {
       icon: "👥",

@@ -35,29 +35,33 @@ const Navbar = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center group">
-            <motion.div
-              className="relative"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              <img
-                src="/image2.png"
-                alt="Trovo Logo"
-                className="h-32 md:h-36 w-32 md:w-36 object-contain"
-                
-              />
-            </motion.div>
-            <motion.span
-              className="text-2xl md:text-3xl font-bold text-trovo-green-light group-hover:text-trovo-green transition-all duration-300 tracking-tight"
-              whileHover={{ scale: 1.02 }}
-              style={{
-                textShadow: '0 0 10px rgba(30, 215, 96, 0.3)'
-              }}
-            >
-              Trovo
-            </motion.span>
-          </Link>
+          <div className="flex items-center justify-start flex-1 md:flex-initial -ml-2 md:ml-0">
+            <Link to="/" className="flex items-center group">
+              <motion.div
+                className="relative"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                <img
+                  src="/image2.png"
+                  alt="Trovo Logo"
+                  className="h-24 md:h-28 w-24 md:w-28 object-contain"
+                  style={{
+                    filter: 'brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(2000%) hue-rotate(80deg) brightness(95%) contrast(105%)'
+                  }}
+                />
+              </motion.div>
+              <motion.span
+                className="text-2xl md:text-3xl font-bold text-trovo-green group-hover:text-trovo-green-light transition-all duration-300 tracking-tight -ml-4"
+                whileHover={{ scale: 1.02 }}
+                style={{
+                  textShadow: '0 0 10px rgba(29, 185, 84, 0.3)'
+                }}
+              >
+                Trovo
+              </motion.span>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">

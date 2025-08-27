@@ -45,7 +45,7 @@ const FloatingWaitlistButton: React.FC = () => {
       <div
         className="absolute -top-2 -left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold"
       >
-        New!
+        2,847+
       </div>
     </motion.div>
   )
