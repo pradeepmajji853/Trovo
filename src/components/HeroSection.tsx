@@ -16,10 +16,6 @@ const HeroSection: React.FC = () => {
   const backgroundOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const blurAmount = useTransform(scrollYProgress, [0, 0.3], [0, 50])
   const contentFilter = useMotionTemplate`blur(${blurAmount}px)`
-  
-  // Simplified coin movement (only 2 coins for performance)
-  const coin1Y = useTransform(scrollYProgress, [0, 0.3], [0, -200])
-  const coin2Y = useTransform(scrollYProgress, [0, 0.3], [0, 200])
 
   const words = ["Do", "you", "want", "your", "treasure", "back?"]
 
@@ -36,32 +32,13 @@ const HeroSection: React.FC = () => {
 
   return (
     <section className="relative h-screen bg-gradient-to-br from-white to-gray-50 overflow-hidden sticky top-0">
-      {/* Simplified background elements - Removed infinite animations for performance */}
+      {/* Simplified background elements */}
       <motion.div 
         className="absolute inset-0 overflow-hidden"
         style={{ opacity: backgroundOpacity }}
       >
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-trovo-green opacity-5 rounded-full blur-3xl" />
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-trovo-green-light opacity-3 rounded-full blur-3xl" />
-
-        {/* Simplified Golden Coins - Only 2 for performance */}
-        <motion.div
-          className="absolute top-1/4 left-1/6 z-0 blur-md"
-          style={{ y: coin1Y, opacity: contentOpacity }}
-        >
-          <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-600 rounded-full shadow-2xl border-4 border-yellow-500 flex items-center justify-center">
-            <span className="text-yellow-800 font-bold text-3xl md:text-4xl">₹</span>
-          </div>
-        </motion.div>
-        
-        <motion.div
-          className="absolute bottom-1/3 right-1/4 z-0 blur-sm"
-          style={{ y: coin2Y, opacity: contentOpacity }}
-        >
-          <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-600 rounded-full shadow-2xl border-3 border-yellow-500 flex items-center justify-center">
-            <span className="text-yellow-800 font-bold text-xl md:text-2xl">₹</span>
-          </div>
-        </motion.div>
       </motion.div>
 
       <motion.div 
