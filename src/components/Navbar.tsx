@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center justify-start flex-1 md:flex-initial -ml-2 md:ml-0">
+          <div className="flex items-center justify-start flex-1 md:flex-initial ml-2 md:ml-0">
             <Link to="/" className="flex items-center group">
               <motion.div
                 className="relative"
