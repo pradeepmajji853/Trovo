@@ -37,17 +37,17 @@ const HeroSection: React.FC = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative bg-gradient-to-br from-white to-gray-50 pt-24 overflow-x-hidden">
+    <section ref={sectionRef} className="relative h-screen bg-gradient-to-br from-white to-gray-50 pt-24 overflow-hidden">
       {/* Background accents with fading opacity */}
       <div className="absolute inset-0 overflow-hidden" style={{ opacity: fx.bgOpacity, transition: 'opacity 120ms linear' }}>
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-trovo-green opacity-5 rounded-full blur-3xl" />
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-trovo-green-light opacity-5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center py-16">
+      <div className="container-custom h-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center h-full py-8 md:py-12">
           {/* Left Content */}
-          <header className="text-center lg:text-left overflow-x-hidden">
+          <header className="text-center lg:text-left overflow-hidden">
             {/* Content wrapper with blur/scale/opacity applied */}
             <div style={{
               opacity: fx.contentOpacity,
@@ -74,7 +74,7 @@ const HeroSection: React.FC = () => {
                 <button className="border-2 border-trovo-green text-trovo-green font-semibold px-8 py-4 rounded-full hover:bg-trovo-green hover:text-white transition-all duration-300">Learn More</button>
               </div>
 
-              <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-200">
+              <div className="hidden md:grid grid-cols-3 gap-6 mt-8 pt-6 border-t border-gray-200">
                 <div className="text-center">
                   <div className="text-2xl md:text-3xl font-bold text-trovo-green">500+</div>
                   <div className="text-sm md:text-base text-gray-600">Users Surveyed</div>
@@ -92,7 +92,7 @@ const HeroSection: React.FC = () => {
           </header>
 
           {/* Right Content - Phone Mockup */}
-          <div className="flex justify-center lg:justify-end overflow-x-hidden">
+          <div className="flex justify-center lg:justify-end overflow-hidden">
             <div
               className="relative overflow-hidden"
               style={{
