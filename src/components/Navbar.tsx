@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -9,9 +8,10 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      const currentY = window.scrollY
+      setIsScrolled(currentY > 12)
     }
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -22,165 +22,111 @@ const Navbar = () => {
   ]
 
   return (
-    <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/90 backdrop-blur-md shadow-lg border-b border-gray-200/20' 
-          : 'bg-transparent'
-      }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+    <nav
+      className="fixed inset-x-0 top-6 z-50 flex justify-center pointer-events-none"
       role="navigation"
       aria-label="Main navigation for Trovo Fi"
     >
-      <div className="container-custom">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div
+        className={`pointer-events-auto relative w-[90%] max-w-6xl mx-0 rounded-2xl sm:rounded-full border backdrop-blur-xl shadow-lg ${
+          isScrolled ? 'bg-white/80 border-gray-200/60' : 'bg-white/60 border-gray-200/40'
+        }`}
+      >
+        <div className="flex items-center justify-between px-3 sm:px-4 h-14">
           {/* Logo */}
-          <div className="flex items-center justify-start flex-1 md:flex-initial -ml-2 md:ml-0">
-            <Link to="/" className="flex items-center group">
-              <motion.div
-                className="relative"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
+          <div className="flex items-center justify-start -ml-1 sm:ml-0">
+            <Link to="/" className="flex items-center">
+              <div className="relative">
                 <img
                   src="/image2.png"
                   alt="Trovo Fi Logo - Revolutionary Fintech Platform"
-                  className="h-8 md:h-9 w-8 md:w-9 object-contain"
+                  className="h-8 w-8 sm:h-9 sm:w-9 object-contain"
                   style={{
-                    filter: 'brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(2000%) hue-rotate(80deg) brightness(95%) contrast(105%)'
+                    filter:
+                      'brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(2000%) hue-rotate(80deg) brightness(95%) contrast(105%)',
                   }}
                 />
-              </motion.div>
-              <motion.span
-                className="text-2xl md:text-3xl font-bold text-trovo-green group-hover:text-trovo-green-light transition-all duration-300 tracking-tight ml-1"
-                whileHover={{ scale: 1.02 }}
-                style={{
-                  textShadow: '0 0 10px rgba(29, 185, 84, 0.3)'
-                }}
+              </div>
+              <span
+                className="text-2xl sm:text-3xl font-bold text-trovo-green tracking-tight ml-1"
                 aria-label="Trovo Fi - India's #1 Fintech App"
               >
                 Trovo
-              </motion.span>
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.path}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.4, 
-                  delay: 0.1 + index * 0.1,
-                  ease: "easeOut"
-                }}
-              >
+            {navItems.map((item) => (
+              <div key={item.path}>
                 <Link
                   to={item.path}
-                  className="relative px-4 py-2 text-gray-700 hover:text-trovo-green transition-colors duration-300 font-medium group/nav"
+                  className="relative px-4 py-2 text-gray-700 font-medium"
                 >
                   <span className="relative z-10">{item.name}</span>
-                  
-                  {/* Hover effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-trovo-green/5 rounded-full opacity-0 group-hover/nav:opacity-100"
-                    transition={{ duration: 0.2 }}
-                  />
-                  
-                  {/* Active indicator */}
+
+                  {/* Active indicator (static) */}
                   {location.pathname === item.path && (
-                    <motion.div
-                      className="absolute inset-0 bg-trovo-green/10 rounded-full"
-                      layoutId="activeTab"
-                      initial={false}
-                      transition={{ 
-                        type: "spring", 
-                        stiffness: 500, 
-                        damping: 30 
-                      }}
-                    />
+                    <div className="absolute inset-0 bg-trovo-green/10 rounded-full" />
                   )}
-                  
-                  {/* Bottom line indicator */}
-                  <motion.div
-                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-trovo-green"
-                    initial={{ width: 0 }}
-                    animate={{ 
-                      width: location.pathname === item.path ? "60%" : 0 
-                    }}
-                    whileHover={{ width: "60%" }}
-                    transition={{ duration: 0.3 }}
-                  />
+
+                  {/* Bottom line indicator (static on active) */}
+                  {location.pathname === item.path && (
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-trovo-green w-3/5" />
+                  )}
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          <button
+            className="md:hidden p-2 rounded-xl"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            whileTap={{ scale: 0.95 }}
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center">
-              <motion.span
-                className={`w-5 h-0.5 bg-gray-700 transition-all duration-300 ${
-                  isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''
-                }`}
+              <span
+                className={`w-5 h-0.5 bg-gray-700 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''}`}
               />
-              <motion.span
-                className={`w-5 h-0.5 bg-gray-700 mt-1 transition-all duration-300 ${
-                  isMobileMenuOpen ? 'opacity-0' : ''
-                }`}
+              <span
+                className={`w-5 h-0.5 bg-gray-700 mt-1 ${isMobileMenuOpen ? 'opacity-0' : ''}`}
               />
-              <motion.span
-                className={`w-5 h-0.5 bg-gray-700 mt-1 transition-all duration-300 ${
-                  isMobileMenuOpen ? '-rotate-45 -translate-y-1' : ''
-                }`}
+              <span
+                className={`w-5 h-0.5 bg-gray-700 mt-1 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : ''}`}
               />
             </div>
-          </motion.button>
+          </button>
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              className="md:hidden border-t border-gray-200/20 bg-white/95 backdrop-blur-md"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="py-4 space-y-2">
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+        {isMobileMenuOpen && (
+          <div
+            id="mobile-menu"
+            className="md:hidden absolute left-0 right-0 top-full mt-2 mx-2 sm:mx-0 rounded-2xl border border-gray-200/60 bg-white/95 backdrop-blur-xl shadow-xl overflow-hidden"
+          >
+            <div className="py-2">
+              {navItems.map((item) => (
+                <div key={item.name}>
+                  <Link
+                    to={item.path}
+                    className={`block px-4 py-3 text-gray-700 font-medium ${
+                      location.pathname === item.path ? 'text-trovo-green bg-trovo-green/10' : ''
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <Link
-                      to={item.path}
-                      className={`block px-4 py-3 text-gray-700 hover:text-trovo-green hover:bg-trovo-green/5 rounded-lg transition-all duration-200 font-medium ${
-                        location.pathname === item.path ? 'text-trovo-green bg-trovo-green/10' : ''
-                      }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                    {item.name}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
-    </motion.nav>
+    </nav>
   )
 }
 

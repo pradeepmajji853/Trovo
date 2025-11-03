@@ -15,14 +15,10 @@ import DataSecurityPage from './pages/DataSecurityPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
-  // Global scroll reset on app initialization
   useEffect(() => {
-    // Prevent scroll restoration on page reload
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual'
     }
-    
-    // Force scroll to top
     window.scrollTo(0, 0)
     document.documentElement.scrollTop = 0
     document.body.scrollTop = 0

@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import PageTransition from '../components/PageTransition'
 
@@ -8,11 +6,6 @@ const AboutPage = () => {
   const storyRef = useRef(null)
   const missionRef = useRef(null)
   const visionRef = useRef(null)
-  
-  const isAboutInView = useInView(aboutRef, { once: true, margin: "-100px" })
-  const isStoryInView = useInView(storyRef, { once: true, margin: "-100px" })
-  const isMissionInView = useInView(missionRef, { once: true, margin: "-100px" })
-  const isVisionInView = useInView(visionRef, { once: true, margin: "-100px" })
 
   useEffect(() => {
     document.title = 'About Us - Trovo Fintech'
@@ -22,68 +15,39 @@ const AboutPage = () => {
   return (
     <PageTransition>
       <div className="min-h-screen bg-white pt-16 md:pt-20">
-        
         {/* 1. About Trovo Section */}
         <section className="section-padding bg-gradient-to-br from-trovo-green/5 to-white" ref={aboutRef}>
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={isAboutInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8 }}
-              >
-                <motion.h1
-                  className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isAboutInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  About{' '}
-                  <span className="text-trovo-green">Trovo</span>
-                </motion.h1>
-                <motion.p
-                  className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isAboutInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                >
+              <div>
+                <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                  About <span className="text-trovo-green">Trovo</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8">
                   We're building the future of fintech in India, revolutionizing how you manage money. 
                   Our mission is to unlock the hidden value in your credit cards and create smarter 
                   financial opportunities for every Indian.
-                </motion.p>
-                <motion.p
-                  className="text-lg text-gray-600 leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isAboutInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                >
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed">
                   Trovo combines intelligent reward optimization, guaranteed UPI cashback, 
                   and seamless payments into one simple platform that puts more money 
                   back in your pocket.
-                </motion.p>
-              </motion.div>
-              
-              <motion.div
-                className="flex justify-center"
-                initial={{ opacity: 0, x: 50 }}
-                animate={isAboutInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
+                </p>
+              </div>
+              <div className="flex justify-center">
                 <div className="bg-white p-12 rounded-3xl shadow-2xl border border-gray-100">
-                  <motion.img
+                  <img
                     src="/trovo-logo.svg"
                     alt="Trovo Logo"
                     className="h-40 w-40 mx-auto object-contain mb-6"
                     style={{
                       filter: 'brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(2000%) hue-rotate(80deg) brightness(95%) contrast(105%)'
                     }}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
                   />
                   <h3 className="text-3xl font-bold text-center text-gray-900 mb-2">Trovo Fintech</h3>
                   <p className="text-center text-gray-600 text-lg">Smart Financial Solutions for India</p>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -92,36 +56,16 @@ const AboutPage = () => {
         <section className="section-padding bg-gray-50" ref={storyRef}>
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div
-                className="flex justify-center order-2 lg:order-1"
-                initial={{ opacity: 0, x: -50 }}
-                animate={isStoryInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
+              <div className="flex justify-center order-2 lg:order-1">
                 <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-3xl p-12 border border-orange-300">
                   <div className="text-center">
-                    <motion.div 
-                      className="text-8xl mb-6"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      📖
-                    </motion.div>
                     <h3 className="text-3xl font-bold text-gray-900 mb-4">Our Journey</h3>
                     <p className="text-gray-700 text-lg">From frustration to innovation</p>
                   </div>
                 </div>
-              </motion.div>
-              
-              <motion.div
-                className="order-1 lg:order-2"
-                initial={{ opacity: 0, x: 50 }}
-                animate={isStoryInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Our Story
-                </h2>
+              </div>
+              <div className="order-1 lg:order-2">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
                 <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                   <p>
                     Trovo was born from a simple frustration: watching millions of credit card 
@@ -140,7 +84,7 @@ const AboutPage = () => {
                     financial wellness accessible to every Indian, one smart decision at a time.
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -149,14 +93,8 @@ const AboutPage = () => {
         <section className="section-padding" ref={missionRef}>
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={isMissionInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Our Mission
-                </h2>
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
                 <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                   <p>
                     <strong className="text-trovo-green">To democratize financial intelligence for every Indian.</strong> We believe 
@@ -173,30 +111,15 @@ const AboutPage = () => {
                     you peace of mind.
                   </p>
                 </div>
-              </motion.div>
-              
-              <motion.div
-                className="flex justify-center"
-                initial={{ opacity: 0, x: 50 }}
-                animate={isMissionInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
+              </div>
+              <div className="flex justify-center">
                 <div className="bg-gradient-to-br from-trovo-green to-trovo-green-dark rounded-3xl p-12 text-white">
                   <div className="text-center">
-                    <motion.div 
-                      className="text-8xl mb-6"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      🎯
-                    </motion.div>
                     <h3 className="text-3xl font-bold mb-4">Our Mission</h3>
-                    <p className="text-xl opacity-90">
-                      Democratizing financial intelligence for every Indian
-                    </p>
+                    <p className="text-xl opacity-90">Democratizing financial intelligence for every Indian</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -205,38 +128,16 @@ const AboutPage = () => {
         <section className="section-padding bg-gray-50" ref={visionRef}>
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div
-                className="flex justify-center order-2 lg:order-1"
-                initial={{ opacity: 0, x: -50 }}
-                animate={isVisionInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
+              <div className="flex justify-center order-2 lg:order-1">
                 <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-12 text-white">
                   <div className="text-center">
-                    <motion.div 
-                      className="text-8xl mb-6"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      🚀
-                    </motion.div>
                     <h3 className="text-3xl font-bold mb-4">Our Vision</h3>
-                    <p className="text-xl opacity-90">
-                      The future of financial wellness in India
-                    </p>
+                    <p className="text-xl opacity-90">The future of financial wellness in India</p>
                   </div>
                 </div>
-              </motion.div>
-              
-              <motion.div
-                className="order-1 lg:order-2"
-                initial={{ opacity: 0, x: 50 }}
-                animate={isVisionInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Our Vision
-                </h2>
+              </div>
+              <div className="order-1 lg:order-2">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Vision</h2>
                 <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                   <p>
                     <strong className="text-blue-600">To become India's most trusted financial companion.</strong> We envision 
@@ -254,7 +155,7 @@ const AboutPage = () => {
                     confidence and ease.
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>

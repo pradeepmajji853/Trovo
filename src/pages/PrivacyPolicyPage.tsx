@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 
 const PrivacyPolicyPage = () => {
@@ -10,41 +9,16 @@ const PrivacyPolicyPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <motion.section 
-        className="bg-gradient-to-br from-trovo-green to-trovo-green-dark text-white py-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
+      <section className="bg-gradient-to-br from-trovo-green to-trovo-green-dark text-white py-20">
         <div className="container-custom text-center">
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Privacy Policy
-          </motion.h1>
-          <motion.p 
-            className="text-xl opacity-90"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            How Trovo Fintech protects and manages your personal information
-          </motion.p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Privacy Policy</h1>
+          <p className="text-xl opacity-90">How Trovo Fintech protects and manages your personal information</p>
         </div>
-      </motion.section>
+      </section>
 
       {/* Content */}
-      <motion.section 
-        className="py-20"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
+      <section className="py-20">
         <div className="container-custom max-w-4xl">
-          
           {/* Introduction */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">1. Introduction</h2>
@@ -181,9 +155,9 @@ const PrivacyPolicyPage = () => {
             <div className="mt-6 p-6 bg-trovo-green-50 rounded-lg border border-trovo-green-200">
               <h4 className="font-semibold text-gray-900 mb-2">Grievance Officer</h4>
               <ul className="text-gray-700 space-y-1">
-                <li>• Acknowledge complaints within 48 hours</li>
-                <li>• Resolve complaints within 30 days</li>
-                <li>• Contact: support@trovo.online</li>
+                <li>Acknowledge complaints within 48 hours</li>
+                <li>Resolve complaints within 30 days</li>
+                <li>Contact: support@trovo.online</li>
               </ul>
             </div>
           </div>
@@ -201,7 +175,7 @@ const PrivacyPolicyPage = () => {
           </div>
 
         </div>
-      </motion.section>
+      </section>
     </div>
   )
 }

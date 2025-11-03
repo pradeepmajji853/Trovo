@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 
 const RefundPolicyPage = () => {
@@ -10,41 +9,16 @@ const RefundPolicyPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <motion.section 
-        className="bg-gradient-to-br from-trovo-green to-trovo-green-dark text-white py-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
+      <section className="bg-gradient-to-br from-trovo-green to-trovo-green-dark text-white py-20">
         <div className="container-custom text-center">
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Refund Policy
-          </motion.h1>
-          <motion.p 
-            className="text-xl opacity-90"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Our commitment to fair and transparent refund processes
-          </motion.p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Refund Policy</h1>
+          <p className="text-xl opacity-90">Our commitment to fair and transparent refund processes</p>
         </div>
-      </motion.section>
+      </section>
 
       {/* Content */}
-      <motion.section 
-        className="py-20"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
+      <section className="py-20">
         <div className="container-custom max-w-4xl">
-          
           {/* Eligibility for Refunds */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">1. Eligibility for Refunds</h2>
@@ -253,7 +227,7 @@ const RefundPolicyPage = () => {
             </div>
           </div>
         </div>
-      </motion.section>
+      </section>
     </div>
   )
 }
