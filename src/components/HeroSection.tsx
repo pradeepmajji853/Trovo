@@ -91,7 +91,7 @@ const HeroSection: React.FC = () => {
       <div aria-hidden className="shrink-0 h-16 sm:h-20 md:h-24" />
 
       <div className="container-custom flex-1">
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center h-full py-4 md:py-0">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center py-6 sm:py-8 md:py-0">
           {/* Left Content (rendered first on mobile) */}
           <header className="text-center lg:text-left overflow-hidden order-1">
             {/* Content wrapper with blur/scale/opacity applied */}
@@ -108,19 +108,19 @@ const HeroSection: React.FC = () => {
                     <h1 key={w} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 inline-block">{w}</h1>
                   ))}
                 </div>
-                <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-trovo-green mb-3 sm:mb-4">Reclaim your financial power</div>
+                <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-trovo-green mb-4">Reclaim your financial power</div>
               </div>
 
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-4 sm:mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 <strong>Trovo Fi</strong> transforms your unused credit card points into instant rewards. Experience guaranteed UPI cashback, seamless tap-to-pay convenience, and safely share financial resources with trusted friends. Join <strong>Trovo</strong> - India's revolutionary fintech platform.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center lg:justify-start">
-                <button className="btn-primary text-sm sm:text-base md:text-lg px-6 sm:px-7 py-3 sm:py-3.5">Join Early Access</button>
-                <button className="border-2 border-trovo-green text-trovo-green font-semibold text-sm sm:text-base px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-trovo-green hover:text-white transition-all duration-300">Learn More</button>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <button className="btn-primary w-full sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-7 py-3 sm:py-3.5">Join Early Access</button>
+                <button className="w-full sm:w-auto border-2 border-trovo-green text-trovo-green font-semibold text-sm sm:text-base px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-trovo-green hover:text-white transition-all duration-300">Learn More</button>
               </div>
 
-              <div className="hidden md:grid grid-cols-3 gap-6 mt-6 pt-6 border-t border-gray-200">
+              <div className="hidden md:grid grid-cols-3 gap-6 mt-8 pt-6 border-t border-gray-200">
                 <div className="text-center">
                   <div className="text-2xl md:text-3xl font-bold text-trovo-green">500+</div>
                   <div className="text-sm md:text-base text-gray-600">Users Surveyed</div>
@@ -137,8 +137,8 @@ const HeroSection: React.FC = () => {
             </div>
           </header>
 
-          {/* Right Content - Phone Mockup (second on mobile) */}
-          <div className="flex justify-center lg:justify-end overflow-hidden order-2">
+          {/* Right Content - Phone Mockup (hidden on mobile) */}
+          <div className="hidden md:flex justify-center lg:justify-end overflow-hidden order-2">
             <div className="scale-90 sm:scale-95 md:scale-100">
               <div
                 ref={phoneRef}
