@@ -4,34 +4,77 @@ import TrovoPhoneMockup from './mockups/TrovoPhoneMockup'
 const HeroSection: React.FC = () => {
   // Scroll-driven blur effect like About hero
   const sectionRef = useRef<HTMLElement | null>(null)
+  const phoneRef = useRef<HTMLDivElement | null>(null)
   const [fx, setFx] = useState({ contentOpacity: 1, contentScale: 1, bgOpacity: 1, blur: 0 })
 
   useEffect(() => {
     let raf = 0
     const update = () => {
       const el = sectionRef.current
+      const phoneEl = phoneRef.current
       if (!el) return
-      const rect = el.getBoundingClientRect()
       const vh = window.innerHeight || 1
-      // Subtle effect over ~50% of viewport
-      const span = Math.max(vh * 0.5, 1)
-      const scrolled = Math.min(Math.max(-rect.top, 0), span)
-      const p = Math.min(Math.max(scrolled / span, 0), 1)
+
+      const width = window.innerWidth || 0
+
+      // Desktop/tablet: keep previous subtle effect
+      if (width >= 1024) {
+        const rect = el.getBoundingClientRect()
+        const span = Math.max(vh * 0.5, 1)
+        const scrolled = Math.min(Math.max(-rect.top, 0), span)
+        const p = Math.min(Math.max(scrolled / span, 0), 1)
+        setFx({
+          contentOpacity: 1 - p,
+          contentScale: 1 + p * 0.1,
+          bgOpacity: 1 - p,
+          blur: p * 10
+        })
+        return
+      }
+
+      // Mobile: start animating ONLY after the phone is fully visible
+      if (!phoneEl) {
+        setFx({ contentOpacity: 1, contentScale: 1, bgOpacity: 1, blur: 0 })
+        return
+      }
+
+      const phoneRect = phoneEl.getBoundingClientRect()
+      const phoneFullyVisible = phoneRect.top >= 0 && phoneRect.bottom <= (vh - 8)
+
+      if (!phoneFullyVisible) {
+        // Before the phone is fully visible, keep everything crisp
+        setFx({ contentOpacity: 1, contentScale: 1, bgOpacity: 1, blur: 0 })
+        return
+      }
+
+      // Start progress once fully visible; increase as the bottom of phone moves above viewport bottom
+      const delta = Math.max(0, vh - phoneRect.bottom) // 0 at fully visible, grows as you scroll further
+      const span = Math.max(vh * 0.6, 1)
+      const p = Math.min(delta / span, 1)
+
       setFx({
         contentOpacity: 1 - p,
-        contentScale: 1 + p * 0.1,
+        contentScale: 1 + p * 0.08,
         bgOpacity: 1 - p,
         blur: p * 10
       })
     }
+
     const onScroll = () => {
       if (raf) cancelAnimationFrame(raf)
       raf = requestAnimationFrame(update)
     }
+    const onResize = () => {
+      if (raf) cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(update)
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onResize)
     update()
     return () => {
       window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
       if (raf) cancelAnimationFrame(raf)
     }
   }, [])
@@ -49,8 +92,8 @@ const HeroSection: React.FC = () => {
 
       <div className="container-custom flex-1">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center h-full py-4 md:py-0">
-          {/* Left Content */}
-          <header className="text-center lg:text-left overflow-hidden">
+          {/* Left Content (rendered first on mobile) */}
+          <header className="text-center lg:text-left overflow-hidden order-1">
             {/* Content wrapper with blur/scale/opacity applied */}
             <div style={{
               opacity: fx.contentOpacity,
@@ -94,10 +137,11 @@ const HeroSection: React.FC = () => {
             </div>
           </header>
 
-          {/* Right Content - Phone Mockup */}
-          <div className="flex justify-center lg:justify-end overflow-hidden">
+          {/* Right Content - Phone Mockup (second on mobile) */}
+          <div className="flex justify-center lg:justify-end overflow-hidden order-2">
             <div className="scale-90 sm:scale-95 md:scale-100">
               <div
+                ref={phoneRef}
                 className="relative overflow-hidden"
                 style={{
                   opacity: fx.contentOpacity,
