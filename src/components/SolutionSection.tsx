@@ -8,6 +8,11 @@ const SolutionSection: React.FC = () => {
   const containerRef = useRef(null)
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   const solutions = [
     {
       id: 1,
@@ -56,7 +61,7 @@ const SolutionSection: React.FC = () => {
   ]
 
   return (
-    <section ref={containerRef} className="relative w-full min-h-screen pt-24 overflow-x-hidden">
+    <section id="solutions" ref={containerRef} className="relative w-full min-h-screen pt-24 overflow-x-hidden">
       {/* Section Header (static) */}
       <div className="bg-white w-full min-h-[calc(100vh-6rem)] flex items-center">
         <div className="max-w-5xl mx-auto text-center px-6">
@@ -104,6 +109,7 @@ const SolutionSection: React.FC = () => {
               isHovered={hoveredCard === solution.id}
               onHover={() => setHoveredCard(solution.id)}
               onLeave={() => setHoveredCard(null)}
+              onGetStartedClick={() => scrollToId('early-access')}
             />
           </div>
         ))}
@@ -127,13 +133,15 @@ interface SolutionCardProps {
   isHovered: boolean
   onHover: () => void
   onLeave: () => void
+  onGetStartedClick: () => void
 }
 
 const SolutionCard: React.FC<SolutionCardProps> = ({ 
   solution, 
   isHovered,
   onHover,
-  onLeave
+  onLeave,
+  onGetStartedClick
 }) => {
   return (
     <div className="relative w-full min-h-[calc(100vh-6rem)] flex items-center overflow-hidden">
@@ -197,7 +205,11 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   </div>
 
                   {/* CTA Button */}
-                  <button className="relative bg-trovo-green text-white font-bold px-8 py-4 lg:px-12 lg:py-5 rounded-2xl hover:bg-trovo-green-dark transition-colors duration-200 text-lg lg:text-xl shadow-xl border-2 border-trovo-green/20">
+                  <button
+                    type="button"
+                    onClick={onGetStartedClick}
+                    className="relative bg-trovo-green text-white font-bold px-8 py-4 lg:px-12 lg:py-5 rounded-2xl hover:bg-trovo-green-dark transition-colors duration-200 text-lg lg:text-xl shadow-xl border-2 border-trovo-green/20"
+                  >
                     <span className="flex items-center justify-center">Get Started</span>
                   </button>
                 </div>
