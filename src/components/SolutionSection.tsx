@@ -8,8 +8,9 @@ const SolutionSection: React.FC = () => {
   const containerRef = useRef(null)
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
-  const scrollToId = (id: string) => {
-    const el = document.getElementById(id)
+  // Smooth scroll handler for CTAs
+  const handleScrollToEarlyAccess = () => {
+    const el = document.getElementById('early-access')
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
@@ -77,21 +78,15 @@ const SolutionSection: React.FC = () => {
             Four groundbreaking financial solutions designed to maximize your earnings, 
             simplify your payments, and revolutionize how you manage money
           </p>
-          {/* Stats Preview (no icons, static) */}
+          {/* Stats Preview (remove decorative dots) */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
             {solutions.map((solution) => (
               <div
                 key={solution.id}
                 className="text-center p-6 bg-gray-50 rounded-2xl border border-gray-100"
               >
-                {/* simple colored dot instead of emoji */}
-                <div className="flex items-center justify-center mb-3">
-                  <span
-                    className="inline-block w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: solution.accentColor }}
-                    aria-hidden="true"
-                  />
-                </div>
+                {/* Removed green dot */}
+                {/* Title + subtitle only */}
                 <div className="text-2xl font-bold text-gray-900 mb-2">{solution.stats}</div>
                 <div className="text-sm font-medium text-gray-600">{solution.title}</div>
               </div>
@@ -109,7 +104,7 @@ const SolutionSection: React.FC = () => {
               isHovered={hoveredCard === solution.id}
               onHover={() => setHoveredCard(solution.id)}
               onLeave={() => setHoveredCard(null)}
-              onGetStartedClick={() => scrollToId('early-access')}
+              onClickCTA={handleScrollToEarlyAccess}
             />
           </div>
         ))}
@@ -133,7 +128,7 @@ interface SolutionCardProps {
   isHovered: boolean
   onHover: () => void
   onLeave: () => void
-  onGetStartedClick: () => void
+  onClickCTA: () => void
 }
 
 const SolutionCard: React.FC<SolutionCardProps> = ({ 
@@ -141,7 +136,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   isHovered,
   onHover,
   onLeave,
-  onGetStartedClick
+  onClickCTA
 }) => {
   return (
     <div className="relative w-full min-h-[calc(100vh-6rem)] flex items-center overflow-hidden">
@@ -174,12 +169,8 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                     {solution.description}
                   </p>
 
-                  {/* Stats Badge */}
+                  {/* Stats Badge (no green dot) */}
                   <div className="inline-flex items-center bg-trovo-green/10 backdrop-blur-md px-6 py-3 lg:px-8 lg:py-4 rounded-2xl border border-trovo-green/20 shadow-lg">
-                    <span
-                      className="w-3 h-3 rounded-full mr-3 shadow-sm"
-                      style={{ backgroundColor: solution.accentColor }}
-                    />
                     <span className="text-lg lg:text-xl xl:text-2xl font-bold text-gray-900">{solution.stats}</span>
                   </div>
 
@@ -207,7 +198,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
                   {/* CTA Button */}
                   <button
                     type="button"
-                    onClick={onGetStartedClick}
+                    onClick={onClickCTA}
                     className="relative bg-trovo-green text-white font-bold px-8 py-4 lg:px-12 lg:py-5 rounded-2xl hover:bg-trovo-green-dark transition-colors duration-200 text-lg lg:text-xl shadow-xl border-2 border-trovo-green/20"
                   >
                     <span className="flex items-center justify-center">Get Started</span>

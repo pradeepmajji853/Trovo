@@ -58,6 +58,11 @@ const HeroSection: React.FC = () => {
     return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize); if (raf) cancelAnimationFrame(raf) }
   }, [])
 
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <section
       ref={sectionRef}
@@ -97,8 +102,20 @@ const HeroSection: React.FC = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <button className="btn-primary w-full sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-7 py-3 sm:py-3.5">Join Early Access</button>
-                <button className="w-full sm:w-auto border-2 border-trovo-green text-trovo-green font-semibold text-sm sm:text-base px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-trovo-green hover:text-white transition-all duration-300">Learn More</button>
+                <button
+                  type="button"
+                  onClick={() => scrollToId('early-access')}
+                  className="btn-primary w-full sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-7 py-3 sm:py-3.5"
+                >
+                  Join Early Access
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToId('problem')}
+                  className="w-full sm:w-auto border-2 border-trovo-green text-trovo-green font-semibold text-sm sm:text-base px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-trovo-green hover:text-white transition-all duration-300"
+                >
+                  Learn More
+                </button>
               </div>
 
               <div className="hidden md:grid grid-cols-3 gap-6 mt-8 pt-6 border-t border-gray-200">

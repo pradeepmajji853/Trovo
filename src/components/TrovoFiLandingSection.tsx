@@ -1,9 +1,5 @@
 import NativeSEO from '../components/NativeSEO'
 
-const IconDot = () => (
-  <span className="inline-block w-6 h-6 rounded-full bg-trovo-green align-middle" aria-hidden="true" />
-)
-
 const TrovoFiLandingSection = () => {
   return (
     <>
@@ -24,17 +20,14 @@ const TrovoFiLandingSection = () => {
             </p>
             <div className="grid md:grid-cols-3 gap-8 mt-12">
               <div className="text-center">
-                <div className="mb-4 flex justify-center"><IconDot /></div>
                 <h3 className="text-xl font-semibold mb-2">India's #1 Choice</h3>
                 <p className="text-gray-600">Most trusted fintech platform for credit card optimization</p>
               </div>
               <div className="text-center">
-                <div className="mb-4 flex justify-center"><IconDot /></div>
                 <h3 className="text-xl font-semibold mb-2">Instant Rewards</h3>
                 <p className="text-gray-600">Convert points to cash in under 4 clicks</p>
               </div>
               <div className="text-center">
-                <div className="mb-4 flex justify-center"><IconDot /></div>
                 <h3 className="text-xl font-semibold mb-2">Bank-Grade Security</h3>
                 <p className="text-gray-600">RBI compliant with complete data protection</p>
               </div>

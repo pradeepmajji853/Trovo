@@ -47,7 +47,6 @@ const LaunchCountdown: React.FC = () => {
           viewport={{ once: true }}
         >
           <div className="inline-flex items-center space-x-2 bg-trovo-green/20 text-trovo-green px-4 py-2 rounded-full text-sm font-semibold mb-8">
-            <span className="w-2 h-2 bg-trovo-green rounded-full animate-pulse"></span>
             <span>Launching Soon</span>
           </div>
           

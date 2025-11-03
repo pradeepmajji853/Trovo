@@ -20,7 +20,7 @@ const ProblemSection: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section id="problem" className="relative py-20 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-trovo-green-50"></div>
       <div className="relative max-w-7xl mx-auto px-6 z-10">
         <div className="text-center mb-16">

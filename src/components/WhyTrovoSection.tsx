@@ -39,11 +39,8 @@ const WhyTrovoSection = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {benefits.map((benefit, index) => (
             <div key={index} className="group relative bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-trovo-green/20">
-              <div className="mb-4 flex items-center justify-center w-16 h-16 bg-trovo-green/10 rounded-2xl mx-auto">
-                <span className="inline-block w-4 h-4 rounded-full bg-trovo-green" aria-hidden="true" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center md:text-left">{benefit.title}</h3>
+              <p className="text-gray-600 leading-relaxed text-center md:text-left">{benefit.description}</p>
             </div>
           ))}
         </div>
