@@ -28,14 +28,27 @@ const Navbar = () => {
       aria-label="Main navigation for Trovo Fi"
     >
       <div
-        className={`pointer-events-auto relative w-full max-w-6xl mx-0 rounded-2xl sm:rounded-full border backdrop-blur-xl shadow-lg ${
-          isScrolled ? 'bg-white/80 border-gray-200/60' : 'bg-white/60 border-gray-200/40'
+        className={`pointer-events-auto relative w-full max-w-6xl mx-0 rounded-2xl sm:rounded-full border overflow-hidden backdrop-blur-xl transition-all duration-200 ${
+          isScrolled
+            ? 'bg-white/85 border-gray-200/70 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.35)] ring-1 ring-black/5'
+            : 'bg-white/60 border-gray-200/40 shadow-xl ring-1 ring-black/5'
         }`}
       >
-        <div className="flex items-center justify-between px-3 sm:px-4 h-14">
+        {/* Subtle gradient glow clipped inside container */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -inset-px rounded-2xl sm:rounded-full bg-gradient-to-r from-trovo-green/10 via-transparent to-trovo-green/10 blur-xl opacity-60"
+        />
+        {/* Ambient bottom shadow for more depth */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-4 left-6 right-6 h-6 rounded-full bg-black/20 blur-2xl opacity-40"
+        />
+
+        <div className="relative flex items-center justify-between px-3 sm:px-4 h-14">
           {/* Logo */}
           <div className="flex items-center justify-start -ml-1 sm:ml-0">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/50 rounded-xl">
               <div className="relative">
                 <img
                   src="/image2.png"
@@ -57,12 +70,15 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <div key={item.path}>
                 <Link
                   to={item.path}
-                  className="relative px-4 py-2 text-gray-700 font-medium"
+                  aria-current={location.pathname === item.path ? 'page' : undefined}
+                  className={`relative px-4 py-2 rounded-full font-medium transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/40 ${
+                    location.pathname === item.path ? 'text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100/60'
+                  }`}
                 >
                   <span className="relative z-10">{item.name}</span>
 
@@ -73,30 +89,41 @@ const Navbar = () => {
 
                   {/* Bottom line indicator (static on active) */}
                   {location.pathname === item.path && (
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-trovo-green w-3/5" />
-                  )}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-trovo-green w-3/5" />)
+                  }
                 </Link>
               </div>
             ))}
           </div>
 
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 rounded-full bg-trovo-green text-white px-4 py-2 font-semibold shadow-md hover:bg-trovo-green/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+            >
+              <span>Get Early Access</span>
+            </Link>
+          </div>
+
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-xl"
+            className="md:hidden p-2 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/40"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
+            aria-pressed={isMobileMenuOpen}
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center">
               <span
-                className={`w-5 h-0.5 bg-gray-700 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''}`}
+                className={`w-5 h-0.5 bg-gray-700 transition-transform ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''}`}
               />
               <span
-                className={`w-5 h-0.5 bg-gray-700 mt-1 ${isMobileMenuOpen ? 'opacity-0' : ''}`}
+                className={`w-5 h-0.5 bg-gray-700 mt-1 transition-opacity ${isMobileMenuOpen ? 'opacity-0' : ''}`}
               />
               <span
-                className={`w-5 h-0.5 bg-gray-700 mt-1 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : ''}`}
+                className={`w-5 h-0.5 bg-gray-700 mt-1 transition-transform ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : ''}`}
               />
             </div>
           </button>
@@ -106,22 +133,34 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div
             id="mobile-menu"
-            className="md:hidden absolute left-0 right-0 top-full mt-2 mx-2 sm:mx-0 rounded-2xl border border-gray-200/60 bg-white/95 backdrop-blur-xl shadow-xl overflow-hidden"
+            className="md:hidden absolute left-0 right-0 top-full mt-2 mx-2 sm:mx-0 rounded-2xl border border-gray-200/60 bg-white/95 backdrop-blur-xl shadow-2xl overflow-hidden"
           >
             <div className="py-2">
               {navItems.map((item) => (
                 <div key={item.name}>
                   <Link
                     to={item.path}
-                    className={`block px-4 py-3 text-gray-700 font-medium ${
-                      location.pathname === item.path ? 'text-trovo-green bg-trovo-green/10' : ''
+                    className={`block px-4 py-3 font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? 'text-trovo-green bg-trovo-green/10'
+                        : 'text-gray-700 hover:bg-gray-100/70'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
+                    aria-current={location.pathname === item.path ? 'page' : undefined}
                   >
                     {item.name}
                   </Link>
                 </div>
               ))}
+              <div className="border-t border-gray-200/70 mt-2 pt-2">
+                <Link
+                  to="/"
+                  className="block mx-2 my-2 text-center rounded-xl bg-trovo-green text-white px-4 py-3 font-semibold hover:bg-trovo-green/90"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Get Early Access
+                </Link>
+              </div>
             </div>
           </div>
         )}
