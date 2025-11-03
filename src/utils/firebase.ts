@@ -1,7 +1,6 @@
 // Firebase client initialization for Trovo
 // SDKs
 import { initializeApp } from 'firebase/app'
-import { getAnalytics, isSupported as analyticsSupported } from 'firebase/analytics'
 import { getFirestore } from 'firebase/firestore'
 
 // Config provided by user
@@ -18,17 +17,19 @@ const firebaseConfig = {
 // Initialize
 export const app = initializeApp(firebaseConfig)
 
-// Analytics (guard for SSR / unsupported env)
-export let analytics: ReturnType<typeof getAnalytics> | undefined
-;(async () => {
-  try {
-    if (typeof window !== 'undefined' && (await analyticsSupported())) {
-      analytics = getAnalytics(app)
-    }
-  } catch (e) {
-    // no-op if analytics not supported
-  }
-})()
-
 // Firestore
 export const db = getFirestore(app)
+
+// Analytics (loaded only in browser)
+export let analytics: any | undefined
+if (typeof window !== 'undefined') {
+  import('firebase/analytics')
+    .then(({ getAnalytics, isSupported }) =>
+      isSupported().then((ok: boolean) => {
+        if (ok) analytics = getAnalytics(app)
+      })
+    )
+    .catch(() => {
+      // ignore if analytics not available/supported
+    })
+}
