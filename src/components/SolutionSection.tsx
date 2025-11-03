@@ -56,7 +56,7 @@ const SolutionSection: React.FC = () => {
   ]
 
   return (
-    <section ref={containerRef} className="relative w-full min-h-screen pt-24">
+    <section ref={containerRef} className="relative w-full min-h-screen pt-24 overflow-x-hidden">
       {/* Section Header (static) */}
       <div className="bg-white w-full min-h-[calc(100vh-6rem)] flex items-center">
         <div className="max-w-5xl mx-auto text-center px-6">

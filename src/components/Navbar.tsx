@@ -23,12 +23,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed inset-x-0 top-6 z-50 flex justify-center pointer-events-none"
+      className="fixed inset-x-0 top-6 z-50 flex justify-center pointer-events-none overflow-x-hidden"
       role="navigation"
       aria-label="Main navigation for Trovo Fi"
     >
       <div
-        className={`pointer-events-auto relative w-[90%] max-w-6xl mx-0 rounded-2xl sm:rounded-full border backdrop-blur-xl shadow-lg ${
+        className={`pointer-events-auto relative w-full max-w-6xl mx-0 rounded-2xl sm:rounded-full border backdrop-blur-xl shadow-lg ${
           isScrolled ? 'bg-white/80 border-gray-200/60' : 'bg-white/60 border-gray-200/40'
         }`}
       >

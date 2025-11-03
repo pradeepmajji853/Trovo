@@ -37,7 +37,7 @@ const HeroSection: React.FC = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative bg-gradient-to-br from-white to-gray-50 pt-24">
+    <section ref={sectionRef} className="relative bg-gradient-to-br from-white to-gray-50 pt-24 overflow-x-hidden">
       {/* Background accents with fading opacity */}
       <div className="absolute inset-0 overflow-hidden" style={{ opacity: fx.bgOpacity, transition: 'opacity 120ms linear' }}>
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-trovo-green opacity-5 rounded-full blur-3xl" />
@@ -47,7 +47,7 @@ const HeroSection: React.FC = () => {
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center py-16">
           {/* Left Content */}
-          <header className="text-center lg:text-left">
+          <header className="text-center lg:text-left overflow-x-hidden">
             {/* Content wrapper with blur/scale/opacity applied */}
             <div style={{
               opacity: fx.contentOpacity,
@@ -92,9 +92,9 @@ const HeroSection: React.FC = () => {
           </header>
 
           {/* Right Content - Phone Mockup */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end overflow-x-hidden">
             <div
-              className="relative"
+              className="relative overflow-hidden"
               style={{
                 opacity: fx.contentOpacity,
                 transform: `scale(${fx.contentScale})`,

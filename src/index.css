@@ -6,6 +6,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* Prevent horizontal scroll at root */
   }
   
   body {
@@ -17,6 +18,7 @@
     animation: gradientShift 15s ease infinite;
     color: #1a1a1a;
     overflow-x: hidden; /* Prevent horizontal scroll */
+    width: 100%;
   }
   
   /* Ensure full-width sections work properly */
@@ -24,14 +26,30 @@
     box-sizing: border-box;
   }
   
-  /* Handle full-width breakout sections */
+  /* Remove breakout pattern that can trigger horizontal overflow on mobile */
   .full-width-section {
-    width: 100vw;
+    width: 100%;
     position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    overflow-x: hidden;
+  }
+
+  #root, #__next {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  img, svg, video, canvas, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  section, nav, header, footer, main, .container, .container-custom {
+    overflow-x: hidden;
   }
 }
 
