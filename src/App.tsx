@@ -13,6 +13,7 @@ import TermsConditionsPage from './pages/TermsConditionsPage'
 import RefundPolicyPage from './pages/RefundPolicyPage'
 import DataSecurityPage from './pages/DataSecurityPage'
 import NotFoundPage from './pages/NotFoundPage'
+import HashScroll from './components/HashScroll'
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
       <div className="min-h-screen bg-white overflow-x-hidden">
         <ScrollProgressBar />
         <Navbar />
+        <HashScroll />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />

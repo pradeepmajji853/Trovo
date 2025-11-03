@@ -37,18 +37,18 @@ const HeroSection: React.FC = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative h-screen bg-gradient-to-br from-white to-gray-50 overflow-hidden flex flex-col">
+    <section ref={sectionRef} className="relative min-h-[100svh] bg-gradient-to-br from-white to-gray-50 overflow-hidden flex flex-col">
       {/* Background accents with fading opacity */}
       <div className="absolute inset-0 overflow-hidden" style={{ opacity: fx.bgOpacity, transition: 'opacity 120ms linear' }}>
-        <div className="absolute -top-40 -right-40 w-64 h-64 bg-trovo-green opacity-5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-72 h-72 bg-trovo-green-light opacity-5 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-56 sm:w-64 h-56 sm:h-64 bg-trovo-green opacity-5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-64 sm:w-72 h-64 sm:h-72 bg-trovo-green-light opacity-5 rounded-full blur-3xl" />
       </div>
 
-      {/* Spacer to avoid overlapping the floating navbar (approx 6rem) */}
-      <div aria-hidden className="shrink-0 h-20 md:h-24" />
+      {/* Spacer for navbar height on mobile */}
+      <div aria-hidden className="shrink-0 h-16 sm:h-20 md:h-24" />
 
       <div className="container-custom flex-1">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center h-full py-0">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center h-full py-4 md:py-0">
           {/* Left Content */}
           <header className="text-center lg:text-left overflow-hidden">
             {/* Content wrapper with blur/scale/opacity applied */}
@@ -59,22 +59,22 @@ const HeroSection: React.FC = () => {
               transformOrigin: '50% 20% 0',
               transition: 'opacity 120ms linear, filter 120ms linear, transform 120ms linear'
             }}>
-              <div className="mb-5">
-                <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-3">
+              <div className="mb-4 sm:mb-5">
+                <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 sm:gap-2 mb-2 sm:mb-3">
                   {['Do','you','want','your','treasure','back?'].map((w) => (
-                    <h1 key={w} className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 inline-block">{w}</h1>
+                    <h1 key={w} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 inline-block">{w}</h1>
                   ))}
                 </div>
-                <div className="text-2xl md:text-3xl font-semibold text-trovo-green mb-4">Reclaim your financial power</div>
+                <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-trovo-green mb-3 sm:mb-4">Reclaim your financial power</div>
               </div>
 
-              <p className="text-lg md:text-xl text-gray-600 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-4 sm:mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 <strong>Trovo Fi</strong> transforms your unused credit card points into instant rewards. Experience guaranteed UPI cashback, seamless tap-to-pay convenience, and safely share financial resources with trusted friends. Join <strong>Trovo</strong> - India's revolutionary fintech platform.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <button className="btn-primary text-base md:text-lg px-7 py-3.5">Join Early Access</button>
-                <button className="border-2 border-trovo-green text-trovo-green font-semibold px-7 py-3.5 rounded-full hover:bg-trovo-green hover:text-white transition-all duration-300">Learn More</button>
+              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center lg:justify-start">
+                <button className="btn-primary text-sm sm:text-base md:text-lg px-6 sm:px-7 py-3 sm:py-3.5">Join Early Access</button>
+                <button className="border-2 border-trovo-green text-trovo-green font-semibold text-sm sm:text-base px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-trovo-green hover:text-white transition-all duration-300">Learn More</button>
               </div>
 
               <div className="hidden md:grid grid-cols-3 gap-6 mt-6 pt-6 border-t border-gray-200">
@@ -96,7 +96,7 @@ const HeroSection: React.FC = () => {
 
           {/* Right Content - Phone Mockup */}
           <div className="flex justify-center lg:justify-end overflow-hidden">
-            <div className="scale-90 md:scale-100">
+            <div className="scale-90 sm:scale-95 md:scale-100">
               <div
                 className="relative overflow-hidden"
                 style={{
