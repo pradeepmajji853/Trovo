@@ -127,7 +127,8 @@ const TrovoPhoneMockup: React.FC = () => {
           </div>
 
           {/* Static accents */}
-          <div className="absolute top-16 right-4 w-1 h-1 bg-trovo-green rounded-full opacity-60" />
+          {/* Removed tiny decorative green dot */}
+          {/* <div className="absolute top-16 right-4 w-1 h-1 bg-trovo-green rounded-full opacity-60" /> */}
           <div className="absolute bottom-20 left-4 w-0.5 h-0.5 bg-yellow-400 rounded-full opacity-60" />
         </div>
       </div>

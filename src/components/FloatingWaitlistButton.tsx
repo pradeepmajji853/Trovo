@@ -27,7 +27,6 @@ const FloatingWaitlistButton: React.FC = () => {
         whileTap={{ scale: 0.95 }}
       >
         <span className="font-bold text-lg">Join Waitlist</span>
-        <div className="w-2 h-2 bg-white rounded-full" />
         
         {/* Close button */}
         <button

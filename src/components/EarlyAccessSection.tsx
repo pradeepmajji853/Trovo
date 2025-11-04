@@ -130,7 +130,6 @@ const EarlyAccessSection: React.FC = () => {
                   You're now on our priority list. We'll notify you as soon as Trovo launches.
                 </p>
                 <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                  <div className="w-2 h-2 bg-trovo-green rounded-full"></div>
                   <span>Your early access is confirmed</span>
                 </div>
               </div>

@@ -3,6 +3,7 @@ import RewardsMockup from './mockups/RewardsMockup'
 import CashbackMockup from './mockups/CashbackMockup'
 import TapPayMockup from './mockups/TapPayMockup'
 import SharedCreditMockup from './mockups/SharedCreditMockup'
+import FadeInSection from './FadeInSection'
 
 const SolutionSection: React.FC = () => {
   const containerRef = useRef(null)
@@ -66,30 +67,33 @@ const SolutionSection: React.FC = () => {
       {/* Section Header (static) */}
       <div className="bg-white w-full min-h-[calc(100vh-6rem)] flex items-center">
         <div className="max-w-5xl mx-auto text-center px-6">
-          <div className="inline-block mb-6">
-            <span className="bg-trovo-green/10 text-trovo-green px-6 py-3 rounded-full text-lg font-semibold border border-trovo-green/20">
-              We Built The Fix
-            </span>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-            Meet Your New Money Machine
-          </h2>
-          <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 leading-relaxed max-w-4xl mx-auto font-light">
-            Four groundbreaking financial solutions designed to maximize your earnings, 
-            simplify your payments, and revolutionize how you manage money
-          </p>
+          <FadeInSection>
+            <div className="inline-block mb-6">
+              <span className="bg-trovo-green/10 text-trovo-green px-6 py-3 rounded-full text-lg font-semibold border border-trovo-green/20">
+                We Built The Fix
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+              Meet Your New Money Machine
+            </h2>
+            <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 leading-relaxed max-w-4xl mx-auto font-light">
+              Four groundbreaking financial solutions designed to maximize your earnings, 
+              simplify your payments, and revolutionize how you manage money
+            </p>
+          </FadeInSection>
           {/* Stats Preview (remove decorative dots) */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
-            {solutions.map((solution) => (
-              <div
-                key={solution.id}
-                className="text-center p-6 bg-gray-50 rounded-2xl border border-gray-100"
-              >
-                {/* Removed green dot */}
-                {/* Title + subtitle only */}
-                <div className="text-2xl font-bold text-gray-900 mb-2">{solution.stats}</div>
-                <div className="text-sm font-medium text-gray-600">{solution.title}</div>
-              </div>
+            {solutions.map((solution, idx) => (
+              <FadeInSection key={solution.id} delay={idx * 0.08}>
+                <div
+                  className="text-center p-6 bg-gray-50 rounded-2xl border border-gray-100"
+                >
+                  {/* Removed green dot */}
+                  {/* Title + subtitle only */}
+                  <div className="text-2xl font-bold text-gray-900 mb-2">{solution.stats}</div>
+                  <div className="text-sm font-medium text-gray-600">{solution.title}</div>
+                </div>
+              </FadeInSection>
             ))}
           </div>
         </div>
@@ -97,16 +101,18 @@ const SolutionSection: React.FC = () => {
 
       {/* Cards (static, no snap) */}
       <div className="relative w-full">
-        {solutions.map((solution) => (
-          <div key={solution.id}>
-            <SolutionCard
-              solution={solution}
-              isHovered={hoveredCard === solution.id}
-              onHover={() => setHoveredCard(solution.id)}
-              onLeave={() => setHoveredCard(null)}
-              onClickCTA={handleScrollToEarlyAccess}
-            />
-          </div>
+        {solutions.map((solution, idx) => (
+          <FadeInSection key={solution.id} delay={0.1 + idx * 0.1}>
+            <div>
+              <SolutionCard
+                solution={solution}
+                isHovered={hoveredCard === solution.id}
+                onHover={() => setHoveredCard(solution.id)}
+                onLeave={() => setHoveredCard(null)}
+                onClickCTA={handleScrollToEarlyAccess}
+              />
+            </div>
+          </FadeInSection>
         ))}
       </div>
     </section>

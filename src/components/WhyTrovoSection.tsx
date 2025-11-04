@@ -1,3 +1,5 @@
+import FadeInSection from './FadeInSection'
+
 const WhyTrovoSection = () => {
   const stats = [
     { number: "₹15,000+", label: "Saved Annually", description: "Average user savings per year" },
@@ -18,30 +20,36 @@ const WhyTrovoSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-trovo-green-50 via-white to-trovo-green-100"></div>
       <div className="relative max-w-7xl mx-auto px-6 z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">The Numbers Don't Lie</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Real results, real savings, real peace of mind. Here's what happens when you stop leaving money on the table
-          </p>
+          <FadeInSection>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">The Numbers Don't Lie</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Real results, real savings, real peace of mind. Here's what happens when you stop leaving money on the table
+            </p>
+          </FadeInSection>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-trovo-green/20">
-                <div className="text-3xl md:text-4xl font-bold text-trovo-green mb-2">{stat.number}</div>
-                <div className="text-lg font-semibold text-gray-900 mb-1">{stat.label}</div>
-                <div className="text-sm text-gray-600">{stat.description}</div>
+            <FadeInSection key={index} delay={index * 0.1}>
+              <div className="text-center">
+                <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-trovo-green/20">
+                  <div className="text-3xl md:text-4xl font-bold text-trovo-green mb-2">{stat.number}</div>
+                  <div className="text-lg font-semibold text-gray-900 mb-1">{stat.label}</div>
+                  <div className="text-sm text-gray-600">{stat.description}</div>
+                </div>
               </div>
-            </div>
+            </FadeInSection>
           ))}
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {benefits.map((benefit, index) => (
-            <div key={index} className="group relative bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-trovo-green/20">
-              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center md:text-left">{benefit.title}</h3>
-              <p className="text-gray-600 leading-relaxed text-center md:text-left">{benefit.description}</p>
-            </div>
+            <FadeInSection key={index} delay={0.1 + index * 0.1}>
+              <div className="group relative bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-trovo-green/20">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 text-center md:text-left">{benefit.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-center md:text-left">{benefit.description}</p>
+              </div>
+            </FadeInSection>
           ))}
         </div>
       </div>

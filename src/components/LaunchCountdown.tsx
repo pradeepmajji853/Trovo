@@ -46,9 +46,15 @@ const LaunchCountdown: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center space-x-2 bg-trovo-green/20 text-trovo-green px-4 py-2 rounded-full text-sm font-semibold mb-8">
+          <motion.div
+            className="inline-flex items-center space-x-2 bg-white/10 text-white px-4 py-2 rounded-full text-sm font-semibold mb-8"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
             <span>Launching Soon</span>
-          </div>
+          </motion.div>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Trovo Beta Launch Countdown
