@@ -115,7 +115,7 @@ const LaunchCountdown: React.FC = () => {
             
             <div className="flex items-center space-x-2 text-gray-400">
               <span className="text-sm">👥</span>
-              <span className="text-sm">2,847+ already waiting</span>
+              <span className="text-sm">A growing community is waiting</span>
             </div>
           </motion.div>
         </motion.div>

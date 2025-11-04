@@ -13,15 +13,20 @@
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(-45deg, #ffffff, #f0fdf4, #dcfce7, #bbf7d0);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
     color: #1a1a1a;
     overflow-x: hidden; /* Prevent horizontal scroll */
     width: 100%;
   }
 
-  .dark body, .dark {
+  /* Light background animation only in light mode */
+  :root:not(.dark) body {
+    background: linear-gradient(-45deg, #ffffff, #f0fdf4, #dcfce7, #bbf7d0);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  /* Dark background */
+  .dark body {
     background: #0b0e11;
     color: #E5E7EB;
   }
@@ -58,9 +63,9 @@
 }
 
 @layer components {
-  .btn-primary { @apply inline-flex items-center justify-center gap-2 bg-brand text-white font-semibold py-3 px-6 rounded-2xl shadow-sm hover:bg-brand-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 transition-colors duration-200; }
-  .btn-ghost { @apply inline-flex items-center justify-center gap-2 border border-surface-ring text-ink hover:bg-surface-soft py-3 px-6 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 transition-colors duration-200; }
-  .link-muted { @apply text-ink-muted hover:text-ink; }
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 bg-brand text-white font-semibold py-3 px-6 rounded-2xl shadow-sm hover:bg-brand-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 transition-colors duration-200 dark:bg-brand dark:hover:bg-brand-dark; }
+  .btn-ghost { @apply inline-flex items-center justify-center gap-2 border border-surface-ring text-ink hover:bg-surface-soft py-3 px-6 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 transition-colors duration-200 dark:border-white/10 dark:text-gray-200 dark:hover:bg-white/5; }
+  .link-muted { @apply text-ink-muted hover:text-ink dark:text-gray-300 dark:hover:text-white; }
 
   .section-padding { @apply py-16 md:py-24; }
   .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }

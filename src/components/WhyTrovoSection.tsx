@@ -2,10 +2,10 @@ import FadeInSection from './FadeInSection'
 
 const WhyTrovoSection = () => {
   const stats = [
-    { number: "₹15,000+", label: "Saved Annually", description: "Average user savings per year" },
-    { number: "5 Mins", label: "Setup Time", description: "Get started instantly" },
-    { number: "Zero", label: "Hidden Fees", description: "Complete transparency" },
-    { number: "24/7", label: "Support", description: "Always here to help" },
+    { number: "Meaningful savings", label: "Saved Annually", description: "Average user savings per year" },
+    { number: "Set up in moments", label: "Setup Time", description: "Get started instantly" },
+    { number: "No hidden fees", label: "Transparency", description: "Complete clarity" },
+    { number: "Always-on", label: "Support", description: "Here when you need us" },
   ]
 
   const benefits = [

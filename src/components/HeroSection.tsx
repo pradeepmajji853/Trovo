@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import TrovoPhoneMockup from './mockups/TrovoPhoneMockup'
 import { motion } from 'framer-motion'
 import { FadeInWords } from './AnimatedText'
 import ParticlesBackground from './ParticlesBackground'
+import PhoneImageShowcase from './mockups/PhoneImageShowcase'
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null)
@@ -142,7 +142,7 @@ const HeroSection: React.FC = () => {
             </div>
           </header>
 
-          {/* Right Content - Phone Mockup (hidden on mobile and tablet) */}
+          {/* Right Content - Phone Showcase (hidden on mobile and tablet) */}
           <div className="hidden lg:flex justify-center lg:justify-end overflow-hidden order-2">
             <motion.div
               className="scale-90 sm:scale-95 md:scale-100"
@@ -160,8 +160,9 @@ const HeroSection: React.FC = () => {
                   transformOrigin: '50% 20% 0',
                   transition: 'opacity 120ms linear, filter 120ms linear, transform 120ms linear'
                 }}
+                aria-hidden={false}
               >
-                <TrovoPhoneMockup />
+                <PhoneImageShowcase className="pointer-events-none select-none" />
               </div>
             </motion.div>
           </div>

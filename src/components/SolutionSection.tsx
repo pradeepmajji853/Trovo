@@ -35,7 +35,7 @@ const SolutionSection: React.FC = () => {
       benefits: ["Guaranteed cashback on UPI", "Zero spending limits", "Consistent monthly returns"],
       gradient: "from-trovo-green-50 via-white to-trovo-green-50",
       accentColor: "#1DB954",
-      stats: "4 Clicks",
+      stats: "Effortless steps",
       bgPattern: "cashback"
     },
     {

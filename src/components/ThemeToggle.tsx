@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react'
 
+const setMetaTheme = (isDark: boolean) => {
+  const meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null
+  if (meta) meta.setAttribute('content', isDark ? '#0b0e11' : '#ffffff')
+  // Inform the UA for form controls, scrollbars, etc.
+  document.documentElement.style.colorScheme = isDark ? 'dark' : 'light'
+}
+
 const ThemeToggle: React.FC = () => {
   const [isDark, setIsDark] = useState(false)
 
@@ -9,6 +16,7 @@ const ThemeToggle: React.FC = () => {
     const next = stored ? stored === 'dark' : prefersDark
     setIsDark(next)
     document.documentElement.classList.toggle('dark', next)
+    setMetaTheme(next)
   }, [])
 
   const toggle = () => {
@@ -16,6 +24,7 @@ const ThemeToggle: React.FC = () => {
     setIsDark(next)
     document.documentElement.classList.toggle('dark', next)
     localStorage.setItem('theme', next ? 'dark' : 'light')
+    setMetaTheme(next)
   }
 
   return (
@@ -24,7 +33,7 @@ const ThemeToggle: React.FC = () => {
       onClick={toggle}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       aria-pressed={isDark}
-      className="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-gray-200/60 bg-white/80 hover:bg-gray-100 text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/40"
+      className="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-gray-200/60 bg-white/80 hover:bg-gray-100 text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/40 dark:bg-white/10 dark:text-gray-200 dark:border-white/10"
     >
       {isDark ? (
         // Sun icon

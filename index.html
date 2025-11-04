@@ -9,9 +9,25 @@
     <link rel="apple-touch-icon" href="/image2.png?v=2" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Prevent dark-mode flash -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = stored ? stored === 'dark' : prefersDark;
+          var root = document.documentElement;
+          if (isDark) root.classList.add('dark'); else root.classList.remove('dark');
+          // Set theme-color to avoid address bar flash
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', isDark ? '#0b0e11' : '#ffffff');
+        } catch (e) { /* noop */ }
+      })();
+    </script>
+
     <!-- SEO Meta Tags -->
-    <title>Trovo Fi - India's #1 Fintech App | Credit Card Points to Instant Rewards</title>
-    <meta name="description" content="Trovo Fi transforms unused credit card points into instant cash rewards. Experience guaranteed UPI cashback, secure digital payments, and revolutionary fintech services. Join 10,000+ Indians maximizing their financial potential." />
+    <title>Trovo Fi — Your Rewards, Reimagined</title>
+    <meta name="description" content="Your money has more value than you think. Trovo helps you unlock it — rewards, payments, and sharing that simply work." />
     <meta name="keywords" content="trovo, trovo fi, trovo fintech, trovo app, credit card points, instant rewards, UPI cashback, digital payments india, fintech app india, financial technology, money management, credit card optimization, mobile payments, secure transactions, indian fintech" />
     <meta name="author" content="Trovo Fi Private Limited" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -25,8 +41,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://trovo.app/" />
     <meta property="og:site_name" content="Trovo Fi" />
-    <meta property="og:title" content="Trovo Fi - India's #1 Fintech App | Credit Card Points to Instant Rewards" />
-    <meta property="og:description" content="Transform your unused credit card points into instant cash rewards with Trovo Fi. Experience guaranteed UPI cashback and secure digital payments. Join 10,000+ satisfied users." />
+    <meta property="og:title" content="Trovo Fi — Your Rewards, Reimagined" />
+    <meta property="og:description" content="Your money has more value than you think. Trovo helps you unlock it — rewards, payments, and sharing that simply work." />
     <meta property="og:image" content="https://trovo.app/image.png" />
     <meta property="og:image:alt" content="Trovo Fi - Revolutionary Fintech Platform" />
     <meta property="og:image:width" content="1200" />
@@ -38,8 +54,8 @@
     <meta property="twitter:url" content="https://trovo.app/" />
     <meta property="twitter:site" content="@trovoapp" />
     <meta property="twitter:creator" content="@trovoapp" />
-    <meta property="twitter:title" content="Trovo Fi - India's #1 Fintech App | Credit Card Points to Instant Rewards" />
-    <meta property="twitter:description" content="Transform your unused credit card points into instant cash rewards with Trovo Fi. Experience guaranteed UPI cashback and secure digital payments." />
+    <meta property="twitter:title" content="Trovo Fi — Your Rewards, Reimagined" />
+    <meta property="twitter:description" content="Your money has more value than you think. Trovo helps you unlock it — rewards, payments, and sharing that simply work." />
     <meta property="twitter:image" content="https://trovo.app/image.png" />
     <meta property="twitter:image:alt" content="Trovo Fi - Revolutionary Fintech Platform" />
     

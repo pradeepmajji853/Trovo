@@ -72,7 +72,7 @@ const Navbar = () => {
               </div>
               <span
                 className="text-2xl sm:text-3xl font-bold text-trovo-green tracking-tight ml-1"
-                aria-label="Trovo Fi - India's #1 Fintech App"
+                aria-label="Trovo Fi — Your Rewards, Reimagined"
               >
                 Trovo
               </span>
