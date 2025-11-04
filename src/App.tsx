@@ -14,6 +14,9 @@ import RefundPolicyPage from './pages/RefundPolicyPage'
 import DataSecurityPage from './pages/DataSecurityPage'
 import NotFoundPage from './pages/NotFoundPage'
 import HashScroll from './components/HashScroll'
+import HowItWorksPage from './pages/HowItWorksPage'
+import ThankYouPage from './pages/ThankYouPage'
+import CursorRipple from './components/CursorRipple'
 
 function App() {
   useEffect(() => {
@@ -26,7 +29,9 @@ function App() {
   }, [])
   return (
     <Router>
-      <div className="min-h-screen bg-white overflow-x-hidden">
+      <a href="#content" className="skip-to-content">Skip to content</a>
+      <div className="min-h-screen bg-white overflow-x-hidden dark:bg-[#0b0e11]">
+        <CursorRipple />
         <ScrollProgressBar />
         <Navbar />
         <HashScroll />
@@ -34,10 +39,12 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/how-it-works" element={<HowItWorksPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-conditions" element={<TermsConditionsPage />} />
           <Route path="/refund-policy" element={<RefundPolicyPage />} />
           <Route path="/data-security" element={<DataSecurityPage />} />
+          <Route path="/thank-you" element={<ThankYouPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

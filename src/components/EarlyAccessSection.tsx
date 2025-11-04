@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { db, app } from '../utils/firebase'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { getAuth, signInAnonymously } from 'firebase/auth'
+import confetti from 'canvas-confetti'
 
 // One-time anonymous auth helper
 let didAnonAuth = false
@@ -54,6 +55,9 @@ const EarlyAccessSection: React.FC = () => {
         createdAt: serverTimestamp()
       })
       setIsSubmitted(true)
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } })
+      // Navigate to thank you
+      window.location.assign('/thank-you')
     } catch (err: any) {
       console.error('Waitlist submit failed:', err)
       const code = err?.code || ''
@@ -72,24 +76,24 @@ const EarlyAccessSection: React.FC = () => {
   }
 
   return (
-    <section className="relative py-20 overflow-hidden" ref={ref} id="early-access">
+    <section className="relative py-20 overflow-hidden" ref={ref} id="early-access" aria-labelledby="early-access-heading">
       <div className="absolute inset-0 bg-gradient-to-br from-trovo-green via-trovo-green-200 to-white"></div>
       <div className="relative max-w-7xl mx-auto px-6 z-10">
         <div className="text-center max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
-            Don't Wait. <span className="text-trovo-green">Get Ahead</span>
+          <h2 id="early-access-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+            Be first to try Trovo.
           </h2>
 
           <p className="text-xl md:text-2xl mb-12 text-gray-800">
-            While others lose money every month, you'll be earning from day one. First access to India's smartest money moves.
-            <br className="hidden md:block" />
-            <strong className="text-gray-900">No waiting. Just winning.</strong>
+            We’ll be in touch before launch.
           </p>
 
           {!isSubmitted ? (
             <div className="max-w-md mx-auto mb-8">
-              <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4" aria-describedby={error ? 'waitlist-error' : undefined}>
+                <label htmlFor="waitlist-email" className="sr-only">Email</label>
                 <input
+                  id="waitlist-email"
                   type="email"
                   placeholder="Enter your email"
                   value={email}
@@ -101,14 +105,14 @@ const EarlyAccessSection: React.FC = () => {
                     error ? 'border-red-400 bg-white/90' : 'border-white/30 bg-white/80 hover:bg-white/90'
                   }`}
                   aria-invalid={!!error}
-                  aria-describedby={error ? 'waitlist-error' : undefined}
                 />
                 <button
                   type="submit"
                   className="bg-gray-900 text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200 hover:bg-gray-800 disabled:opacity-60 disabled:cursor-not-allowed"
                   disabled={isLoading}
+                  data-attr="cta:join-early-access"
                 >
-                  {isLoading ? 'Submitting...' : 'Join Waitlist'}
+                  {isLoading ? 'Submitting...' : 'Join Early Access'}
                 </button>
               </form>
               {error && (
@@ -118,22 +122,7 @@ const EarlyAccessSection: React.FC = () => {
               )}
             </div>
           ) : (
-            <div className="max-w-md mx-auto mb-8">
-              <div className="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border border-gray-200 shadow-xl">
-                <div className="w-16 h-16 bg-trovo-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-trovo-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold mb-2 text-gray-900">Successfully Added!</h3>
-                <p className="text-lg text-gray-700 mb-4">
-                  You're now on our priority list. We'll notify you as soon as Trovo launches.
-                </p>
-                <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                  <span>Your early access is confirmed</span>
-                </div>
-              </div>
-            </div>
+            <div />
           )}
         </div>
       </div>

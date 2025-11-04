@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import ThemeToggle from './ThemeToggle'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -16,20 +17,18 @@ const Navbar = () => {
   }, [])
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
+    { name: 'About', path: '/about' },
     { name: 'Blog', path: '/blog' },
+    { name: 'Data Security', path: '/data-security' },
   ]
 
   const handleEarlyAccessClick = (e?: React.MouseEvent) => {
-    // If already on home, smooth scroll to the section
     if (location.pathname === '/') {
       e?.preventDefault()
       const el = document.getElementById('early-access')
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       } else {
-        // Fallback to hash if element not found yet
         window.location.hash = '#early-access'
       }
     }
@@ -48,19 +47,16 @@ const Navbar = () => {
             : 'bg-white/60 border-gray-200/40 shadow-xl ring-1 ring-black/5'
         }`}
       >
-        {/* Subtle gradient glow clipped inside container */}
         <div
           aria-hidden
           className="pointer-events-none absolute -inset-px rounded-2xl sm:rounded-full bg-gradient-to-r from-trovo-green/10 via-transparent to-trovo-green/10 blur-xl opacity-60"
         />
-        {/* Ambient bottom shadow for more depth */}
         <div
           aria-hidden
           className="pointer-events-none absolute -bottom-4 left-6 right-6 h-6 rounded-full bg-black/20 blur-2xl opacity-40"
         />
 
         <div className="relative flex items-center justify-between px-2 sm:px-4 h-14">
-          {/* Logo */}
           <div className="flex items-center justify-start -ml-1 sm:ml-0">
             <Link to="/" className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/50 rounded-xl">
               <div className="relative">
@@ -83,7 +79,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <div key={item.path}>
@@ -95,33 +90,26 @@ const Navbar = () => {
                   }`}
                 >
                   <span className="relative z-10">{item.name}</span>
-
-                  {/* Active indicator (static) */}
                   {location.pathname === item.path && (
                     <div className="absolute inset-0 bg-trovo-green/10 rounded-full" />
                   )}
-
-                  {/* Bottom line indicator (static on active) */}
-                  {location.pathname === item.path && (
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-trovo-green w-3/5" />)
-                  }
                 </Link>
               </div>
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-2">
+            <ThemeToggle />
             <Link
               to="/#early-access"
               onClick={handleEarlyAccessClick}
               className="inline-flex items-center gap-2 rounded-full bg-trovo-green text-white px-4 py-2 font-semibold shadow-md hover:bg-trovo-green/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              data-attr="cta:join-early-access"
             >
-              <span>Get Early Access</span>
+              <span>Join Early Access</span>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden p-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/40"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -145,17 +133,14 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay (outside rounded container to avoid clipping) */}
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 z-[60]" aria-modal="true" role="dialog">
-          {/* Backdrop */}
           <button
             aria-label="Close menu"
             className="absolute inset-0 bg-black/30"
             onClick={() => setIsMobileMenuOpen(false)}
           />
 
-          {/* Panel */}
           <div
             id="mobile-menu"
             className="absolute left-3 right-3 top-20 sm:top-24 rounded-2xl border border-gray-200/60 bg-white/95 backdrop-blur-xl shadow-2xl overflow-hidden"
@@ -178,12 +163,16 @@ const Navbar = () => {
                 </div>
               ))}
               <div className="border-t border-gray-200/70 mt-2 pt-2">
+                <div className="px-4 py-2">
+                  <ThemeToggle />
+                </div>
                 <Link
                   to="/#early-access"
                   onClick={(e) => { handleEarlyAccessClick(e); setIsMobileMenuOpen(false) }}
                   className="block mx-2 my-2 text-center rounded-xl bg-trovo-green text-white px-4 py-3 font-semibold hover:bg-trovo-green/90"
+                  data-attr="cta:join-early-access"
                 >
-                  Get Early Access
+                  Join Early Access
                 </Link>
               </div>
             </div>

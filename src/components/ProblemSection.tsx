@@ -1,62 +1,45 @@
 import React from 'react';
-import FadeInSection from './FadeInSection';
+import { motion } from 'framer-motion'
+import FadeInSection from './FadeInSection'
 
 const ProblemSection: React.FC = () => {
   const problems = [
-    {
-      title: "Wasted Credit Card Points",
-      description: "Credit card points are confusing and often expire unused. Indians lose over ₹8,000 crore worth of rewards annually.",
-      impact: "₹8,000+ crore lost annually"
-    },
-    {
-      title: "UPI Without Rewards", 
-      description: "UPI payments rarely include rewards unless using a credit card on UPI. Given average annual spending, users may be missing out on ₹1,500+ in cashback or points per month.",
-      impact: "₹1,500+ missed monthly"
-    },
-    {
-      title: "Unsafe Card Sharing",
-      description: "Friends ask to use your credit card for better rewards but sharing cards is risky and tracking payments is a nightmare.",
-      impact: "Security risks daily"
-    }
-  ];
+    { title: 'Points go unused.', description: 'Complex programs lead to value left on the table.' },
+    { title: 'UPI rarely rewards.', description: 'Everyday payments don’t feel rewarding.' },
+    { title: 'Card sharing feels risky.', description: 'Security and tracking are hard.' },
+  ]
 
   return (
-    <section id="problem" className="relative py-20 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-trovo-green-50"></div>
-      <div className="relative max-w-7xl mx-auto px-6 z-10">
-        <div className="text-center mb-16">
+    <section id="problem" className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50" />
+      <div className="relative container-custom section-padding">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
           <FadeInSection>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">Your Money Is Bleeding</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Every day, millions of Indians lose thousands of rupees to expired rewards, missed cashback, and unsafe financial decisions
-            </p>
-          </FadeInSection>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {problems.map((problem, index) => (
-            <FadeInSection key={index} delay={index * 0.1}>
-              <div
-                className="group relative bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-gray-200/50"
-              >
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">{problem.title}</h3>
-                <p className="text-gray-600 text-center leading-relaxed mb-4">{problem.description}</p>
-                <div className="inline-block bg-gradient-to-r from-red-100 to-orange-100 text-red-700 text-xs font-semibold px-4 py-2 rounded-full mx-auto block text-center">
-                  {problem.impact}
-                </div>
-              </div>
-            </FadeInSection>
-          ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <FadeInSection delay={0.2}>
-            <div className="inline-flex items-center space-x-4 text-gray-500 bg-white/60 backdrop-blur-sm px-8 py-4 rounded-full border border-gray-200/50">
-              <span className="text-sm font-medium">But there's a better way</span>
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">The problem</h2>
+              <ul className="space-y-3">
+                {problems.map((p) => (
+                  <li key={p.title} className="flex items-start gap-3">
+                    <span className="mt-1 inline-block h-2 w-2 rounded-full bg-gray-300" aria-hidden />
+                    <div>
+                      <div className="font-semibold text-gray-900">{p.title}</div>
+                      <p className="text-gray-600">{p.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </FadeInSection>
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+              <h3 className="text-2xl font-bold text-gray-900">The promise</h3>
+              <p className="mt-3 text-gray-700">Trovo turns complexity into effortless value.</p>
+              <a href="/how-it-works" className="mt-6 inline-flex items-center text-trovo-green font-semibold hover:underline">See how it works →</a>
+            </div>
+          </motion.div>
         </div>
       </div>
+      <div aria-hidden className="h-16 bg-gradient-to-b from-transparent to-white" />
     </section>
   );
 };

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import TrovoPhoneMockup from './mockups/TrovoPhoneMockup'
 import { motion } from 'framer-motion'
 import { FadeInWords } from './AnimatedText'
+import ParticlesBackground from './ParticlesBackground'
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null)
@@ -70,6 +71,7 @@ const HeroSection: React.FC = () => {
       ref={sectionRef}
       className="relative min-h-[calc(100svh-4rem)] sm:min-h-[calc(100svh-5rem)] md:min-h-[calc(100svh-6rem)] bg-gradient-to-br from-white to-gray-50 overflow-hidden flex flex-col"
     >
+      <ParticlesBackground />
       {/* Background accents with fading opacity + subtle blur animation */}
       <div className="absolute inset-0 overflow-hidden" style={{ opacity: fx.bgOpacity, filter: `blur(${fx.blur * 0.3}px)`, transition: 'opacity 120ms linear, filter 120ms linear' }}>
         <motion.div
@@ -100,28 +102,19 @@ const HeroSection: React.FC = () => {
             }}>
               <div className="mb-4 sm:mb-5">
                 {/* Animated headline */}
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
-                  <FadeInWords text="Do you want your treasure back?" />
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900">
+                  <FadeInWords text="Your money has more value than you think." />
                 </h1>
                 {/* Animated subline */}
                 <motion.div
-                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-trovo-green mt-3"
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-trovo-green mt-3"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3, ease: 'easeOut' }}
                 >
-                  Reclaim your financial power
+                  Trovo helps you unlock it — rewards, payments, and sharing that simply work.
                 </motion.div>
               </div>
-
-              <motion.p
-                className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 leading-relaxed max-w-xl mx-auto lg:mx-0"
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.45, ease: 'easeOut' }}
-              >
-                <strong>Trovo Fi</strong> transforms your unused credit card points into instant rewards. Experience guaranteed UPI cashback, seamless tap-to-pay convenience, and safely share financial resources with trusted friends. Join <strong>Trovo</strong> - India's revolutionary fintech platform.
-              </motion.p>
 
               <motion.div
                 className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
@@ -129,36 +122,23 @@ const HeroSection: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
               >
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.06, y: -1 }}
+                  whileTap={{ scale: 0.97 }}
                   type="button"
                   onClick={() => scrollToId('early-access')}
                   className="btn-primary w-full sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-7 py-3 sm:py-3.5"
+                  data-attr="cta:join-early-access"
                 >
                   Join Early Access
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollToId('problem')}
-                  className="w-full sm:w-auto border-2 border-trovo-green text-trovo-green font-semibold text-sm sm:text-base px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-trovo-green hover:text-white transition-all duration-300"
+                </motion.button>
+                <a
+                  href="/how-it-works"
+                  className="btn-ghost w-full sm:w-auto text-sm sm:text-base"
                 >
-                  Learn More
-                </button>
+                  How Trovo Works →
+                </a>
               </motion.div>
-
-              <div className="hidden md:grid grid-cols-3 gap-6 mt-8 pt-6 border-t border-gray-200">
-                <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-trovo-green">500+</div>
-                  <div className="text-sm md:text-base text-gray-600">Users Surveyed</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-trovo-green">4 Clicks</div>
-                  <div className="text-sm md:text-base text-gray-600">Redemption Time</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-trovo-green">100%</div>
-                  <div className="text-sm md:text-base text-gray-600">Digital First</div>
-                </div>
-              </div>
             </div>
           </header>
 

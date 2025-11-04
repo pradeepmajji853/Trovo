@@ -20,104 +20,62 @@
     overflow-x: hidden; /* Prevent horizontal scroll */
     width: 100%;
   }
+
+  .dark body, .dark {
+    background: #0b0e11;
+    color: #E5E7EB;
+  }
   
   /* Ensure full-width sections work properly */
   * {
     box-sizing: border-box;
   }
   
-  /* Remove breakout pattern that can trigger horizontal overflow on mobile */
-  .full-width-section {
-    width: 100%;
-    position: relative;
+  /* Skip to content for a11y */
+  .skip-to-content {
+    position: absolute;
+    top: -40px;
     left: 0;
-    right: 0;
-    margin-left: 0;
-    margin-right: 0;
-    overflow-x: hidden;
+    background: #111827;
+    color: white;
+    padding: 8px 12px;
+    z-index: 1000;
+    border-radius: 0 0 8px 0;
+  }
+  .skip-to-content:focus { top: 0; }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    html:focus-within { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
 
-  #root, #__next {
-    overflow-x: hidden;
-    width: 100%;
-  }
+  #root, #__next { overflow-x: hidden; width: 100%; }
 
-  img, svg, video, canvas, iframe {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
+  img, svg, video, canvas, iframe { max-width: 100%; height: auto; display: block; }
 
-  section, nav, header, footer, main, .container, .container-custom {
-    overflow-x: hidden;
-  }
+  section, nav, header, footer, main, .container, .container-custom { overflow-x: hidden; }
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-trovo-green hover:bg-trovo-green-light text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
-  }
-  
-  .btn-primary:hover {
-    box-shadow: 0 0 20px rgba(29, 185, 84, 0.4);
-  }
-  
-  .btn-secondary {
-    @apply border-2 border-trovo-green text-trovo-green hover:bg-trovo-green hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
-  }
-  
-  .section-padding {
-    @apply py-16 md:py-24;
-  }
-  
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-  
-  .text-gradient {
-    @apply bg-gradient-to-r from-trovo-green to-trovo-green-light bg-clip-text text-transparent;
-  }
-  
-  .text-gradient-white {
-    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #ffffff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .glass-effect {
-    @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl;
-  }
-  
-  .floating-element {
-    @apply animate-float;
-  }
-  
-  .floating-element-delayed {
-    @apply animate-float-delayed;
-  }
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 bg-brand text-white font-semibold py-3 px-6 rounded-2xl shadow-sm hover:bg-brand-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 transition-colors duration-200; }
+  .btn-ghost { @apply inline-flex items-center justify-center gap-2 border border-surface-ring text-ink hover:bg-surface-soft py-3 px-6 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 transition-colors duration-200; }
+  .link-muted { @apply text-ink-muted hover:text-ink; }
+
+  .section-padding { @apply py-16 md:py-24; }
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .text-gradient { @apply bg-gradient-to-r from-trovo-green to-trovo-green-light bg-clip-text text-transparent; }
+  .glass-effect { @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl; }
+
+  /* Existing utilities retained */
+  .floating-element { @apply animate-float; }
+  .floating-element-delayed { @apply animate-float-delayed; }
 
   /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #1DB954;
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #18a147;
-  }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; }
+  ::-webkit-scrollbar-thumb { background: #1DB954; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #18a147; }
 
-  /* Navbar backdrop blur support */
-  .backdrop-blur-md {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
+  .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 }

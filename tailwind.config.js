@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,6 +8,22 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Brand system tokens
+        brand: {
+          DEFAULT: '#1DB954',
+          foreground: '#FFFFFF',
+          dark: '#18a147',
+          light: '#1ed760'
+        },
+        ink: {
+          DEFAULT: '#111827',
+          muted: '#6B7280',
+        },
+        surface: {
+          DEFAULT: '#FFFFFF',
+          soft: '#F9FAFB',
+          ring: '#E5E7EB'
+        },
         'trovo-green': '#1DB954',
         'trovo-green-light': '#1ed760',
         'trovo-green-dark': '#18a147',
