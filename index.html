@@ -9,21 +9,7 @@
     <link rel="apple-touch-icon" href="/image2.png?v=2" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Prevent dark-mode flash -->
-    <script>
-      (function() {
-        try {
-          var stored = localStorage.getItem('theme');
-          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var isDark = stored ? stored === 'dark' : prefersDark;
-          var root = document.documentElement;
-          if (isDark) root.classList.add('dark'); else root.classList.remove('dark');
-          // Set theme-color to avoid address bar flash
-          var meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) meta.setAttribute('content', isDark ? '#0b0e11' : '#ffffff');
-        } catch (e) { /* noop */ }
-      })();
-    </script>
+    <!-- Removed dark-mode preflight; enforce single light theme -->
 
     <!-- SEO Meta Tags -->
     <title>Trovo Fi — Your Rewards, Reimagined</title>

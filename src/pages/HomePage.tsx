@@ -5,6 +5,8 @@ import ProblemSection from '../components/ProblemSection'
 import FeatureCards from '../components/FeatureCards'
 import TrustSecurity from '../components/TrustSecurity'
 import EarlyAccessSection from '../components/EarlyAccessSection'
+import ScrollStory from '../components/ScrollStory'
+import FeatureMarquee from '../components/FeatureMarquee'
 
 const HomePage = () => {
   const structuredData = {
@@ -27,8 +29,10 @@ const HomePage = () => {
       />
       <main id="content">
         <HeroSection />
+        <ScrollStory />
         <ProblemSection />
         <FeatureCards />
+        <FeatureMarquee />
         <TrustSecurity />
         <EarlyAccessSection />
       </main>

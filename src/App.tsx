@@ -30,7 +30,7 @@ function App() {
   return (
     <Router>
       <a href="#content" className="skip-to-content">Skip to content</a>
-      <div className="min-h-screen bg-white overflow-x-hidden dark:bg-[#0b0e11]">
+      <div className="min-h-screen bg-white overflow-x-hidden">
         <CursorRipple />
         <ScrollProgressBar />
         <Navbar />

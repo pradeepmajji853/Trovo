@@ -98,7 +98,7 @@ const NativeSEO: React.FC<SEOProps> = ({
     updateMetaTag('twitter:image', seoOgImage)
     updateMetaTag('twitter:image:alt', 'Trovo Fintech App')
 
-    // Update additional meta tags
+    // Update additional meta tags (light theme only)
     updateMetaTag('theme-color', '#1DB954')
     updateMetaTag('msapplication-TileColor', '#1DB954')
     updateMetaTag('apple-mobile-web-app-capable', 'yes')

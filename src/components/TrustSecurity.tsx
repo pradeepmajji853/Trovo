@@ -9,17 +9,17 @@ const bullets = [
 
 const TrustSecurity: React.FC = () => {
   return (
-    <section className="section-padding bg-white dark:bg-[#0b0e11]">
+    <section className="section-padding bg-white">
       <div className="container-custom">
         <FadeInSection>
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-gray-100 text-center">Trust & Security</h2>
-          <p className="mt-4 text-gray-600 dark:text-gray-300 text-center">Built to protect your data and your peace of mind.</p>
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 text-center">Trust & Security</h2>
+          <p className="mt-4 text-gray-600 text-center">Built to protect your data and your peace of mind.</p>
         </FadeInSection>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {bullets.map((b, i) => (
             <FadeInSection key={b} delay={i * 0.08}>
-              <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-6">
-                <p className="text-gray-900 dark:text-gray-100 font-medium">{b}</p>
+              <div className="rounded-2xl border border-gray-200 bg-white p-6">
+                <p className="text-gray-900 font-medium">{b}</p>
               </div>
             </FadeInSection>
           ))}

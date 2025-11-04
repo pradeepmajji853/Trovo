@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import ThemeToggle from './ThemeToggle'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -99,7 +98,6 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center gap-2">
-            <ThemeToggle />
             <Link
               to="/#early-access"
               onClick={handleEarlyAccessClick}
@@ -163,9 +161,6 @@ const Navbar = () => {
                 </div>
               ))}
               <div className="border-t border-gray-200/70 mt-2 pt-2">
-                <div className="px-4 py-2">
-                  <ThemeToggle />
-                </div>
                 <Link
                   to="/#early-access"
                   onClick={(e) => { handleEarlyAccessClick(e); setIsMobileMenuOpen(false) }}
