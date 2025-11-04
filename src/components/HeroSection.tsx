@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import TrovoPhoneMockup from './mockups/TrovoPhoneMockup'
+import { motion } from 'framer-motion'
+import { FadeInWords } from './AnimatedText'
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null)
@@ -70,8 +72,16 @@ const HeroSection: React.FC = () => {
     >
       {/* Background accents with fading opacity + subtle blur animation */}
       <div className="absolute inset-0 overflow-hidden" style={{ opacity: fx.bgOpacity, filter: `blur(${fx.blur * 0.3}px)`, transition: 'opacity 120ms linear, filter 120ms linear' }}>
-        <div className="absolute -top-40 -right-40 w-56 sm:w-64 h-56 sm:h-64 bg-trovo-green opacity-5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-64 sm:w-72 h-64 sm:h-72 bg-trovo-green-light opacity-5 rounded-full blur-3xl" />
+        <motion.div
+          className="absolute -top-40 -right-40 w-56 sm:w-64 h-56 sm:h-64 bg-trovo-green opacity-5 rounded-full blur-3xl"
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 10, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute -bottom-40 -left-40 w-64 sm:w-72 h-64 sm:h-72 bg-trovo-green-light opacity-5 rounded-full blur-3xl"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 12, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        />
       </div>
 
       {/* Spacer for navbar height (matches calc above) */}
@@ -89,19 +99,36 @@ const HeroSection: React.FC = () => {
               transition: 'opacity 120ms linear, filter 120ms linear, transform 120ms linear'
             }}>
               <div className="mb-4 sm:mb-5">
-                <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 sm:gap-2 mb-2 sm:mb-3">
-                  {['Do','you','want','your','treasure','back?'].map((w) => (
-                    <h1 key={w} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 inline-block">{w}</h1>
-                  ))}
-                </div>
-                <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-trovo-green mb-4">Reclaim your financial power</div>
+                {/* Animated headline */}
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+                  <FadeInWords text="Do you want your treasure back?" />
+                </h1>
+                {/* Animated subline */}
+                <motion.div
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-trovo-green mt-3"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3, ease: 'easeOut' }}
+                >
+                  Reclaim your financial power
+                </motion.div>
               </div>
 
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <motion.p
+                className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 leading-relaxed max-w-xl mx-auto lg:mx-0"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45, ease: 'easeOut' }}
+              >
                 <strong>Trovo Fi</strong> transforms your unused credit card points into instant rewards. Experience guaranteed UPI cashback, seamless tap-to-pay convenience, and safely share financial resources with trusted friends. Join <strong>Trovo</strong> - India's revolutionary fintech platform.
-              </p>
+              </motion.p>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+              <motion.div
+                className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
+              >
                 <button
                   type="button"
                   onClick={() => scrollToId('early-access')}
@@ -116,7 +143,7 @@ const HeroSection: React.FC = () => {
                 >
                   Learn More
                 </button>
-              </div>
+              </motion.div>
 
               <div className="hidden md:grid grid-cols-3 gap-6 mt-8 pt-6 border-t border-gray-200">
                 <div className="text-center">
@@ -137,7 +164,12 @@ const HeroSection: React.FC = () => {
 
           {/* Right Content - Phone Mockup (hidden on mobile and tablet) */}
           <div className="hidden lg:flex justify-center lg:justify-end overflow-hidden order-2">
-            <div className="scale-90 sm:scale-95 md:scale-100">
+            <motion.div
+              className="scale-90 sm:scale-95 md:scale-100"
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
+            >
               <div
                 ref={phoneRef}
                 className="relative overflow-hidden"
@@ -151,7 +183,7 @@ const HeroSection: React.FC = () => {
               >
                 <TrovoPhoneMockup />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
