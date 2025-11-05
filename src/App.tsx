@@ -14,7 +14,6 @@ import RefundPolicyPage from './pages/RefundPolicyPage'
 import DataSecurityPage from './pages/DataSecurityPage'
 import NotFoundPage from './pages/NotFoundPage'
 import HashScroll from './components/HashScroll'
-import HowItWorksPage from './pages/HowItWorksPage'
 import ThankYouPage from './pages/ThankYouPage'
 import CursorRipple from './components/CursorRipple'
 
@@ -39,7 +38,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/blog" element={<BlogPage />} />
-          <Route path="/how-it-works" element={<HowItWorksPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-conditions" element={<TermsConditionsPage />} />
           <Route path="/refund-policy" element={<RefundPolicyPage />} />

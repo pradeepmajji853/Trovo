@@ -14,7 +14,7 @@ const HomePage = () => {
     "@type": "Organization",
     "name": "Trovo",
     "url": "https://trovo.app",
-    "logo": "https://trovo.app/image2.png",
+    "logo": "https://trovo.app/trovo.svg",
     "description": "Trovo helps you unlock value from rewards, payments, and sharing — simply and securely.",
     "address": { "@type": "PostalAddress", "addressCountry": "IN" }
   }

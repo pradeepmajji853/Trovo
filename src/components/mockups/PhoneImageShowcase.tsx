@@ -6,9 +6,13 @@ interface PhoneImageShowcaseProps {
   className?: string
 }
 
+// Use all photos from public (PNG files with and without spaces in names)
 const IMAGES = [
   encodeURI('/iPhone 16 - 20.png'),
+  encodeURI('/iPhone 16 - 21.png'),
+  encodeURI('/iPhone 16 - 22.png'),
   encodeURI('/iPhone 16 - 30.png'),
+  encodeURI('/welcome screen.png')
 ]
 
 const PhoneImageShowcase: React.FC<PhoneImageShowcaseProps> = ({ autoPlayMs = 4000, className = '' }) => {

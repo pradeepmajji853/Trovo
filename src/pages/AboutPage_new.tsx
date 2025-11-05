@@ -37,12 +37,9 @@ const AboutPage = () => {
               <div className="flex justify-center">
                 <div className="bg-white p-12 rounded-3xl shadow-2xl border border-gray-100">
                   <img
-                    src="/trovo-logo.svg"
+                    src="/trovo.svg"
                     alt="Trovo Logo"
                     className="h-40 w-40 mx-auto object-contain mb-6"
-                    style={{
-                      filter: 'brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(2000%) hue-rotate(80deg) brightness(95%) contrast(105%)'
-                    }}
                   />
                   <h3 className="text-3xl font-bold text-center text-gray-900 mb-2">Trovo Fintech</h3>
                   <p className="text-center text-gray-600 text-lg">Smart Financial Solutions for India</p>

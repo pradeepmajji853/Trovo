@@ -12,7 +12,7 @@ const BlogPage = () => {
       "name": "Trovo",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://trovo.app/image2.png"
+        "url": "https://trovo.app/trovo.svg"
       }
     },
     "url": "https://trovo.app/blog"

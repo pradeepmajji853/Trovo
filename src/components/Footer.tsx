@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="py-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center space-x-3 mb-6">
-              <img src="/image.png" alt="Trovo Fi Logo" className="h-8 w-auto filter brightness-0 invert" itemProp="logo" />
+              <img src="/trovo.svg" alt="Trovo Fi Logo" className="h-8 w-auto" itemProp="logo" />
               <span className="text-xl font-bold" itemProp="name">Trovo</span>
             </div>
             <p className="text-gray-400 leading-relaxed mb-6" itemProp="description">

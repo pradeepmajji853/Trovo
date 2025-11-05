@@ -1,61 +1,18 @@
-import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
-import { useRef } from 'react'
+import React from 'react'
+import ScrollReveal from './ScrollReveal'
 
 const LINES = [
+  'not points. not promises.',
+  'real cash, in real time.',
   'the story of trovo',
-  'begins with trust.',
-  'direct cash on bills.',
-  'upi that gives back.',
-  'one tap. nfc. go.',
-  'credit, private by default.',
-  'rewards that feel fair.',
-  'payments that feel effortless.',
+  'begins where others stop rewarding.',
+  'every bill, a bonus.',
+  'every tap, a win.',
+  'every payment, instant value.',
+  'no coins. no chips.',
+  'just money — back to you.',
   'this is trovo.',
 ]
-
-// Letter-level animation variants for brightening one-by-one
-const containerVariants = { hidden: {}, visible: {} }
-const letterVariants = {
-  hidden: { opacity: 0.25 },
-  visible: { opacity: 1 }
-}
-
-const TextLine: React.FC<{ text: string; delay?: number }> = ({ text, delay = 0 }) => {
-  const ref = useRef<HTMLParagraphElement | null>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 80%', 'end 30%'] })
-  const blurMV = useTransform(scrollYProgress, [0, 1], [2.5, 0])
-  const letter = useTransform(scrollYProgress, [0, 1], [0.2, 0])
-  const y = useTransform(scrollYProgress, [0, 1], [16, 0])
-  const filter = useMotionTemplate`blur(${blurMV}px)`
-  // dark text that “brightens” from muted to full (line-level color)
-  const r = useTransform(scrollYProgress, [0, 1], [17, 17]) // base gray-900
-  const g = useTransform(scrollYProgress, [0, 1], [24, 24])
-  const b = useTransform(scrollYProgress, [0, 1], [39, 39])
-  const a = useTransform(scrollYProgress, [0, 1], [0.45, 1])
-  const color = useMotionTemplate`rgba(${r}, ${g}, ${b}, ${a})`
-
-  const chars = Array.from(text)
-
-  return (
-    <motion.p
-      ref={ref}
-      className="whitespace-pre leading-[1.05] tracking-tight font-serif text-[11.5vw] sm:text-[8.5vw] md:text-[6.5vw] lg:text-[5vw] xl:text-[4.4vw] will-change-transform"
-      style={{ filter, letterSpacing: letter, y, color }}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      transition={{ staggerChildren: 0.02, delayChildren: delay, ease: 'easeOut' }}
-      viewport={{ once: true, amount: 0.6 }}
-      aria-label={text}
-    >
-      {chars.map((ch, i) => (
-        <motion.span key={i} variants={letterVariants} className="inline-block">
-          {ch}
-        </motion.span>
-      ))}
-    </motion.p>
-  )
-}
 
 const ScrollStory: React.FC = () => {
   return (
@@ -67,13 +24,22 @@ const ScrollStory: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-20 sm:py-24 md:py-28">
         <div className="mb-8 sm:mb-10">
           <p id="story-title" className="text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase text-trovo-green-dark/80">
-            not everyone makes it in.
+            real rewards. no noise.
           </p>
         </div>
 
         <div className="space-y-6 sm:space-y-7 md:space-y-8">
-          {LINES.map((t, i) => (
-            <TextLine key={t} text={t} delay={i * 0.04} />
+          {LINES.map((line, index) => (
+            <ScrollReveal
+              key={`${line}-${index}`}
+              baseOpacity={0}
+              enableBlur={true}
+              baseRotation={5}
+              blurStrength={10}
+              containerClassName="leading-[1.05] tracking-tight font-serif text-[11.5vw] sm:text-[8.5vw] md:text-[6.5vw] lg:text-[5vw] xl:text-[4.4vw] text-gray-900"
+            >
+              {line}
+            </ScrollReveal>
           ))}
         </div>
 

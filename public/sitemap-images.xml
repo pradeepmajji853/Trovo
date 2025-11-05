@@ -3,13 +3,13 @@
   <url>
     <loc>https://trovo.app/</loc>
     <image:image>
-      <image:loc>https://trovo.app/image.png</image:loc>
+      <image:loc>https://trovo.app/trovo.svg</image:loc>
       <image:title>Trovo Fi - Revolutionary Fintech Platform</image:title>
       <image:caption>Trovo Fi transforms credit card points into instant rewards and provides seamless digital payments for Indian users</image:caption>
       <image:license>https://trovo.app/terms-conditions</image:license>
     </image:image>
     <image:image>
-      <image:loc>https://trovo.app/image2.png</image:loc>
+      <image:loc>https://trovo.app/trovo.svg</image:loc>
       <image:title>Trovo Fi Logo</image:title>
       <image:caption>Official logo of Trovo Fi, a trusted fintech platform for credit card optimization</image:caption>
       <image:license>https://trovo.app/terms-conditions</image:license>

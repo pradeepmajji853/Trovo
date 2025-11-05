@@ -127,12 +127,12 @@ export const generateArticleStructuredData = (article: {
       "name": "Trovo",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://trovo.app/image2.png"
+        "url": "https://trovo.app/trovo.svg"
       }
     },
     "datePublished": article.datePublished,
     "dateModified": article.dateModified || article.datePublished,
-    "image": article.image || "https://trovo.app/image.png",
+    "image": article.image || "https://trovo.app/trovo.svg",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://trovo.app"

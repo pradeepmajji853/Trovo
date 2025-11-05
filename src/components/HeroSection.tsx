@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { FadeInWords } from './AnimatedText'
+import { BlurInText } from './AnimatedText'
 import ParticlesBackground from './ParticlesBackground'
 import PhoneImageShowcase from './mockups/PhoneImageShowcase'
 
@@ -101,26 +101,24 @@ const HeroSection: React.FC = () => {
               transition: 'opacity 120ms linear, filter 120ms linear, transform 120ms linear'
             }}>
               <div className="mb-4 sm:mb-5">
-                {/* Animated headline */}
+                {/* Animated headline with blur effect */}
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900">
-                  <FadeInWords text="Your money has more value than you think." />
+                  <BlurInText text="Your money has more value than you think." delay={0.2} />
                 </h1>
-                {/* Animated subline */}
-                <motion.div
-                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-trovo-green mt-3"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3, ease: 'easeOut' }}
-                >
-                  Trovo helps you unlock it — rewards, payments, and sharing that simply work.
-                </motion.div>
+                {/* Animated subline with word-by-word blur */}
+                <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-trovo-green mt-3">
+                  <BlurInText 
+                    text="Trovo helps you unlock it — rewards, payments, and sharing that simply work." 
+                    delay={1.2}
+                  />
+                </div>
               </div>
 
               <motion.div
                 className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
+                transition={{ duration: 0.5, delay: 3.5, ease: 'easeOut' }}
               >
                 <motion.button
                   whileHover={{ scale: 1.06, y: -1 }}
@@ -132,12 +130,7 @@ const HeroSection: React.FC = () => {
                 >
                   Join Early Access
                 </motion.button>
-                <a
-                  href="/how-it-works"
-                  className="btn-ghost w-full sm:w-auto text-sm sm:text-base"
-                >
-                  How Trovo Works →
-                </a>
+                {/* Removed How Trovo Works link */}
               </motion.div>
             </div>
           </header>

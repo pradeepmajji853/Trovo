@@ -17,7 +17,7 @@ const defaultSEO = {
   title: 'Trovo - Unlock Your Hidden Treasure | Fintech App India',
   description: 'Turn your unused credit card points into instant rewards and seamless payments. Join thousands of Indians maximizing their financial potential with Trovo.',
   keywords: 'trovo, trovo fi, fintech, credit cards, rewards, UPI, payments, India, financial technology, mobile app, credit card points, instant rewards, cashback, digital payments, financial app, money management, trovo fintech, trovo app, trovo india',
-  ogImage: '/image.png',
+  ogImage: '/trovo.svg',
   ogType: 'website',
   twitterCard: 'summary_large_image'
 }

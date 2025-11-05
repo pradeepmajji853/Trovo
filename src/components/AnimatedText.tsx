@@ -6,6 +6,78 @@ interface AnimatedTextProps {
   delay?: number
 }
 
+export const BlurInText: React.FC<AnimatedTextProps> = ({
+  text,
+  className = "",
+  delay = 0
+}) => {
+  const words = text.split(" ")
+
+  return (
+    <span className={className}>
+      {words.map((word, index) => (
+        <motion.span
+          key={index}
+          className="inline-block mr-2"
+          initial={{ 
+            opacity: 0,
+            filter: "blur(10px)",
+            y: 20
+          }}
+          animate={{ 
+            opacity: 1,
+            filter: "blur(0px)",
+            y: 0
+          }}
+          transition={{
+            delay: delay + index * 0.1,
+            duration: 0.8,
+            ease: [0.23, 1, 0.320, 1] // Custom easing for smooth effect
+          }}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </span>
+  )
+}
+
+export const BlurInLetters: React.FC<AnimatedTextProps> = ({
+  text,
+  className = "",
+  delay = 0
+}) => {
+  const letters = text.split("")
+
+  return (
+    <span className={className}>
+      {letters.map((letter, index) => (
+        <motion.span
+          key={index}
+          className="inline-block"
+          initial={{ 
+            opacity: 0,
+            filter: "blur(8px)",
+            scale: 1.2
+          }}
+          animate={{ 
+            opacity: 1,
+            filter: "blur(0px)",
+            scale: 1
+          }}
+          transition={{
+            delay: delay + index * 0.03,
+            duration: 0.6,
+            ease: "easeOut"
+          }}
+        >
+          {letter === " " ? "\u00A0" : letter}
+        </motion.span>
+      ))}
+    </span>
+  )
+}
+
 export const TypewriterText: React.FC<AnimatedTextProps> = ({ 
   text, 
   className = "", 
