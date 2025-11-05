@@ -11,8 +11,8 @@ const imgs: string[] = [
 ]
 
 const FeatureCard: React.FC<{ img: string }> = ({ img }) => (
-  <figure className="relative h-full aspect-[9/16] overflow-hidden rounded-3xl shadow-lg bg-white">
-    <img src={img} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+  <figure className="relative h-full aspect-[9/19] sm:aspect-[9/18] md:aspect-[9/19] overflow-hidden rounded-3xl shadow-lg bg-white">
+    <img src={img} alt="" aria-hidden className="absolute inset-0 h-full w-full object-contain" />
   </figure>
 )
 

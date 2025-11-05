@@ -1,8 +1,7 @@
 import PageTransition from '../components/PageTransition'
 import NativeSEO from '../components/NativeSEO'
 import HeroSection from '../components/HeroSection'
-import ProblemSection from '../components/ProblemSection'
-import FeatureCards from '../components/FeatureCards'
+import BeforeAfterTrovo from '../components/BeforeAfterTrovo'
 import TrustSecurity from '../components/TrustSecurity'
 import EarlyAccessSection from '../components/EarlyAccessSection'
 import ScrollStory from '../components/ScrollStory'
@@ -30,8 +29,7 @@ const HomePage = () => {
       <main id="content">
         <HeroSection />
         <ScrollStory />
-        <ProblemSection />
-        <FeatureCards />
+        <BeforeAfterTrovo />
         <FeatureMarquee />
         <TrustSecurity />
         <EarlyAccessSection />

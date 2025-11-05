@@ -130,12 +130,27 @@ const HeroSection: React.FC = () => {
                 >
                   Join Early Access
                 </motion.button>
-                {/* Removed How Trovo Works link */}
               </motion.div>
+
+              {/* Mobile/Tablet Phone Showcase (was hidden previously) */}
+              <div className="mt-8 lg:hidden flex justify-center">
+                <div
+                  className="relative"
+                  style={{
+                    opacity: fx.contentOpacity,
+                    transform: `scale(${Math.min(fx.contentScale, 1.03)})`,
+                    filter: `blur(${Math.min(fx.blur, 2)}px)`,
+                    transformOrigin: '50% 20% 0',
+                    transition: 'opacity 120ms linear, filter 120ms linear, transform 120ms linear'
+                  }}
+                >
+                  <PhoneImageShowcase className="pointer-events-none select-none" />
+                </div>
+              </div>
             </div>
           </header>
 
-          {/* Right Content - Phone Showcase (hidden on mobile and tablet) */}
+          {/* Right Content - Phone Showcase (visible on large screens) */}
           <div className="hidden lg:flex justify-center lg:justify-end overflow-hidden order-2">
             <motion.div
               className="scale-90 sm:scale-95 md:scale-100"
