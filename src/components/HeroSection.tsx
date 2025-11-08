@@ -58,17 +58,17 @@ const HeroSection: React.FC = () => {
         }}
       >
         <div className="max-w-screen-xl mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center py-6 sm:py-8 md:py-12 lg:py-0">
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-6 lg:gap-8 xl:gap-12 items-center py-6 sm:py-8 md:py-12 lg:py-0">
             {/* Left Content */}
-            <header className="text-center lg:text-left overflow-hidden order-1">
-              <div>
+            <header className="text-center lg:text-left overflow-hidden order-1 hero-content-left">
+              <div className="animated-text-container">
                 <div className="mb-4 sm:mb-5">
                   {/* Animated headline with blur effect */}
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-semibold text-gray-900 leading-tight" style={{ minHeight: '1.2em' }}>
                     <BlurInText text="Your money has more value than you think." delay={0.2} />
                   </h1>
                   {/* Animated subline with word-by-word blur */}
-                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-trovo-green mt-3">
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-xl xl:text-2xl font-medium text-trovo-green mt-3 leading-relaxed" style={{ minHeight: '2.4em' }}>
                     <BlurInText 
                       text="Trovo redeems what your bank forgets—making every payment rewarding and sharing effortless." 
                       delay={1.2}
@@ -77,7 +77,7 @@ const HeroSection: React.FC = () => {
                 </div>
 
                 <motion.div
-                  className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+                  className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mt-8 lg:mt-10"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 3.5, ease: 'easeOut' }}
@@ -102,9 +102,9 @@ const HeroSection: React.FC = () => {
             </header>
 
             {/* Right Content - Phone Showcase (visible on large screens) */}
-            <div className="hidden lg:flex justify-center lg:justify-end pr-4 xl:pr-8 overflow-visible order-2">
+            <div className="hidden lg:flex justify-end xl:justify-center items-center order-2 hero-mockup-right">
               <motion.div
-                className="scale-90 sm:scale-95 md:scale-100"
+                className="relative flex justify-center items-center w-full max-w-sm xl:max-w-md"
                 initial={{ opacity: 0, y: 20, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}

@@ -14,25 +14,28 @@ export const BlurInText: React.FC<AnimatedTextProps> = ({
   const words = text.split(" ")
 
   return (
-    <span className={className}>
+    <span className={className} style={{ display: 'block', minHeight: '1.2em' }}>
       {words.map((word, index) => (
         <motion.span
           key={index}
           className="inline-block mr-2"
+          style={{ 
+            willChange: 'opacity, filter',
+            backfaceVisibility: 'hidden',
+            transform: 'translateZ(0)'
+          }}
           initial={{ 
             opacity: 0,
-            filter: "blur(10px)",
-            y: 20
+            filter: "blur(8px)"
           }}
           animate={{ 
             opacity: 1,
-            filter: "blur(0px)",
-            y: 0
+            filter: "blur(0px)"
           }}
           transition={{
-            delay: delay + index * 0.1,
-            duration: 0.8,
-            ease: [0.23, 1, 0.320, 1] // Custom easing for smooth effect
+            delay: delay + index * 0.08,
+            duration: 0.6,
+            ease: [0.25, 0.46, 0.45, 0.94] // Smoother easing
           }}
         >
           {word}

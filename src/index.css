@@ -78,6 +78,32 @@
   .hero-section { contain: layout style paint; }
   .phone-showcase { transform: translateZ(0); will-change: opacity; }
   .motion-safe { will-change: transform, opacity; backface-visibility: hidden; }
+  
+  /* Hero section alignment improvements */
+  @media (min-width: 1024px) {
+    .hero-content-left { 
+      padding-right: 1rem;
+      max-width: 36rem; 
+    }
+    .hero-mockup-right { 
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-left: 1rem;
+    }
+  }
+
+  /* Prevent text animation layout shifts */
+  .animated-text-container {
+    contain: layout style;
+    will-change: auto;
+  }
+  
+  .animated-text-container h1,
+  .animated-text-container div {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
 
   /* Hide scrollbar helper */
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

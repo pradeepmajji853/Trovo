@@ -37,7 +37,7 @@ const PhoneImageShowcase: React.FC<PhoneImageShowcaseProps> = ({ autoPlayMs = 40
   return (
     <div className={`relative inline-block ${className}`} aria-label="Trovo app preview">
       {/* Fixed container to prevent layout shifts */}
-      <div className="w-[14rem] sm:w-[16rem] md:w-[18rem] lg:w-[22rem] xl:w-[24rem] aspect-[9/19.5] relative">
+      <div className="w-[14rem] sm:w-[16rem] md:w-[18rem] lg:w-[18rem] xl:w-[20rem] aspect-[9/19.5] relative mx-auto lg:mx-0">
         <AnimatePresence mode="sync">
           <motion.img
             key={IMAGES[index]}
