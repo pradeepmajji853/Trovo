@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
-const collageSrc = encodeURI('/college.jpeg')
+const collageSrc = encodeURI('/college.webp')
 
 // Floating accent bubble positions
 const bubbles = [
