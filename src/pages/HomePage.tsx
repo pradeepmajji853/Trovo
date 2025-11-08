@@ -5,7 +5,7 @@ import BeforeAfterTrovo from '../components/BeforeAfterTrovo'
 import TrustSecurity from '../components/TrustSecurity'
 import EarlyAccessSection from '../components/EarlyAccessSection'
 import ScrollStory from '../components/ScrollStory'
-import FeatureMarquee from '../components/FeatureMarquee'
+import CollageShowcase from '../components/CollageShowcase'
 
 const HomePage = () => {
   const structuredData = {
@@ -30,7 +30,7 @@ const HomePage = () => {
         <HeroSection />
         <ScrollStory />
         <BeforeAfterTrovo />
-        <FeatureMarquee />
+        <CollageShowcase />
         <TrustSecurity />
         <EarlyAccessSection />
       </main>

@@ -30,8 +30,10 @@ const Footer = () => {
               <meta itemProp="industry" content="Financial Technology" />
             </div>
             <div className="mt-4 flex items-center gap-3 text-gray-400">
-              <a href="https://twitter.com/trovoapp" rel="me noopener" aria-label="Trovo on X" className="hover:text-white">X</a>
-              <a href="https://linkedin.com/company/trovo" rel="me noopener" aria-label="Trovo on LinkedIn" className="hover:text-white">LinkedIn</a>
+              <a href="https://www.facebook.com/share/1D86KnXRSx/" rel="me noopener" aria-label="Trovo on Facebook" className="hover:text-white">Facebook</a>
+              <a href="https://x.com/TROVOFI?t=-ZT6oQYStT4SjfFydYiaPw&s=08" rel="me noopener" aria-label="Trovo on X (Twitter)" className="hover:text-white">X</a>
+              <a href="https://www.instagram.com/trovofi?igsh=ZjA5cWt2MGdkaG94&utm_source=qr" rel="me noopener" aria-label="Trovo on Instagram" className="hover:text-white">Instagram</a>
+              <a href="https://www.linkedin.com/company/trovo-fi-private-limited" rel="me noopener" aria-label="Trovo on LinkedIn" className="hover:text-white">LinkedIn</a>
             </div>
           </div>
 

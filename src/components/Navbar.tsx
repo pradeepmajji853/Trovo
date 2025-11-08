@@ -46,22 +46,18 @@ const Navbar = () => {
             : 'bg-white/70 border-gray-200/60 ring-1 ring-black/5'
         }`}
       >
-        {/* Dynamic Island glossy effect */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-white/40 via-white/20 to-transparent"
         />
-        {/* Top glossy highlight */}
         <div
           aria-hidden
           className="pointer-events-none absolute top-1 left-6 right-6 h-px rounded-full bg-gradient-to-r from-transparent via-white/80 to-transparent"
         />
-        {/* Bottom inner shadow */}
         <div
           aria-hidden
           className="pointer-events-none absolute bottom-1 left-6 right-6 h-px rounded-full bg-gradient-to-r from-transparent via-gray-300/50 to-transparent"
         />
-        {/* Outer glow */}
         <div
           aria-hidden
           className="pointer-events-none absolute -inset-1 rounded-full bg-gradient-to-r from-trovo-green/15 via-blue-500/5 to-trovo-green/15 blur-lg opacity-60"
@@ -154,7 +150,6 @@ const Navbar = () => {
             id="mobile-menu"
             className="absolute left-3 right-3 top-16 sm:top-20 rounded-2xl border border-gray-200/60 bg-white/95 backdrop-blur-xl overflow-hidden"
           >
-            {/* Mobile menu glossy effect */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/30 via-white/10 to-transparent"

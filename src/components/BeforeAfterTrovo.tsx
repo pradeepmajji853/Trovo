@@ -2,44 +2,16 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 const beforePanels = [
-  {
-    icon: '💳',
-    title: 'Lost in Points',
-    desc: 'Credit card rewards that expire before you can use them.',
-  },
-  {
-    icon: '📱',
-    title: 'UPI Feels Empty',
-    desc: 'You scan, pay, repeat — and get nothing back.',
-  },
-  {
-    icon: '👥',
-    title: 'Sharing Feels Risky',
-    desc: 'Lending your card shouldn’t mean losing control.',
-  },
+  { title: 'Lost in Points', desc: 'Credit card rewards that expire before you can use them.', icon: encodeURI('/12335.svg') },
+  { title: 'UPI Feels Empty', desc: 'You scan, pay, repeat — and get nothing back.', icon: encodeURI('/12336.svg') },
+  { title: 'Sharing Feels Risky', desc: 'Lending your card shouldn’t mean losing control.', icon: encodeURI('/12337.svg') },
 ]
 
 const afterCards = [
-  {
-    icon: '💰',
-    title: 'Direct Cash Rewards',
-    desc: 'No points. No vouchers. Just instant cashback on every bill payment.',
-  },
-  {
-    icon: '📲',
-    title: '1% UPI Cashback',
-    desc: 'Every UPI transaction gives you guaranteed 1% — no luck, just logic.',
-  },
-  {
-    icon: '🔒',
-    title: 'Hidden Card Issuances',
-    desc: 'Private, secure, and customizable virtual cards for every need.',
-  },
-  {
-    icon: '📡',
-    title: 'One‑Tap NFC Payments',
-    desc: 'Pay in seconds. Tap your phone. Done.',
-  },
+  { title: 'Points Redemption', desc: 'Redeem points before they expire—no chips, no vouchers, only cash rewards.', icon: encodeURI('/12338.svg') },
+  { title: '1% UPI Cashback', desc: 'Every UPI transaction gives you guaranteed 1% — no luck, just logic.', icon: encodeURI('/trovo1233.svg') },
+  { title: 'Hidden Card Issuances', desc: 'Private, secure, and customizable virtual cards for every need.', icon: encodeURI('/1233 4.svg') },
+  { title: 'One‑Tap NFC Payments', desc: 'Pay in seconds. Tap your phone. Done.', icon: encodeURI('/12335.svg') },
 ]
 
 const BeforeAfterTrovo: React.FC = () => {
@@ -96,8 +68,12 @@ const BeforeAfterTrovo: React.FC = () => {
                   transition={{ duration: 9, repeat: Infinity, repeatType: 'mirror' }}
                 />
                 <div className="relative">
-                  <div className="text-4xl select-none" aria-hidden>{p.icon}</div>
-                  <h3 className="mt-4 text-xl font-semibold">{p.title}</h3>
+                  <div className="flex items-center gap-3">
+                    {p.icon && (
+                      <img src={p.icon} alt={p.title} className="w-10 h-10 shrink-0" loading="lazy" draggable={false} />
+                    )}
+                    <h3 className="text-xl font-semibold">{p.title}</h3>
+                  </div>
                   <p className="mt-2 text-gray-600">{p.desc}</p>
                   {/* brand underline */}
                   <div className="mt-6 h-[3px] w-full rounded-full bg-gray-100 overflow-hidden">
@@ -172,8 +148,10 @@ const BeforeAfterTrovo: React.FC = () => {
                 {/* glow */}
                 <div aria-hidden className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-trovo-green/5 to-trovo-green-light/10" />
                 <div className="relative">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="h-9 w-9 rounded-xl bg-trovo-green/10 text-trovo-green flex items-center justify-center text-lg select-none" aria-hidden>{c.icon}</div>
+                  <div className="flex items-center gap-3 mb-2">
+                    {c.icon && (
+                      <img src={c.icon} alt={c.title} className="w-10 h-10 shrink-0" loading="lazy" draggable={false} />
+                    )}
                     <h3 className="text-xl font-semibold text-gray-900">{c.title}</h3>
                   </div>
                   <p className="text-gray-700">{c.desc}</p>
