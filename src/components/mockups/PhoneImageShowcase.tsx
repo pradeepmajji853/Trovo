@@ -13,6 +13,19 @@ const IMAGES = [
   '/Rectangle-5.svg'
 ].map(encodeURI)
 
+// Preload images to prevent layout shifts
+const preloadImages = () => {
+  IMAGES.forEach(src => {
+    const img = new Image()
+    img.src = src
+  })
+}
+
+// Preload on module load
+if (typeof window !== 'undefined') {
+  preloadImages()
+}
+
 const PhoneImageShowcase: React.FC<PhoneImageShowcaseProps> = ({ autoPlayMs = 4000, className = '' }) => {
   const [index, setIndex] = useState(0)
 
@@ -23,19 +36,23 @@ const PhoneImageShowcase: React.FC<PhoneImageShowcaseProps> = ({ autoPlayMs = 40
 
   return (
     <div className={`relative inline-block ${className}`} aria-label="Trovo app preview">
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={IMAGES[index]}
-          src={IMAGES[index]}
-          alt="Trovo product mockup"
-          className="block w-[14rem] sm:w-[16rem] md:w-[18rem] lg:w-[22rem] xl:w-[24rem] h-auto select-none drop-shadow-sm"
-          initial={{ opacity: 0, scale: 1.01 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.995 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          draggable={false}
-        />
-      </AnimatePresence>
+      {/* Fixed container to prevent layout shifts */}
+      <div className="w-[14rem] sm:w-[16rem] md:w-[18rem] lg:w-[22rem] xl:w-[24rem] aspect-[9/19.5] relative">
+        <AnimatePresence mode="sync">
+          <motion.img
+            key={IMAGES[index]}
+            src={IMAGES[index]}
+            alt="Trovo product mockup"
+            className="absolute inset-0 w-full h-full object-contain select-none drop-shadow-sm will-change-opacity"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
+            draggable={false}
+            style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
+          />
+        </AnimatePresence>
+      </div>
     </div>
   )
 }

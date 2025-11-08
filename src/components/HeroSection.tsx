@@ -1,3 +1,4 @@
+
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 import { BlurInText } from './AnimatedText'
@@ -8,12 +9,12 @@ const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null)
   const phoneRef = useRef<HTMLDivElement | null>(null)
 
-  // Match About page scroll-driven animation
+  // Optimized scroll-driven animation with reduced layout impact
   const { scrollYProgress } = useScroll()
   const contentOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
-  const contentScale = useTransform(scrollYProgress, [0, 0.4], [1, 2.0])
+  const contentScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.5]) // Reduced scale to prevent extreme transforms
   const backgroundOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
-  const blurAmount = useTransform(scrollYProgress, [0, 0.3], [0, 50])
+  const blurAmount = useTransform(scrollYProgress, [0, 0.3], [0, 20]) // Reduced blur for performance
   const contentFilter = useMotionTemplate`blur(${blurAmount}px)`
 
   const scrollToId = (id: string) => {
@@ -24,7 +25,8 @@ const HeroSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[calc(100svh-4rem)] sm:min-h-[calc(100svh-5rem)] md:min-h-[calc(100svh-6rem)] bg-gradient-to-br from-white to-gray-50 overflow-hidden flex flex-col"
+      className="hero-section relative min-h-[calc(100svh-4rem)] sm:min-h-[calc(100svh-5rem)] md:min-h-[calc(100svh-6rem)] bg-gradient-to-br from-white to-gray-50 overflow-hidden flex flex-col"
+      style={{ contain: 'layout style' }}
     >
       <ParticlesBackground />
       {/* Background accents */}
@@ -43,10 +45,17 @@ const HeroSection: React.FC = () => {
 
       <div aria-hidden className="shrink-0 h-16 sm:h-20 md:h-24" />
 
-      {/* Full-width wrapper with global transforms */}
+      {/* Full-width wrapper with optimized transforms */}
       <motion.div
         className="flex-1 flex items-center w-full"
-        style={{ scale: contentScale, opacity: contentOpacity, filter: contentFilter, transformOrigin: '50% 20% 0' }}
+        style={{ 
+          scale: contentScale, 
+          opacity: contentOpacity, 
+          filter: contentFilter, 
+          transformOrigin: '50% 20% 0',
+          willChange: 'transform, opacity, filter',
+          backfaceVisibility: 'hidden'
+        }}
       >
         <div className="max-w-screen-xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center py-6 sm:py-8 md:py-12 lg:py-0">
@@ -87,7 +96,7 @@ const HeroSection: React.FC = () => {
 
                 {/* Mobile/Tablet Phone Showcase */}
                 <div className="mt-8 lg:hidden flex justify-center">
-                  <PhoneImageShowcase className="pointer-events-none select-none" />
+                  <PhoneImageShowcase className="phone-showcase pointer-events-none select-none" />
                 </div>
               </div>
             </header>
@@ -101,7 +110,7 @@ const HeroSection: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
               >
                 <div ref={phoneRef} className="relative" aria-hidden={false}>
-                  <PhoneImageShowcase className="pointer-events-none select-none" />
+                  <PhoneImageShowcase className="phone-showcase pointer-events-none select-none" />
                 </div>
               </motion.div>
             </div>

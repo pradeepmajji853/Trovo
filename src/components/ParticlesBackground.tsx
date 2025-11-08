@@ -6,23 +6,31 @@ const ParticlesBackground = () => {
   const options = useMemo<ISourceOptions>(() => ({
     fullScreen: { enable: false },
     background: { color: { value: 'transparent' } },
-    fpsLimit: 60,
-    detectRetina: true,
+    fpsLimit: 30, // Reduced FPS for better performance
+    detectRetina: false, // Disable retina detection to reduce calculations
     particles: {
-      number: { value: 35, density: { enable: true, area: 800 } },
-      color: { value: ['#1DB954', '#34d399', '#10b981'] },
-      opacity: { value: 0.12 },
-      size: { value: { min: 1, max: 3 } },
-      move: { enable: true, speed: 0.6, direction: 'none', outModes: { default: 'out' } },
+      number: { value: 20, density: { enable: true, area: 1000 } }, // Fewer particles
+      color: { value: ['#1DB954'] }, // Single color to reduce complexity
+      opacity: { value: 0.08 }, // Lower opacity to reduce visual impact
+      size: { value: { min: 1, max: 2 } }, // Smaller particles
+      move: { 
+        enable: true, 
+        speed: 0.3, // Slower movement
+        direction: 'none', 
+        outModes: { default: 'out' },
+        straight: false,
+        random: false
+      },
       links: { enable: false },
       shape: { type: 'circle' }
     },
     interactivity: {
-      events: { onHover: { enable: true, mode: 'repulse' }, resize: true },
-      modes: { repulse: { distance: 80, duration: 0.4 } }
+      events: { onHover: { enable: false }, resize: true }, // Disable hover interactions
+      modes: {}
     },
     pauseOnOutsideViewport: true,
-    reduceDuplicates: true
+    reduceDuplicates: true,
+    smooth: true
   }), [])
 
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -30,8 +38,12 @@ const ParticlesBackground = () => {
   }
 
   return (
-    <div className="absolute inset-0 -z-10">
-      <Particles id="tsparticles" options={options} />
+    <div className="absolute inset-0 -z-10" style={{ willChange: 'auto', transform: 'translateZ(0)' }}>
+      <Particles 
+        id="tsparticles" 
+        options={options} 
+        style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
+      />
     </div>
   )
 }

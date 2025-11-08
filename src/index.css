@@ -74,6 +74,11 @@
 
   .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 
+  /* Performance optimizations to prevent layout shifts */
+  .hero-section { contain: layout style paint; }
+  .phone-showcase { transform: translateZ(0); will-change: opacity; }
+  .motion-safe { will-change: transform, opacity; backface-visibility: hidden; }
+
   /* Hide scrollbar helper */
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
