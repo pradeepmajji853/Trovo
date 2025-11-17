@@ -89,9 +89,9 @@ export default function TextReveal({
       });
 
       return () => {
-        ScrollTrigger.getAll().forEach(trigger => {
-          if (trigger.trigger === textRef.current) {
-            trigger.kill();
+        ScrollTrigger.getAll().forEach((scrollTriggerInstance: ScrollTrigger) => {
+          if (scrollTriggerInstance.trigger === textRef.current) {
+            scrollTriggerInstance.kill();
           }
         });
       };
@@ -227,9 +227,9 @@ export function TextRevealWords({
       });
 
       return () => {
-        ScrollTrigger.getAll().forEach(trigger => {
-          if (trigger.trigger === textRef.current) {
-            trigger.kill();
+        ScrollTrigger.getAll().forEach((scrollTriggerInstance: ScrollTrigger) => {
+          if (scrollTriggerInstance.trigger === textRef.current) {
+            scrollTriggerInstance.kill();
           }
         });
       };

@@ -163,9 +163,9 @@ const TextType = ({
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.trigger === element) {
-          trigger.kill();
+      ScrollTrigger.getAll().forEach((scrollTriggerInstance: ScrollTrigger) => {
+        if (scrollTriggerInstance.trigger === element) {
+          scrollTriggerInstance.kill();
         }
       });
     };

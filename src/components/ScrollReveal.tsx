@@ -104,7 +104,9 @@ const ScrollReveal = ({
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((scrollTriggerInstance: ScrollTrigger) => {
+        scrollTriggerInstance.kill();
+      });
     };
   }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength]);
 

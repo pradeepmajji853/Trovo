@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, type MouseEvent } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
@@ -21,9 +21,9 @@ const Navbar = () => {
     { name: 'Data Security', path: '/data-security' },
   ]
 
-  const handleEarlyAccessClick = (e?: React.MouseEvent) => {
+  const handleEarlyAccessClick = (event?: MouseEvent<HTMLAnchorElement>) => {
     if (location.pathname === '/') {
-      e?.preventDefault()
+      event?.preventDefault()
       const el = document.getElementById('early-access')
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -179,7 +179,10 @@ const Navbar = () => {
               <div className="border-t border-gray-200/70 mt-2 pt-2">
                 <Link
                   to="/#early-access"
-                  onClick={(e) => { handleEarlyAccessClick(e); setIsMobileMenuOpen(false) }}
+                  onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+                    handleEarlyAccessClick(event)
+                    setIsMobileMenuOpen(false)
+                  }}
                   className="block mx-2 my-2 text-center rounded-xl bg-trovo-green text-white px-4 py-3 font-semibold hover:bg-trovo-green/90"
                   data-attr="cta:join-early-access"
                 >
