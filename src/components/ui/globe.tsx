@@ -4,6 +4,63 @@ import { useEffect, useRef } from "react"
 import createGlobe from "cobe"
 import { useMotionValue, useSpring } from "framer-motion"
 
+type MarkerLocation = [number, number]
+
+type MarkerConfig = {
+  location: MarkerLocation
+  size: number
+  color?: [number, number, number]
+}
+
+const GLOBAL_HUBS: MarkerConfig[] = [
+  { location: [40.7128, -74.006] as MarkerLocation, size: 0.08 }, // New York
+  { location: [34.0522, -118.2437] as MarkerLocation, size: 0.07 }, // Los Angeles
+  { location: [51.5074, -0.1278] as MarkerLocation, size: 0.08 }, // London
+  { location: [48.8566, 2.3522] as MarkerLocation, size: 0.07 }, // Paris
+  { location: [35.6762, 139.6503] as MarkerLocation, size: 0.08 }, // Tokyo
+  { location: [1.3521, 103.8198] as MarkerLocation, size: 0.07 }, // Singapore
+  { location: [28.6139, 77.209] as MarkerLocation, size: 0.07 }, // Delhi
+  { location: [-33.8688, 151.2093] as MarkerLocation, size: 0.07 }, // Sydney
+  { location: [55.7558, 37.6173] as MarkerLocation, size: 0.07 }, // Moscow
+  { location: [-23.5505, -46.6333] as MarkerLocation, size: 0.07 }, // São Paulo
+]
+
+const CONNECTION_PAIRS: Array<[MarkerLocation, MarkerLocation]> = [
+  [GLOBAL_HUBS[0].location, GLOBAL_HUBS[2].location],
+  [GLOBAL_HUBS[0].location, GLOBAL_HUBS[5].location],
+  [GLOBAL_HUBS[2].location, GLOBAL_HUBS[4].location],
+  [GLOBAL_HUBS[4].location, GLOBAL_HUBS[7].location],
+  [GLOBAL_HUBS[4].location, GLOBAL_HUBS[9].location],
+  [GLOBAL_HUBS[5].location, GLOBAL_HUBS[6].location],
+  [GLOBAL_HUBS[6].location, GLOBAL_HUBS[3].location],
+  [GLOBAL_HUBS[8].location, GLOBAL_HUBS[2].location],
+  [GLOBAL_HUBS[9].location, GLOBAL_HUBS[0].location],
+  [GLOBAL_HUBS[1].location, GLOBAL_HUBS[5].location],
+]
+
+const createConnectionMarkers = (from: MarkerLocation, to: MarkerLocation, segments = 32): MarkerConfig[] => {
+  const markers: MarkerConfig[] = []
+
+  for (let i = 1; i < segments; i += 1) {
+    const progress = i / segments
+    markers.push({
+      location: [
+        from[0] + (to[0] - from[0]) * progress,
+        from[1] + (to[1] - from[1]) * progress,
+      ],
+      size: 0.012,
+      color: [59 / 255, 130 / 255, 246 / 255],
+    })
+  }
+
+  return markers
+}
+
+const buildGlobalMarkerSet = (): MarkerConfig[] => {
+  const lineSegments = CONNECTION_PAIRS.flatMap((pair) => createConnectionMarkers(pair[0], pair[1]))
+  return [...GLOBAL_HUBS, ...lineSegments]
+}
+
 const MOVEMENT_DAMPING = 1400
 
 const GLOBE_CONFIG = {
@@ -20,18 +77,7 @@ const GLOBE_CONFIG = {
   baseColor: [1, 1, 1] as [number, number, number],
   markerColor: [251 / 255, 100 / 255, 21 / 255] as [number, number, number],
   glowColor: [1, 1, 1] as [number, number, number],
-  markers: [
-    { location: [14.5995, 120.9842] as [number, number], size: 0.03 },
-    { location: [19.076, 72.8777] as [number, number], size: 0.1 },
-    { location: [23.8103, 90.4125] as [number, number], size: 0.05 },
-    { location: [30.0444, 31.2357] as [number, number], size: 0.07 },
-    { location: [39.9042, 116.4074] as [number, number], size: 0.08 },
-    { location: [-23.5505, -46.6333] as [number, number], size: 0.1 },
-    { location: [19.4326, -99.1332] as [number, number], size: 0.1 },
-    { location: [40.7128, -74.006] as [number, number], size: 0.1 },
-    { location: [34.6937, 135.5022] as [number, number], size: 0.05 },
-    { location: [41.0082, 28.9784] as [number, number], size: 0.06 },
-  ],
+  markers: buildGlobalMarkerSet(),
 }
 
 export function Globe({
@@ -99,11 +145,7 @@ export function Globe({
   }, [rs, config])
 
   return (
-    <div
-      className={
-        "absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[600px]" + (className ? ` ${className}` : "")
-      }
-    >
+    <div className={"relative mx-auto h-full w-full" + (className ? ` ${className}` : "")}>
       <canvas
         className={
           "size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]"

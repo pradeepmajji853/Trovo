@@ -40,10 +40,10 @@ const Navbar = () => {
       aria-label="Main navigation for Trovo Fi"
     >
       <div
-        className={`relative w-[85%] sm:w-[90%] max-w-6xl mx-0 rounded-full border overflow-hidden backdrop-blur-xl transition-all duration-300 ease-out ${
+        className={`relative w-[85%] sm:w-[90%] max-w-6xl mx-0 rounded-full border overflow-hidden backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-200 ease-in-out ${
           isScrolled
-            ? 'bg-white/60 border-gray-200/70 ring-1 ring-black/10'
-            : 'bg-white/50 border-gray-200/60 ring-1 ring-black/8'
+            ? 'bg-white/40 border-gray-200/70 ring-1 ring-black/10'
+            : 'bg-white/30 border-gray-200/60 ring-1 ring-black/8'
         }`}
       >
         <div
@@ -65,7 +65,16 @@ const Navbar = () => {
 
         <div className="relative flex items-center justify-between px-6 sm:px-8 h-12 sm:h-14">
           <div className="flex items-center justify-start">
-            <Link to="/" className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/50 rounded-xl">
+            <Link
+              to="/"
+              onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+                if (location.pathname === '/') {
+                  event.preventDefault()
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
+              }}
+              className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/50 rounded-xl"
+            >
               <div className="relative">
                 <img
                   src="/trovo.svg"
@@ -117,7 +126,7 @@ const Navbar = () => {
 
           <button
             className="md:hidden p-2 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/40 hover:bg-gray-100/40"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"

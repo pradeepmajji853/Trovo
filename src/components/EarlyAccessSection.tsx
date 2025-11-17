@@ -56,8 +56,6 @@ const EarlyAccessSection: React.FC = () => {
       })
       setIsSubmitted(true)
       confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } })
-      // Navigate to thank you
-      window.location.assign('/thank-you')
     } catch (err: any) {
       console.error('Waitlist submit failed:', err)
       const code = err?.code || ''
@@ -122,7 +120,15 @@ const EarlyAccessSection: React.FC = () => {
               )}
             </div>
           ) : (
-            <div />
+            <div className="max-w-md mx-auto bg-white/90 backdrop-blur-lg border border-white/50 rounded-3xl px-6 py-8 shadow-2xl">
+              <p className="text-trovo-green text-sm font-semibold uppercase tracking-[0.25em] mb-2">You’re on the list</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Thanks for joining early access</h3>
+              <p className="text-gray-700 mb-4">
+                We’ve locked in <span className="font-semibold">{email}</span>. Expect invite-only updates, product previews,
+                and launch-day perks straight to your inbox.
+              </p>
+              <p className="text-sm text-gray-500">Need to update your email? Submit again with the new address.</p>
+            </div>
           )}
         </div>
       </div>

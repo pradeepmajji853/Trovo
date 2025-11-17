@@ -3,25 +3,23 @@ import { Globe } from "@/components/ui/globe";
 
 const IndiaGlobeSection: React.FC = () => {
   return (
-    <section className="relative py-20 bg-gradient-to-br from-white to-trovo-green/5 overflow-hidden">
-      <div className="container-custom flex flex-col items-center justify-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">
-          Connecting India, Together
+    <section className="relative py-16 sm:py-20 bg-gradient-to-br from-white via-trovo-green/5 to-white overflow-hidden px-4">
+      <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-trovo-green/20 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 right-10 h-56 w-56 rounded-full bg-blue-200/40 blur-3xl" />
+      <div className="container-custom flex flex-col items-center justify-center relative z-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 text-center leading-tight">
+          Connecting the World, Together
         </h2>
-        <p className="text-lg text-gray-600 mb-8 text-center max-w-2xl">
-          Trovo brings people and payments together across India. Our network connects every corner, making financial rewards accessible to all.
+        <p className="text-base sm:text-lg text-gray-600 mb-8 text-center max-w-2xl">
+          Trovo brings people and payments together across the globe. Our network spans continents, making financial rewards accessible everywhere.
         </p>
-        <div className="w-full flex justify-center">
-          <div
-            className="relative flex items-center justify-center"
-            style={{width: '100%', maxWidth: 500, height: 500, minHeight: 320, overflow: 'visible'}}
-          >
-            <div
-              className="rounded-full shadow-xl border border-gray-200 bg-white"
-              style={{width: '100%', maxWidth: 420, height: 420, minHeight: 320, overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.08)', border: '1px solid #e5e7eb'}}
-            >
-              <Globe />
-              <span className="absolute inset-0 flex items-center justify-center text-trovo-green font-bold text-xl pointer-events-none">Trovo Network</span>
+        <div className="w-full flex justify-center overflow-hidden">
+          <div className="relative flex items-center justify-center w-full max-w-sm sm:max-w-md lg:max-w-lg px-2">
+            <div className="relative w-full max-w-[22rem] sm:max-w-[28rem] aspect-square mx-auto">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-trovo-green/40 via-transparent to-blue-400/40 blur-2xl animate-pulse-slow" />
+              <div className="absolute inset-[12%] rounded-full border border-white/30 ring-1 ring-white/40 pulse-ring" />
+              <div className="absolute inset-[4%] rounded-full border border-trovo-green/30 orbit-glow" />
+              <Globe className="relative z-10 h-full w-full" />
             </div>
           </div>
         </div>

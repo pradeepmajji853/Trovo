@@ -141,4 +141,49 @@
     animation: fade-in-right 0.8s ease-out forwards 0.3s;
     opacity: 0;
   }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.45;
+      transform: scale(0.95);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes orbit-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes float-soft {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 6s ease-in-out infinite;
+  }
+
+  .orbit-glow {
+    animation: orbit-spin 18s linear infinite;
+  }
+
+  .pulse-ring {
+    animation: pulse-slow 7s ease-in-out infinite;
+  }
+
+  .floating-card {
+    animation: float-soft 5s ease-in-out infinite;
+  }
 }

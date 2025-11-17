@@ -29,31 +29,28 @@ const BeforeAfterTrovo: React.FC = () => {
       />
 
       {/* BEFORE: tighten bottom padding to reduce gap */}
-      <div className="relative container-custom pt-16 md:pt-24 pb-8 md:pb-10">
+      <div className="relative container-custom pt-14 sm:pt-16 md:pt-24 pb-8 md:pb-10">
         {/* Left rail with brand hint (desktop only) */}
         <div className="hidden md:block absolute left-0 top-0 bottom-0" aria-hidden>
-          <div className="relative h-full w-6">
-            <div className="absolute left-2 top-0 bottom-0 w-[2px] rounded-full bg-gradient-to-b from-trovo-green/15 via-trovo-green/50 to-trovo-green/15 animate-pulse-slow" />
-            <div className="absolute -left-10 top-1/2 -translate-y-1/2 -rotate-90 text-[11px] tracking-[0.25em] uppercase text-trovo-green/70 whitespace-nowrap">
-              The story of payments today
-            </div>
+          <div className="relative h-full w-10">
+            <div className="absolute left-3 top-0 bottom-0 w-[2px] rounded-full bg-gradient-to-b from-trovo-green/15 via-trovo-green/50 to-trovo-green/15 animate-pulse-slow" />
           </div>
         </div>
 
         {/* Header (light theme typography) */}
-        <div className="relative md:pl-8">
-          <p className="text-xs sm:text-sm font-semibold tracking-[0.28em] uppercase text-trovo-green-dark/80">The story of payments today</p>
-          <h2 id="before-title" className="mt-3 text-3xl md:text-4xl font-bold text-gray-900">Before Trovo</h2>
-          <p className="mt-2 text-gray-700 max-w-2xl">Frustration, confusion, and zero real value on everyday money flows.</p>
+        <div className="relative md:pl-8 text-center md:text-left">
+          <p className="text-[11px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-trovo-green-dark/80">The story of payments today</p>
+          <h2 id="before-title" className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Before Trovo</h2>
+          <p className="mt-2 text-gray-700 max-w-2xl mx-auto md:mx-0 text-sm sm:text-base">Frustration, confusion, and zero real value on everyday money flows.</p>
         </div>
 
         {/* Panels (light glass) */}
-        <div className="mt-8 overflow-x-auto no-scrollbar -mx-4 px-4">
-          <div className="grid grid-flow-col auto-cols-[82%] sm:auto-cols-[60%] md:auto-cols-[42%] lg:grid-flow-row lg:grid-cols-3 gap-4 md:gap-6 snap-x snap-mandatory lg:snap-none">
+        <div className="mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {beforePanels.map((p, idx) => (
               <motion.div
                 key={p.title}
-                className="snap-center lg:snap-auto relative rounded-2xl border border-gray-200/70 bg-white/80 backdrop-blur-md p-6 sm:p-8 text-gray-900 overflow-hidden"
+                className="relative rounded-2xl border border-gray-200/70 bg-white/80 backdrop-blur-md p-5 sm:p-6 md:p-8 text-gray-900 overflow-hidden"
                 initial={{ opacity: 0, y: 20, scale: 0.99, filter: 'blur(6px)' }}
                 whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
                 viewport={{ once: true, amount: 0.35 }}
@@ -127,16 +124,17 @@ const BeforeAfterTrovo: React.FC = () => {
       <div className="relative">
         <div className="relative container-custom pt-8 md:pt-10 pb-16 md:pb-24">
           <div className="text-center">
-            <p className="text-xs sm:text-sm font-semibold tracking-[0.28em] uppercase text-ink-muted">After Trovo</p>
-            <h2 id="after-title" className="mt-3 text-3xl md:text-4xl font-bold text-gray-900">Here’s how Trovo fixes it.</h2>
-            <p className="mt-2 text-ink-muted">Simple, secure, rewarding — by design.</p>
+            <p className="text-[11px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-ink-muted">After Trovo</p>
+            <h2 id="after-title" className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Here’s how Trovo fixes it.</h2>
+            <p className="mt-2 text-ink-muted text-sm sm:text-base">Simple, secure, rewarding — by design.</p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-            {afterCards.map((c, idx) => (
+          <div className="mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-8">
+              {afterCards.map((c, idx) => (
               <motion.div
                 key={c.title}
-                className="group relative rounded-2xl border border-gray-200/70 bg-white/60 backdrop-blur-md p-6 sm:p-8 shadow-sm hover:shadow-xl hover:shadow-trovo-green/10 transition-transform"
+                  className="group relative rounded-2xl border border-gray-200/70 bg-white/60 backdrop-blur-md p-5 sm:p-7 shadow-sm hover:shadow-xl hover:shadow-trovo-green/10 transition-transform"
                 initial={{ opacity: 0, y: 18, scale: 0.99 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -157,7 +155,8 @@ const BeforeAfterTrovo: React.FC = () => {
                   <p className="text-gray-700">{c.desc}</p>
                 </div>
               </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <motion.div

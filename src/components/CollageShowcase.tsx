@@ -22,29 +22,29 @@ const CollageShowcase: React.FC = () => {
   const blurVal = useTransform(scrollYProgress, [0, 0.5], ['blur(14px)', 'blur(0px)'])
 
   return (
-    <section ref={ref} id="collage-showcase" className="relative h-screen overflow-hidden flex flex-col">
+    <section ref={ref} id="collage-showcase" className="relative min-h-[90vh] sm:min-h-screen overflow-hidden flex flex-col">
       {/* Ambient backdrop */}
       <motion.div style={{ opacity: sectionOpacity }} aria-hidden className="absolute inset-0 bg-gradient-to-br from-trovo-green-50 via-white to-trovo-green-100" />
       <motion.div aria-hidden style={{ opacity: sectionOpacity }} className="absolute inset-0 bg-gradient-radial from-trovo-green/0 via-trovo-green/10 to-transparent" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 flex-1 flex flex-col justify-center">
-        <div className="max-w-3xl">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 flex-1 flex flex-col justify-center py-14 sm:py-20">
+        <div className="max-w-3xl text-center sm:text-left mx-auto sm:mx-0">
           <motion.p
             className="text-xs sm:text-sm font-semibold tracking-[0.28em] uppercase text-trovo-green-dark/80"
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
           >Unified intelligence</motion.p>
           <motion.h2
-            className="mt-3 text-3xl md:text-4xl font-bold text-gray-900"
+            className="mt-3 text-3xl leading-tight sm:text-4xl md:text-5xl font-bold text-gray-900"
             initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, delay: 0.08 }}
           >One canvas. Zero fragmentation.</motion.h2>
           <motion.p
-            className="mt-4 text-lg text-gray-700"
+            className="mt-4 text-base sm:text-lg text-gray-700"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }}
           >After you see the chaos, witness the harmony. A single adaptive surface where rewards, payments & sharing interlock instantly.</motion.p>
         </div>
 
         {/* Collage + decorative layer */}
-        <div className="mt-6 relative mx-auto w-screen h-screen -mx-4 sm:-mx-6">
+        <div className="mt-8 relative mx-auto w-full max-w-4xl h-[60vh] sm:h-[70vh] lg:h-[80vh] -mx-4 sm:-mx-6">
           <motion.div
             className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5 h-full"
             style={{ scale: imgScale, rotateX: imgRotate, filter: blurVal, transformStyle: 'preserve-3d' }}
