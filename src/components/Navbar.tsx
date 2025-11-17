@@ -42,13 +42,13 @@ const Navbar = () => {
       <div
         className={`relative w-[85%] sm:w-[90%] max-w-6xl mx-0 rounded-full border overflow-hidden backdrop-blur-xl transition-all duration-300 ease-out ${
           isScrolled
-            ? 'bg-white/90 border-gray-200/80 ring-1 ring-black/5'
-            : 'bg-white/70 border-gray-200/60 ring-1 ring-black/5'
+            ? 'bg-white/60 border-gray-200/70 ring-1 ring-black/10'
+            : 'bg-white/50 border-gray-200/60 ring-1 ring-black/8'
         }`}
       >
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-white/40 via-white/20 to-transparent"
+          className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-white/20 via-white/10 to-transparent"
         />
         <div
           aria-hidden

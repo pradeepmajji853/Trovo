@@ -6,6 +6,7 @@ import TrustSecurity from '../components/TrustSecurity'
 import EarlyAccessSection from '../components/EarlyAccessSection'
 import ScrollStory from '../components/ScrollStory'
 import CollageShowcase from '../components/CollageShowcase'
+import IndiaGlobeSection from '../components/IndiaGlobeSection'
 
 const HomePage = () => {
   const structuredData = {
@@ -29,6 +30,7 @@ const HomePage = () => {
       <main id="content">
         <HeroSection />
         <ScrollStory />
+        <IndiaGlobeSection />
         <BeforeAfterTrovo />
         <CollageShowcase />
         <TrustSecurity />
