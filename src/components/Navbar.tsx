@@ -70,7 +70,8 @@ const Navbar = () => {
               onClick={(event: MouseEvent<HTMLAnchorElement>) => {
                 if (location.pathname === '/') {
                   event.preventDefault()
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                  setIsMobileMenuOpen(false)
+                  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
                 }
               }}
               className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/50 rounded-xl"

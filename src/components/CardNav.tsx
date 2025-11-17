@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { GoArrowUpRight } from 'react-icons/go'
 import './CardNav.css'
@@ -32,6 +32,7 @@ const CardNav: React.FC<CardNavProps> = ({
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const location = useLocation()
   const navRef = useRef<HTMLDivElement | null>(null)
   const cardsRef = useRef<HTMLDivElement[]>([])
   const tlRef = useRef<gsap.core.Timeline | null>(null)
@@ -92,8 +93,12 @@ const CardNav: React.FC<CardNavProps> = ({
     gsap.set(cardsRef.current, { y: 30, opacity: 0 })
 
     const tl = gsap.timeline({ paused: true })
-    tl.to(navEl, { height: calculateHeight, duration: 0.5, ease })
-    tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.1 }, '-=0.2')
+    tl.to(navEl, { height: calculateHeight, duration: 0.35, ease: 'power2.out' })
+    tl.to(
+      cardsRef.current,
+      { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out', stagger: 0.08 },
+      '-=0.15'
+    )
 
     return tl
   }
@@ -140,6 +145,7 @@ const CardNav: React.FC<CardNavProps> = ({
     if (!isExpanded) {
       setIsHamburgerOpen(true)
       setIsExpanded(true)
+      tl.eventCallback('onReverseComplete', null)
       tl.play(0)
     } else {
       setIsHamburgerOpen(false)
@@ -161,6 +167,32 @@ const CardNav: React.FC<CardNavProps> = ({
 
   const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
     if (el) cardsRef.current[i] = el
+  }
+
+  const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === '/') {
+      event.preventDefault()
+      event.stopPropagation()
+      
+      // Close menu first if open
+      if (isExpanded) {
+        toggleMenu()
+        // Wait for menu collapse animation to complete before any scroll
+        setTimeout(() => {
+          // Only scroll if not already at top (prevents visual jump)
+          if (window.scrollY > 10) {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+          }
+        }, 400)
+      } else {
+        // Only scroll if not already at top
+        if (window.scrollY > 10) {
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+        }
+      }
+    } else if (isExpanded) {
+      toggleMenu()
+    }
   }
 
   return (
@@ -189,7 +221,7 @@ const CardNav: React.FC<CardNavProps> = ({
             <div className="hamburger-line" />
           </div>
 
-          <Link to="/" className="logo-container">
+          <Link to="/" className="logo-container" onClick={handleLogoClick}>
             <img src={logo} alt={logoAlt} className="logo" />
           </Link>
 
