@@ -7,6 +7,7 @@ import EarlyAccessSection from '../components/EarlyAccessSection'
 import ScrollStory from '../components/ScrollStory'
 import CollageShowcase from '../components/CollageShowcase'
 import IndiaGlobeSection from '../components/IndiaGlobeSection'
+import CreditCardTransitionSection from '../components/CreditCardTransitionSection'
 
 const HomePage = () => {
   const structuredData = {
@@ -31,6 +32,7 @@ const HomePage = () => {
         <HeroSection />
         <ScrollStory />
         <IndiaGlobeSection />
+        <CreditCardTransitionSection />
         <BeforeAfterTrovo />
         <CollageShowcase />
         <TrustSecurity />

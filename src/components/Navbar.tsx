@@ -40,23 +40,23 @@ const Navbar = () => {
       aria-label="Main navigation for Trovo Fi"
     >
       <div
-        className={`relative w-[85%] sm:w-[90%] max-w-6xl mx-0 rounded-full border overflow-hidden backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-200 ease-in-out ${
+        className={`relative w-[85%] sm:w-[90%] max-w-6xl mx-0 rounded-full border overflow-hidden backdrop-blur-2xl transition-[background-color,border-color,box-shadow] duration-200 ease-in-out ${
           isScrolled
-            ? 'bg-white/40 border-gray-200/70 ring-1 ring-black/10'
-            : 'bg-white/30 border-gray-200/60 ring-1 ring-black/8'
+            ? 'bg-gradient-to-r from-night-900/85 via-night-800/80 to-night-900/85 border-white/10 ring-1 ring-trovo-green/30 shadow-2xl shadow-trovo-green/10'
+            : 'bg-gradient-to-r from-night-900/70 via-night-800/60 to-night-900/70 border-white/5 ring-1 ring-black/50 shadow-lg shadow-black/30'
         }`}
       >
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-white/20 via-white/10 to-transparent"
+          className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-white/5 via-white/0 to-transparent"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute top-1 left-6 right-6 h-px rounded-full bg-gradient-to-r from-transparent via-white/80 to-transparent"
+          className="pointer-events-none absolute top-1 left-6 right-6 h-px rounded-full bg-gradient-to-r from-transparent via-white/40 to-transparent"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute bottom-1 left-6 right-6 h-px rounded-full bg-gradient-to-r from-transparent via-gray-300/50 to-transparent"
+          className="pointer-events-none absolute bottom-1 left-6 right-6 h-px rounded-full bg-gradient-to-r from-transparent via-trovo-green/30 to-transparent"
         />
         <div
           aria-hidden
@@ -101,8 +101,8 @@ const Navbar = () => {
                 <Link
                   to={item.path}
                   aria-current={location.pathname === item.path ? 'page' : undefined}
-                  className={`relative px-4 py-2 rounded-full font-medium text-sm transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/40 ${
-                    location.pathname === item.path ? 'text-gray-900 bg-gray-100/60' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100/40'
+          className={`relative px-4 py-2 rounded-full font-medium text-sm transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/40 ${
+                    location.pathname === item.path ? 'text-white bg-white/10' : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   <span className="relative z-10">{item.name}</span>
@@ -126,7 +126,7 @@ const Navbar = () => {
           </div>
 
           <button
-            className="md:hidden p-2 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/40 hover:bg-gray-100/40"
+            className="md:hidden p-2 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-trovo-green/40 hover:bg-white/10"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
@@ -135,13 +135,13 @@ const Navbar = () => {
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center">
               <span
-                className={`w-4 h-0.5 bg-gray-700 transition-transform ${isMobileMenuOpen ? 'rotate-45 translate-y-0.5' : ''}`}
+                className={`w-4 h-0.5 bg-white transition-transform ${isMobileMenuOpen ? 'rotate-45 translate-y-0.5' : ''}`}
               />
               <span
-                className={`w-4 h-0.5 bg-gray-700 mt-1 transition-opacity ${isMobileMenuOpen ? 'opacity-0' : ''}`}
+                className={`w-4 h-0.5 bg-white mt-1 transition-opacity ${isMobileMenuOpen ? 'opacity-0' : ''}`}
               />
               <span
-                className={`w-4 h-0.5 bg-gray-700 mt-1 transition-transform ${isMobileMenuOpen ? '-rotate-45 -translate-y-0.5' : ''}`}
+                className={`w-4 h-0.5 bg-white mt-1 transition-transform ${isMobileMenuOpen ? '-rotate-45 -translate-y-0.5' : ''}`}
               />
             </div>
           </button>
@@ -158,11 +158,11 @@ const Navbar = () => {
 
           <div
             id="mobile-menu"
-            className="absolute left-3 right-3 top-16 sm:top-20 rounded-2xl border border-gray-200/60 bg-white/95 backdrop-blur-xl overflow-hidden"
+            className="absolute left-3 right-3 top-16 sm:top-20 rounded-2xl border border-white/10 bg-night-900/90 backdrop-blur-xl overflow-hidden"
           >
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/30 via-white/10 to-transparent"
+              className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/10 via-night-800/40 to-transparent"
             />
             <div
               aria-hidden
@@ -177,7 +177,7 @@ const Navbar = () => {
                     className={`block px-4 py-3 font-medium transition-colors ${
                       location.pathname === item.path
                         ? 'text-trovo-green bg-trovo-green/10'
-                        : 'text-gray-700 hover:bg-gray-100/70 hover:text-gray-900'
+                        : 'text-gray-400 hover:bg-white/5 hover:text-white'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                     aria-current={location.pathname === item.path ? 'page' : undefined}
@@ -186,7 +186,7 @@ const Navbar = () => {
                   </Link>
                 </div>
               ))}
-              <div className="border-t border-gray-200/70 mt-2 pt-2">
+              <div className="border-t border-white/10 mt-2 pt-2">
                 <Link
                   to="/#early-access"
                   onClick={(event: MouseEvent<HTMLAnchorElement>) => {

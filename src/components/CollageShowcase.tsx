@@ -22,23 +22,23 @@ const CollageShowcase: React.FC = () => {
   const blurVal = useTransform(scrollYProgress, [0, 0.5], ['blur(14px)', 'blur(0px)'])
 
   return (
-    <section ref={ref} id="collage-showcase" className="relative min-h-[90vh] sm:min-h-screen overflow-hidden flex flex-col">
+    <section ref={ref} id="collage-showcase" className="relative min-h-[90vh] sm:min-h-screen overflow-hidden flex flex-col bg-night-900">
       {/* Ambient backdrop */}
-      <motion.div style={{ opacity: sectionOpacity }} aria-hidden className="absolute inset-0 bg-gradient-to-br from-trovo-green-50 via-white to-trovo-green-100" />
+      <motion.div style={{ opacity: sectionOpacity }} aria-hidden className="absolute inset-0 bg-gradient-to-br from-night-900 via-night-800 to-night-700" />
       <motion.div aria-hidden style={{ opacity: sectionOpacity }} className="absolute inset-0 bg-gradient-radial from-trovo-green/0 via-trovo-green/10 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 flex-1 flex flex-col justify-center py-14 sm:py-20">
         <div className="max-w-3xl text-center sm:text-left mx-auto sm:mx-0">
           <motion.p
-            className="text-xs sm:text-sm font-semibold tracking-[0.28em] uppercase text-trovo-green-dark/80"
+            className="text-xs sm:text-sm font-semibold tracking-[0.28em] uppercase text-trovo-green/70"
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
           >Unified intelligence</motion.p>
           <motion.h2
-            className="mt-3 text-3xl leading-tight sm:text-4xl md:text-5xl font-bold text-gray-900"
+            className="mt-3 text-3xl leading-tight sm:text-4xl md:text-5xl font-bold text-white"
             initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, delay: 0.08 }}
           >One canvas. Zero fragmentation.</motion.h2>
           <motion.p
-            className="mt-4 text-base sm:text-lg text-gray-700"
+            className="mt-4 text-base sm:text-lg text-gray-300"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }}
           >After you see the chaos, witness the harmony. A single adaptive surface where rewards, payments & sharing interlock instantly.</motion.p>
         </div>
@@ -58,7 +58,7 @@ const CollageShowcase: React.FC = () => {
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.2 }}
               draggable={false}
             />
-            <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-trovo-green/10 mix-blend-overlay" />
+            <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-black/50 via-transparent to-trovo-green/20 mix-blend-overlay" />
             {/* Inner pulse */}
             <motion.div aria-hidden className="absolute inset-0 rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: [0.15, 0.45, 0.15] }} transition={{ repeat: Infinity, duration: 8 }} style={{ background: 'radial-gradient(circle at 30% 30%, rgba(0,168,120,0.25), transparent 70%)' }} />
           </motion.div>
@@ -83,7 +83,7 @@ const CollageShowcase: React.FC = () => {
       </div>
 
       {/* Bottom fade */}
-      <motion.div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-transparent to-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }} transition={{ duration: 0.8 }} />
+      <motion.div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night-900 via-transparent to-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }} transition={{ duration: 0.8 }} />
     </section>
   )
 }

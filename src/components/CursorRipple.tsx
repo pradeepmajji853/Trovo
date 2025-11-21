@@ -29,20 +29,21 @@ const CursorRipple: React.FC = () => {
         const p = queueRef.current.shift()!
         const dot = document.createElement('div')
         dot.style.position = 'absolute'
-        dot.style.width = '12px'
-        dot.style.height = '12px'
-        dot.style.left = `${p.x - 6}px`
-        dot.style.top = `${p.y - 6}px`
+        dot.style.width = '16px'
+        dot.style.height = '16px'
+        dot.style.left = `${p.x - 8}px`
+        dot.style.top = `${p.y - 8}px`
         dot.style.borderRadius = '9999px'
-        dot.style.background = 'radial-gradient(circle, rgba(29,185,84,0.35) 0%, rgba(29,185,84,0.0) 70%)'
+        dot.style.background = 'radial-gradient(circle, rgba(34,255,164,0.35) 0%, rgba(34,255,164,0.0) 65%)'
+        dot.style.boxShadow = '0 0 10px rgba(34,255,164,0.18)'
         dot.style.transform = 'translateZ(0)'
         dot.style.willChange = 'transform, opacity'
-        dot.style.opacity = '0.9'
+        dot.style.opacity = '1'
         container.appendChild(dot)
         const anim = dot.animate([
-          { transform: 'scale(0.6)', opacity: 0.9 },
-          { transform: 'scale(1.8)', opacity: 0 }
-        ], { duration: 600, easing: 'ease-out' })
+          { transform: 'scale(0.55)', opacity: 0.8 },
+          { transform: 'scale(2.1)', opacity: 0 }
+        ], { duration: 700, easing: 'ease-out' })
         anim.onfinish = () => dot.remove()
       }
       rafRef.current = requestAnimationFrame(loop)

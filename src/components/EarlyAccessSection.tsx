@@ -74,15 +74,15 @@ const EarlyAccessSection: React.FC = () => {
   }
 
   return (
-    <section className="relative py-12 md:py-16 overflow-hidden" ref={ref} id="early-access" aria-labelledby="early-access-heading">
-      <div className="absolute inset-0 bg-gradient-to-br from-trovo-green via-trovo-green-200 to-white"></div>
+    <section className="relative py-12 md:py-16 overflow-hidden bg-night-900" ref={ref} id="early-access" aria-labelledby="early-access-heading">
+      <div className="absolute inset-0 bg-gradient-to-br from-night-900 via-night-800 to-night-700"></div>
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 z-10">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 id="early-access-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">
+          <h2 id="early-access-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
             Be first to try Trovo.
           </h2>
 
-          <p className="text-lg md:text-xl mb-8 text-gray-800">
+          <p className="text-lg md:text-xl mb-8 text-gray-300">
             We'll be in touch before launch.
           </p>
 
@@ -99,14 +99,14 @@ const EarlyAccessSection: React.FC = () => {
                     setEmail(e.target.value)
                     setError('')
                   }}
-                  className={`flex-1 px-5 py-3 rounded-full text-gray-900 font-medium focus:outline-none border ${
-                    error ? 'border-red-400 bg-white/90' : 'border-white/30 bg-white/80 hover:bg-white/90'
+                  className={`flex-1 px-5 py-3 rounded-full text-white font-medium focus:outline-none border bg-night-800/80 placeholder:text-gray-400 ${
+                    error ? 'border-red-400/80 ring-1 ring-red-500/40' : 'border-white/20 focus:border-trovo-green/60 focus:ring-2 focus:ring-trovo-green/30'
                   }`}
                   aria-invalid={!!error}
                 />
                 <button
                   type="submit"
-                  className="bg-gray-900 text-white font-semibold px-6 py-3 rounded-full transition-colors duration-200 hover:bg-gray-800 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="bg-trovo-green text-white font-semibold px-6 py-3 rounded-full transition-colors duration-200 hover:bg-trovo-green/90 disabled:opacity-60 disabled:cursor-not-allowed"
                   disabled={isLoading}
                   data-attr="cta:join-early-access"
                 >
@@ -114,16 +114,16 @@ const EarlyAccessSection: React.FC = () => {
                 </button>
               </form>
               {error && (
-                <p id="waitlist-error" className="text-red-700 text-sm mt-2 text-center bg-red-100/80 px-3 py-1.5 rounded-full border border-red-300" role="alert">
+                <p id="waitlist-error" className="text-red-200 text-sm mt-2 text-center bg-red-500/10 px-3 py-1.5 rounded-full border border-red-500/40" role="alert">
                   {error}
                 </p>
               )}
             </div>
           ) : (
-            <div className="max-w-md mx-auto bg-white/90 backdrop-blur-lg border border-white/50 rounded-3xl px-6 py-8 shadow-2xl">
+            <div className="max-w-md mx-auto bg-night-800/80 backdrop-blur-lg border border-white/10 rounded-3xl px-6 py-8 shadow-2xl">
               <p className="text-trovo-green text-sm font-semibold uppercase tracking-[0.25em] mb-2">You’re on the list</p>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Thanks for joining early access</h3>
-              <p className="text-gray-700 mb-4">
+              <h3 className="text-2xl font-bold text-white mb-3">Thanks for joining early access</h3>
+              <p className="text-gray-300 mb-4">
                 We’ve locked in <span className="font-semibold">{email}</span>. Expect invite-only updates, product previews,
                 and launch-day perks straight to your inbox.
               </p>

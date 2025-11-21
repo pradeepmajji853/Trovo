@@ -62,11 +62,11 @@ const AboutPage = () => {
         canonical="https://trovo.app/about"
         structuredData={aboutStructuredData}
       />
-      <div className="min-h-screen bg-white pt-16 md:pt-20 overflow-x-hidden">
+      <div className="min-h-screen bg-night-900 pt-16 md:pt-20 overflow-x-hidden">
         
         {/* About Trovo Hero Section - About Content */}
         <section 
-          className="relative h-screen w-full bg-gradient-to-br from-trovo-green/5 to-white overflow-hidden sticky top-0" 
+          className="relative h-screen w-full bg-gradient-to-br from-night-900 via-night-800 to-night-900 overflow-hidden sticky top-0" 
           ref={heroRef}
         >
           {/* Background elements - SAME AS HOME PAGE */}
@@ -96,12 +96,12 @@ const AboutPage = () => {
             >
               {/* Main Title and Subtitle */}
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
                   About{' '}
                   <span className="text-trovo-green">Trovo</span>
                 </h1>
                 
-                <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
+                <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
                   Revolutionizing financial management for every Indian
                 </p>
               </div>
@@ -113,7 +113,7 @@ const AboutPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
                   We're building the future of fintech in India, revolutionizing how you manage money. 
                   Our mission is to unlock the hidden value in your credit cards and create smarter 
                   financial opportunities for every Indian.
@@ -125,8 +125,8 @@ const AboutPage = () => {
                   back in your pocket.
                 </p>
                 
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-100 shadow-lg mt-10">
-                  <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
+                <div className="bg-night-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-lg mt-10">
+                  <p className="text-base md:text-lg text-gray-300 leading-relaxed font-medium">
                     From watching credit card points expire to building India's smartest financial platform — 
                     we're making financial wellness accessible to every Indian, one smart decision at a time.
                   </p>
@@ -138,7 +138,7 @@ const AboutPage = () => {
         </section>
 
         {/* Our Story Section */}
-        <section className="section-padding bg-gray-50 relative z-20 w-full overflow-x-hidden" ref={storyRef}>
+        <section className="section-padding bg-night-800/40 relative z-20 w-full overflow-x-hidden" ref={storyRef}>
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <motion.div
@@ -147,7 +147,7 @@ const AboutPage = () => {
                 animate={isStoryInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-3xl p-12 border border-orange-300">
+                <div className="bg-gradient-to-br from-trovo-green/20 via-night-800/40 to-night-900 rounded-3xl p-12 border border-white/10">
                   <div className="text-center">
                     <motion.div 
                       className="w-20 h-20 mx-auto mb-6 flex items-center justify-center"
@@ -158,8 +158,8 @@ const AboutPage = () => {
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
                       </svg>
                     </motion.div>
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4">Our Journey</h3>
-                    <p className="text-gray-700 text-lg">From frustration to innovation</p>
+                    <h3 className="text-3xl font-bold text-white mb-4">Our Journey</h3>
+                    <p className="text-gray-300 text-lg">From frustration to innovation</p>
                   </div>
                 </div>
               </motion.div>
@@ -170,10 +170,10 @@ const AboutPage = () => {
                 animate={isStoryInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                   Our Story
                 </h2>
-                <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
                   <p>
                     Trovo was born from a simple frustration: watching millions of credit card 
                     points expire unused while people struggled with scattered payment methods. 
@@ -197,7 +197,7 @@ const AboutPage = () => {
         </section>
 
         {/* Our Mission Section */}
-        <section className="section-padding relative z-20 w-full overflow-x-hidden" ref={missionRef}>
+        <section className="section-padding relative z-20 w-full overflow-x-hidden bg-night-900" ref={missionRef}>
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <motion.div
@@ -205,10 +205,10 @@ const AboutPage = () => {
                 animate={isMissionInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                   Our Mission
                 </h2>
-                <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
                   <p>
                     <strong className="text-trovo-green">To democratize financial intelligence for every Indian.</strong> We believe 
                     that smart financial decisions shouldn't be complicated or reserved for the wealthy.
@@ -255,7 +255,7 @@ const AboutPage = () => {
         </section>
 
         {/* Our Vision Section */}
-        <section className="section-padding bg-gray-50 relative z-20 w-full overflow-x-hidden" ref={visionRef}>
+        <section className="section-padding bg-night-800/40 relative z-20 w-full overflow-x-hidden" ref={visionRef}>
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <motion.div
@@ -264,7 +264,7 @@ const AboutPage = () => {
                 animate={isVisionInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-12 text-white">
+                <div className="bg-gradient-to-br from-trovo-green to-emerald-600 rounded-3xl p-12 text-white">
                   <div className="text-center">
                     <motion.div 
                       className="w-20 h-20 mx-auto mb-6 flex items-center justify-center"
@@ -289,10 +289,10 @@ const AboutPage = () => {
                 animate={isVisionInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                   Our Vision
                 </h2>
-                <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
                   <p>
                     <strong className="text-blue-600">To become India's most trusted financial companion.</strong> We envision 
                     a future where every Indian has access to intelligent financial tools that 

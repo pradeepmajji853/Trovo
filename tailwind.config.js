@@ -10,18 +10,24 @@ export default {
         // Brand system tokens
         brand: {
           DEFAULT: '#1DB954',
-          foreground: '#FFFFFF',
+          foreground: '#010204',
           dark: '#18a147',
           light: '#1ed760'
         },
         ink: {
-          DEFAULT: '#111827',
-          muted: '#6B7280',
+          DEFAULT: '#F8FAFC',
+          muted: '#94A3B8',
         },
         surface: {
-          DEFAULT: '#FFFFFF',
-          soft: '#F9FAFB',
-          ring: '#E5E7EB'
+          DEFAULT: '#020617',
+          soft: '#050C1A',
+          ring: '#1E293B'
+        },
+        night: {
+          900: '#020617',
+          800: '#050C1A',
+          700: '#0F172A',
+          600: '#1E293B'
         },
         'trovo-green': '#1DB954',
         'trovo-green-light': '#1ed760',
@@ -95,7 +101,7 @@ export default {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'animated-gradient': 'linear-gradient(-45deg, #ffffff, #f0fdf4, #dcfce7, #bbf7d0)',
+        'animated-gradient': 'linear-gradient(-45deg, #020617, #050c1a, #0f172a, #052e16)',
       },
       backgroundSize: {
         '400%': '400% 400%',

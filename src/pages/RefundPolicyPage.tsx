@@ -7,7 +7,7 @@ const RefundPolicyPage = () => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-night-900 text-white">
       {/* Header */}
       <section className="bg-gradient-to-br from-trovo-green to-trovo-green-dark text-white py-20">
         <div className="container-custom text-center">
@@ -17,7 +17,7 @@ const RefundPolicyPage = () => {
       </section>
 
       {/* Content */}
-      <section className="py-20">
+      <section className="py-20 text-white">
         <div className="container-custom max-w-4xl">
           {/* Eligibility for Refunds */}
           <div className="mb-12">
@@ -91,8 +91,8 @@ const RefundPolicyPage = () => {
                 <li>Cancelled or returned purchases from partner merchants</li>
                 <li>Account closure or suspension due to policy violations</li>
               </ul>
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4">
-                <p className="text-sm text-yellow-800">
+              <div className="bg-yellow-400/10 border-l-4 border-yellow-500/50 p-4 mt-4">
+                <p className="text-sm text-yellow-100">
                   <strong>Note:</strong> Users will be notified via email before any cashback reversals are processed, 
                   with an explanation of the reason for the reversal.
                 </p>
@@ -129,8 +129,8 @@ const RefundPolicyPage = () => {
                 <li><strong>UPI Transfer:</strong> Instant refund via UPI to your linked mobile number</li>
                 <li><strong>Wallet Credit:</strong> Credit to your Trovo wallet (only with explicit user consent)</li>
               </ul>
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mt-4">
-                <p className="text-sm text-blue-800">
+              <div className="bg-blue-500/10 border-l-4 border-blue-400/60 p-4 mt-4">
+                <p className="text-sm text-blue-100">
                   <strong>Processing Note:</strong> International transactions may take 15-20 business days for refund processing 
                   due to banking regulations and currency conversion requirements.
                 </p>
@@ -152,9 +152,9 @@ const RefundPolicyPage = () => {
                 <li>Alternative dispute resolution through mediation (if applicable)</li>
               </ul>
               
-              <div className="bg-gray-50 p-6 rounded-lg mt-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Grievance Officer Contact</h3>
-                <div className="space-y-2 text-gray-700">
+              <div className="bg-night-800/60 p-6 rounded-lg mt-6 border border-white/10">
+                <h3 className="text-lg font-semibold text-white mb-3">Grievance Officer Contact</h3>
+                <div className="space-y-2 text-gray-300">
                   <p><strong>Name:</strong> Rajesh Kumar Singh</p>
                   <p><strong>Email:</strong> grievance@trovo.online</p>
                   <p><strong>Phone:</strong> +91-80-4040-1234</p>
@@ -180,8 +180,8 @@ const RefundPolicyPage = () => {
                 <li>Right to consumer forum proceedings (as per Consumer Protection Act, 2019)</li>
               </ul>
               
-              <div className="bg-green-50 border-l-4 border-green-400 p-4 mt-4">
-                <p className="text-sm text-green-800">
+              <div className="bg-green-500/10 border-l-4 border-green-400/70 p-4 mt-4">
+                <p className="text-sm text-green-100">
                   <strong>Consumer Helpline:</strong> For consumer complaints beyond our resolution, 
                   contact the National Consumer Helpline at 1915 or visit consumerhelpline.gov.in
                 </p>
@@ -205,20 +205,20 @@ const RefundPolicyPage = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="bg-gradient-to-br from-trovo-green/5 to-trovo-green-dark/5 p-8 rounded-lg">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Need Help?</h2>
+          <div className="bg-gradient-to-br from-night-900 via-night-800 to-trovo-green/20 p-8 rounded-lg border border-white/10">
+            <h2 className="text-2xl font-bold text-white mb-6">Need Help?</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Customer Support</h3>
-                <div className="space-y-2 text-gray-700">
+                <h3 className="text-lg font-semibold text-white mb-3">Customer Support</h3>
+                <div className="space-y-2 text-gray-300">
                   <p><strong>Email:</strong> support@trovo.online</p>
                   <p><strong>Phone:</strong> +91-80-4040-1234</p>
                   <p><strong>Hours:</strong> Monday to Friday, 9:00 AM to 6:00 PM IST</p>
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Refund Queries</h3>
-                <div className="space-y-2 text-gray-700">
+                <h3 className="text-lg font-semibold text-white mb-3">Refund Queries</h3>
+                <div className="space-y-2 text-gray-300">
                   <p><strong>Email:</strong> refunds@trovo.online</p>
                   <p><strong>Response Time:</strong> Within 24 hours</p>
                   <p><strong>Processing:</strong> 7-10 business days</p>

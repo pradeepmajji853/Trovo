@@ -27,9 +27,9 @@ const BlogPage = () => {
         canonical="https://trovo.app/blog"
         structuredData={blogStructuredData}
       />
-      <div className="min-h-screen bg-white pt-16 md:pt-20">
+      <div className="min-h-screen bg-night-900 pt-16 md:pt-20">
         {/* Coming Soon Section */}
-        <section className="section-padding bg-gradient-to-br from-trovo-green/5 to-white">
+        <section className="section-padding bg-gradient-to-br from-night-900 via-night-800 to-night-900">
           <div className="container-custom">
             <div className="min-h-[80vh] flex items-center justify-center">
               <div
@@ -44,7 +44,7 @@ const BlogPage = () => {
 
                 {/* Main Heading */}
                 <h1
-                  className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6"
+                  className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
                 >
                   Trovo{' '}
                   <span className="bg-gradient-to-r from-trovo-green to-emerald-600 bg-clip-text text-transparent">
@@ -59,7 +59,7 @@ const BlogPage = () => {
                   <h2 className="text-3xl md:text-4xl font-semibold text-trovo-green mb-4">
                     Coming Soon
                   </h2>
-                  <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                  <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
                     We're crafting insightful content about fintech, financial wellness, 
                     and the future of digital payments in India. Stay tuned for expert tips, 
                     industry insights, and stories that matter to your financial journey.

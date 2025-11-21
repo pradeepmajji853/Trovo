@@ -24,9 +24,9 @@ const CardNav: React.FC<CardNavProps> = ({
   items,
   className = '',
   ease = 'power3.out',
-  baseColor = '#fff',
+  baseColor = 'rgba(2, 6, 23, 0.85)',
   menuColor,
-  buttonBgColor = '#111',
+  buttonBgColor = '#1DB954',
   buttonTextColor = '#fff'
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false)
@@ -215,7 +215,7 @@ const CardNav: React.FC<CardNavProps> = ({
                 toggleMenu()
               }
             }}
-            style={{ color: menuColor || '#374151' }}
+            style={{ color: menuColor || '#E2E8F0' }}
           >
             <div className="hamburger-line" />
             <div className="hamburger-line" />

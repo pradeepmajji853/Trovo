@@ -3,7 +3,6 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 import { BlurInText } from './AnimatedText'
 import ParticlesBackground from './ParticlesBackground'
-import PhoneImageShowcase from './mockups/PhoneImageShowcase'
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null)
@@ -25,7 +24,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="hero-section relative min-h-[calc(100svh-4rem)] sm:min-h-[calc(100svh-5rem)] md:min-h-[calc(100svh-6rem)] bg-gradient-to-br from-white to-gray-50 overflow-hidden flex flex-col"
+      className="hero-section relative min-h-screen bg-gradient-to-br from-night-900 via-night-800 to-night-700 overflow-hidden flex flex-col"
       style={{ contain: 'layout style' }}
     >
       <ParticlesBackground />
@@ -64,7 +63,7 @@ const HeroSection: React.FC = () => {
               <div className="animated-text-container">
                 <div className="mb-4 sm:mb-5">
                   {/* Animated headline with blur effect */}
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-semibold text-gray-900 leading-tight" style={{ minHeight: '1.2em' }}>
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-semibold text-white leading-tight" style={{ minHeight: '1.2em' }}>
                     <BlurInText text="Your money has more value than you think." delay={0.2} />
                   </h1>
                   {/* Animated subline with word-by-word blur */}
@@ -96,7 +95,13 @@ const HeroSection: React.FC = () => {
 
                 {/* Mobile/Tablet Phone Showcase */}
                 <div className="mt-8 lg:hidden flex justify-center">
-                  <PhoneImageShowcase className="phone-showcase pointer-events-none select-none" />
+                  <img
+                    src={encodeURI('/mobile mockup.svg')}
+                    alt="Trovo mobile experience mockup"
+                    className="w-96 sm:w-[24rem] pointer-events-none select-none drop-shadow-[0_25px_60px_rgba(23,232,146,0.3)]"
+                    loading="lazy"
+                    draggable={false}
+                  />
                 </div>
               </div>
             </header>
@@ -110,7 +115,13 @@ const HeroSection: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
               >
                 <div ref={phoneRef} className="relative" aria-hidden={false}>
-                  <PhoneImageShowcase className="phone-showcase pointer-events-none select-none" />
+                  <img
+                    src={encodeURI('/mobile mockup.svg')}
+                    alt="Trovo mobile mockup"
+                    className="w-[480px] xl:w-[560px] pointer-events-none select-none drop-shadow-[0_65px_110px_rgba(29,185,84,0.3)]"
+                    loading="lazy"
+                    draggable={false}
+                  />
                 </div>
               </motion.div>
             </div>

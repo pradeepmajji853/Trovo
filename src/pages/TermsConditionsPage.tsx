@@ -7,7 +7,7 @@ const TermsConditionsPage = () => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-night-900 text-white">
       {/* Header */}
       <section className="bg-gradient-to-br from-trovo-green to-trovo-green-dark text-white py-20">
         <div className="container-custom text-center">
@@ -17,7 +17,7 @@ const TermsConditionsPage = () => {
       </section>
 
       {/* Content */}
-      <section className="py-20">
+      <section className="py-20 text-white">
         <div className="container-custom max-w-4xl">
           {/* Eligibility */}
           <div className="mb-12">
@@ -95,8 +95,8 @@ const TermsConditionsPage = () => {
               </ul>
             </div>
 
-            <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <p className="text-gray-700">
+            <div className="p-4 bg-yellow-400/10 border border-yellow-300/40 rounded-lg">
+              <p className="text-yellow-100">
                 <strong>Important:</strong> Account deletion does not absolve pending financial obligations (e.g., active loan repayments).
               </p>
             </div>
@@ -149,33 +149,33 @@ const TermsConditionsPage = () => {
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick Reference</h2>
             <div className="overflow-x-auto">
-              <table className="w-full border-collapse border border-gray-300">
+              <table className="w-full border-collapse border border-white/10">
                 <thead>
-                  <tr className="bg-trovo-green-50">
-                    <th className="border border-gray-300 px-4 py-2 text-left font-semibold">Requirement</th>
-                    <th className="border border-gray-300 px-4 py-2 text-left font-semibold">Details</th>
+                  <tr className="bg-night-800/80">
+                    <th className="border border-white/10 px-4 py-2 text-left font-semibold">Requirement</th>
+                    <th className="border border-white/10 px-4 py-2 text-left font-semibold">Details</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2">Minimum Age</td>
-                    <td className="border border-gray-300 px-4 py-2">18+ years</td>
+                    <td className="border border-white/10 px-4 py-2">Minimum Age</td>
+                    <td className="border border-white/10 px-4 py-2">18+ years</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2">PAN Requirement</td>
-                    <td className="border border-gray-300 px-4 py-2">Mandatory for all users</td>
+                    <td className="border border-white/10 px-4 py-2">PAN Requirement</td>
+                    <td className="border border-white/10 px-4 py-2">Mandatory for all users</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2">CIBIL Score</td>
-                    <td className="border border-gray-300 px-4 py-2">675+ for credit features</td>
+                    <td className="border border-white/10 px-4 py-2">CIBIL Score</td>
+                    <td className="border border-white/10 px-4 py-2">675+ for credit features</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2">Account Limit</td>
-                    <td className="border border-gray-300 px-4 py-2">One account per user</td>
+                    <td className="border border-white/10 px-4 py-2">Account Limit</td>
+                    <td className="border border-white/10 px-4 py-2">One account per user</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-4 py-2">Governing Law</td>
-                    <td className="border border-gray-300 px-4 py-2">Indian law, Bangalore jurisdiction</td>
+                    <td className="border border-white/10 px-4 py-2">Governing Law</td>
+                    <td className="border border-white/10 px-4 py-2">Indian law, Bangalore jurisdiction</td>
                   </tr>
                 </tbody>
               </table>
@@ -183,7 +183,7 @@ const TermsConditionsPage = () => {
           </div>
 
           {/* Contact */}
-          <div className="mb-12 p-6 bg-gray-50 rounded-lg">
+          <div className="mb-12 p-6 bg-night-800/60 rounded-lg border border-white/10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
             <p className="text-gray-700">
               If you have any questions about these Terms & Conditions, please contact us at:

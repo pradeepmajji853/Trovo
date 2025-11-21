@@ -8,7 +8,7 @@ const DataSecurityPage = () => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-night-900 text-white">
       {/* Header */}
       <motion.section 
         className="bg-gradient-to-br from-trovo-green to-trovo-green-dark text-white py-20"
@@ -38,7 +38,7 @@ const DataSecurityPage = () => {
 
       {/* Content */}
       <motion.section 
-        className="py-20"
+        className="py-20 text-white"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
@@ -55,17 +55,17 @@ const DataSecurityPage = () => {
                 to ensure your information remains protected at all times.
               </p>
               <div className="grid md:grid-cols-3 gap-6 mt-8">
-                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
-                  <h3 className="font-semibold text-green-800 mb-2">256-bit Encryption</h3>
-                  <p className="text-sm text-green-700">Bank-grade SSL/TLS encryption for all data transmission</p>
+                <div className="bg-night-800/70 p-6 rounded-lg border border-trovo-green/30">
+                  <h3 className="font-semibold text-green-200 mb-2">256-bit Encryption</h3>
+                  <p className="text-sm text-green-100">Bank-grade SSL/TLS encryption for all data transmission</p>
                 </div>
-                <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                  <h3 className="font-semibold text-blue-800 mb-2">ISO 27001 Certified</h3>
-                  <p className="text-sm text-blue-700">International standard for information security management</p>
+                <div className="bg-night-800/70 p-6 rounded-lg border border-white/15">
+                  <h3 className="font-semibold text-blue-200 mb-2">ISO 27001 Certified</h3>
+                  <p className="text-sm text-blue-100">International standard for information security management</p>
                 </div>
-                <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
-                  <h3 className="font-semibold text-purple-800 mb-2">PCI DSS Compliant</h3>
-                  <p className="text-sm text-purple-700">Payment card industry data security standards</p>
+                <div className="bg-night-800/70 p-6 rounded-lg border border-white/15">
+                  <h3 className="font-semibold text-purple-200 mb-2">PCI DSS Compliant</h3>
+                  <p className="text-sm text-purple-100">Payment card industry data security standards</p>
                 </div>
               </div>
             </div>
@@ -219,8 +219,8 @@ const DataSecurityPage = () => {
                 <li>Be cautious of phishing emails or fake websites impersonating Trovo</li>
               </ul>
               
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4">
-                <p className="text-sm text-yellow-800">
+              <div className="bg-yellow-400/10 border-l-4 border-yellow-400/60 p-4 mt-4">
+                <p className="text-sm text-yellow-100">
                   <strong>Security Alert:</strong> Trovo will never ask for your password, PIN, or OTP via email, SMS, or phone calls. 
                   Report any suspicious communications to security@trovo.online immediately.
                 </p>
@@ -262,28 +262,28 @@ const DataSecurityPage = () => {
           </div>
 
           {/* Contact Security Team */}
-          <div className="bg-gradient-to-br from-trovo-green/5 to-trovo-green-dark/5 p-8 rounded-lg">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Security Contact Information</h2>
+          <div className="bg-gradient-to-br from-night-900 via-night-800 to-trovo-green/20 p-8 rounded-lg border border-white/10">
+            <h2 className="text-2xl font-bold text-white mb-6">Security Contact Information</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Security Team</h3>
-                <div className="space-y-2 text-gray-700">
+                <h3 className="text-lg font-semibold text-white mb-3">Security Team</h3>
+                <div className="space-y-2 text-gray-300">
                   <p><strong>Email:</strong> security@trovo.online</p>
                   <p><strong>Emergency Hotline:</strong> +91-80-4040-9999</p>
                   <p><strong>Response Time:</strong> Within 1 hour for critical issues</p>
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Bug Bounty Program</h3>
-                <div className="space-y-2 text-gray-700">
+                <h3 className="text-lg font-semibold text-white mb-3">Bug Bounty Program</h3>
+                <div className="space-y-2 text-gray-300">
                   <p><strong>Email:</strong> bugbounty@trovo.online</p>
                   <p><strong>Rewards:</strong> ₹10,000 - ₹1,00,000</p>
                   <p><strong>Response:</strong> Within 48 hours</p>
                 </div>
               </div>
             </div>
-            <div className="mt-6 p-4 bg-white rounded border">
-              <p className="text-sm text-gray-600">
+            <div className="mt-6 p-4 bg-night-800/70 rounded border border-white/10">
+              <p className="text-sm text-gray-300">
                 <strong>Responsible Disclosure:</strong> We appreciate security researchers who help us maintain the highest 
                 security standards. Please report vulnerabilities responsibly through our official channels.
               </p>

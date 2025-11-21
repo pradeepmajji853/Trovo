@@ -16,9 +16,9 @@ const afterCards = [
 
 const BeforeAfterTrovo: React.FC = () => {
   return (
-    <section id="before-after" aria-labelledby="before-title" className="relative w-full overflow-hidden">
-      {/* Light theme background aligned with Trovo (white → light green) */}
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-white via-trovo-green-50/60 to-trovo-green-100/40" />
+    <section id="before-after" aria-labelledby="before-title" className="relative w-full overflow-hidden bg-night-900">
+      {/* Dark theme background aligned with Trovo */}
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-night-900 via-night-800 to-night-700" />
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-gradient-radial from-trovo-green/0 via-trovo-green/5 to-transparent"
@@ -37,11 +37,11 @@ const BeforeAfterTrovo: React.FC = () => {
           </div>
         </div>
 
-        {/* Header (light theme typography) */}
+        {/* Header */}
         <div className="relative md:pl-8 text-center md:text-left">
-          <p className="text-[11px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-trovo-green-dark/80">The story of payments today</p>
-          <h2 id="before-title" className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Before Trovo</h2>
-          <p className="mt-2 text-gray-700 max-w-2xl mx-auto md:mx-0 text-sm sm:text-base">Frustration, confusion, and zero real value on everyday money flows.</p>
+          <p className="text-[11px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-trovo-green/70">The story of payments today</p>
+          <h2 id="before-title" className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold text-white">Before Trovo</h2>
+          <p className="mt-2 text-gray-400 max-w-2xl mx-auto md:mx-0 text-sm sm:text-base">Frustration, confusion, and zero real value on everyday money flows.</p>
         </div>
 
         {/* Panels (light glass) */}
@@ -50,7 +50,7 @@ const BeforeAfterTrovo: React.FC = () => {
             {beforePanels.map((p, idx) => (
               <motion.div
                 key={p.title}
-                className="relative rounded-2xl border border-gray-200/70 bg-white/80 backdrop-blur-md p-5 sm:p-6 md:p-8 text-gray-900 overflow-hidden"
+                className="relative rounded-2xl border border-white/10 bg-night-800/80 backdrop-blur-md p-5 sm:p-6 md:p-8 text-white overflow-hidden"
                 initial={{ opacity: 0, y: 20, scale: 0.99, filter: 'blur(6px)' }}
                 whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
                 viewport={{ once: true, amount: 0.35 }}
@@ -71,9 +71,9 @@ const BeforeAfterTrovo: React.FC = () => {
                     )}
                     <h3 className="text-xl font-semibold">{p.title}</h3>
                   </div>
-                  <p className="mt-2 text-gray-600">{p.desc}</p>
+                  <p className="mt-2 text-gray-400">{p.desc}</p>
                   {/* brand underline */}
-                  <div className="mt-6 h-[3px] w-full rounded-full bg-gray-100 overflow-hidden">
+                  <div className="mt-6 h-[3px] w-full rounded-full bg-white/10 overflow-hidden">
                     <motion.div
                       className="h-full bg-gradient-to-r from-trovo-green/30 via-trovo-green/80 to-trovo-green/30"
                       initial={{ width: 0 }}
@@ -98,7 +98,7 @@ const BeforeAfterTrovo: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <motion.div
-              className="inline-flex items-center px-6 py-3 rounded-full border border-gray-200 bg-white/80 text-ink-muted backdrop-blur-md"
+            className="inline-flex items-center px-6 py-3 rounded-full border border-white/10 bg-night-800/60 text-ink-muted backdrop-blur-md"
               initial={{ filter: 'blur(8px)' }}
               whileInView={{ filter: 'blur(0px)' }}
               viewport={{ once: true }}
@@ -110,10 +110,10 @@ const BeforeAfterTrovo: React.FC = () => {
         </div>
       </div>
 
-      {/* Soft brand gradient as we enter After Trovo (light) */}
+      {/* Soft brand gradient as we enter After Trovo */}
       <motion.div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-br from-trovo-green-100/40 via-trovo-green-200/30 to-transparent"
+        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-br from-trovo-green/20 via-night-800/40 to-transparent"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false, amount: 0.2 }}
@@ -125,7 +125,7 @@ const BeforeAfterTrovo: React.FC = () => {
         <div className="relative container-custom pt-8 md:pt-10 pb-16 md:pb-24">
           <div className="text-center">
             <p className="text-[11px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-ink-muted">After Trovo</p>
-            <h2 id="after-title" className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Here’s how Trovo fixes it.</h2>
+            <h2 id="after-title" className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold text-white">Here’s how Trovo fixes it.</h2>
             <p className="mt-2 text-ink-muted text-sm sm:text-base">Simple, secure, rewarding — by design.</p>
           </div>
 
@@ -134,7 +134,7 @@ const BeforeAfterTrovo: React.FC = () => {
               {afterCards.map((c, idx) => (
               <motion.div
                 key={c.title}
-                  className="group relative rounded-2xl border border-gray-200/70 bg-white/60 backdrop-blur-md p-5 sm:p-7 shadow-sm hover:shadow-xl hover:shadow-trovo-green/10 transition-transform"
+                  className="group relative rounded-2xl border border-white/10 bg-night-800/60 backdrop-blur-md p-5 sm:p-7 shadow-sm hover:shadow-xl hover:shadow-trovo-green/20 transition-transform"
                 initial={{ opacity: 0, y: 18, scale: 0.99 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -150,9 +150,9 @@ const BeforeAfterTrovo: React.FC = () => {
                     {c.icon && (
                       <img src={c.icon} alt={c.title} className="w-10 h-10 shrink-0" loading="lazy" draggable={false} />
                     )}
-                    <h3 className="text-xl font-semibold text-gray-900">{c.title}</h3>
+                    <h3 className="text-xl font-semibold text-white">{c.title}</h3>
                   </div>
-                  <p className="text-gray-700">{c.desc}</p>
+                  <p className="text-gray-400">{c.desc}</p>
                 </div>
               </motion.div>
               ))}

@@ -7,7 +7,7 @@ const PrivacyPolicyPage = () => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-night-900 text-white">
       {/* Header */}
       <section className="bg-gradient-to-br from-trovo-green to-trovo-green-dark text-white py-20">
         <div className="container-custom text-center">
@@ -17,7 +17,7 @@ const PrivacyPolicyPage = () => {
       </section>
 
       {/* Content */}
-      <section className="py-20">
+      <section className="py-20 text-white">
         <div className="container-custom max-w-4xl">
           {/* Introduction */}
           <div className="mb-12">
@@ -152,9 +152,9 @@ const PrivacyPolicyPage = () => {
               <li>Opt-out of marketing communications</li>
               <li>File grievances regarding data misuse</li>
             </ul>
-            <div className="mt-6 p-6 bg-trovo-green-50 rounded-lg border border-trovo-green-200">
-              <h4 className="font-semibold text-gray-900 mb-2">Grievance Officer</h4>
-              <ul className="text-gray-700 space-y-1">
+            <div className="mt-6 p-6 bg-night-800/60 rounded-lg border border-trovo-green/40">
+              <h4 className="font-semibold text-white mb-2">Grievance Officer</h4>
+              <ul className="text-gray-300 space-y-1">
                 <li>Acknowledge complaints within 48 hours</li>
                 <li>Resolve complaints within 30 days</li>
                 <li>Contact: support@trovo.online</li>
@@ -163,9 +163,9 @@ const PrivacyPolicyPage = () => {
           </div>
 
           {/* Contact */}
-          <div className="mb-12 p-6 bg-gray-50 rounded-lg">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
-            <p className="text-gray-700">
+          <div className="mb-12 p-6 bg-night-800/60 rounded-lg border border-white/10">
+            <h2 className="text-2xl font-bold text-white mb-4">Contact Us</h2>
+            <p className="text-gray-300">
               If you have any questions about this Privacy Policy, please contact us at:
               <br />
               <strong>Email:</strong> support@trovo.online

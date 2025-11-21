@@ -3,14 +3,14 @@ import { Globe } from "@/components/ui/globe";
 
 const IndiaGlobeSection: React.FC = () => {
   return (
-    <section className="relative py-16 sm:py-20 bg-gradient-to-br from-white via-trovo-green/5 to-white overflow-hidden px-4">
+    <section className="relative py-16 sm:py-20 bg-gradient-to-br from-night-900 via-night-800 to-night-900 overflow-hidden px-4">
       <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-trovo-green/20 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-32 right-10 h-56 w-56 rounded-full bg-blue-200/40 blur-3xl" />
       <div className="container-custom flex flex-col items-center justify-center relative z-10">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 text-center leading-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center leading-tight">
           Connecting the World, Together
         </h2>
-        <p className="text-base sm:text-lg text-gray-600 mb-8 text-center max-w-2xl">
+        <p className="text-base sm:text-lg text-gray-300 mb-8 text-center max-w-2xl">
           Trovo brings people and payments together across the globe. Our network spans continents, making financial rewards accessible everywhere.
         </p>
         <div className="w-full flex justify-center overflow-hidden">
